@@ -137,3 +137,5 @@ Volgende personen hebben bijgedragen aan deze sjablonen:
 - Niels Corneille
 - Patrick Van Brussel
 - Simon Rondelez
+# 2026bachelorproefMuratBugdayci
+# 2026bachelorproefMuratBugdayci
