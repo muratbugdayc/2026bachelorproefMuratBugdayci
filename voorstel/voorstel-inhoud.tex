@@ -15,14 +15,21 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Grote organisaties zoals banken, verzekeringsmaatschappijen en overheidsinstellingen blijven intensief gebruikmaken van mainframe omgevingen, omdat deze systemen uitzonderlijke betrouwbaarheid en continuïteit garanderen voor bedrijfskritische processen. Mainframes kenmerken zich door zeer hoge uptime percentages, tot 99,999~\%, en robuuste beveiligingsmechanismen die essentieel zijn voor financiële en institutionele workloads \autocite{MainframeReliabilityEnterprise}.
+Grote organisaties in sectoren zoals financi\"ele dienstverlening, verzekeringen en overheid blijven IBM mainframes inzetten voor bedrijfskritische processen, onder meer door hun hoge beschikbaarheid en betrouwbaarheid voor transactionele workloads \autocite{IBMZArchitecture}. 
+Binnen deze context vormt z/OS een kernplatform omdat het ontworpen is voor continue beschikbaarheid, sterke beveiligingsmechanismen en grootschalige verwerking van transacties en batchverwerking \autocite{IBMzOSOverview,IBMRedbookzOS}. 
 
 Het meest gebruikte besturingssysteem op deze platforms, z/OS, is specifiek ontworpen om een stabiele, veilige en continu beschikbare omgeving te bieden voor kritische toepassingen \autocite{IBMzOSOverview}.
 
 \textcolor{red}{De concrete probleemstelling volgt als:}
-\textcolor{red}{Het beheer van z/OS-omgevingen vereist echter sterk gespecialiseerde kennis. System Administrators moeten niet alleen beschikken over diepgaande technische expertise, maar ook over inzicht in operationele processen, beveiliging, automatisering en scripting. Tegelijkertijd staat de instroom van nieuwe, ervaren mainframe profielen onder druk door vergrijzing en een beperkte instroom vanuit het onderwijs. Hierdoor ontstaat binnen organisaties een toenemende nood aan gestructureerde kennisoverdracht en een duidelijke afbakening van rollen, verantwoordelijkheden en technische kennis van z/OS.}
+\textcolor{red}{
+	Het beheer van z/OS-omgevingen binnen grote organisaties zoals banken en overheidsinstellingen vereist sterk gespecialiseerde en praktijkgerichte kennis. 
+	Door vergrijzing en een beperkte instroom van nieuwe mainframe-profielen wordt kennisoverdracht vaak impliciet en persoonsafhankelijk georganiseerd, wat leidt tot trage onboarding en verhoogde operationele risico’s. 
+	Daarnaast ontbreekt in veel organisaties en onderwijscontexten een eenduidige en gestructureerde afbakening van taken, verantwoordelijkheden en vereiste competenties tussen System Administrator Level~1 en Level~2 binnen z/OS-omgevingen. 
+	Het ontbreken van een dergelijk competentieframework bemoeilijkt gerichte opleiding, objectieve evaluatie en doorgroei van startende z/OS System Administrators.}
 
-Binnen deze context ontbreekt het in veel organisaties of onderwijsinstellingen aan een eenduidig en gestructureerd competentiekader voor System Administrators op verschillende ervaringsniveaus. Dit bemoeilijkt niet alleen de onboarding en opleiding van nieuwe medewerkers, maar ook de evaluatie, doorgroei en kennisborging binnen teams.
+Bestaande generieke competentiekaders zoals SFIA en e-CF bieden een breed referentiekader voor skills en niveaus, maar blijven vaak te generiek voor de specifieke context van z/OS system administration \autocite{SFIA9,eCF2020}. 
+Ook rol en workforce kaders zoals het NIST NICE Framework tonen hoe competenties gestructureerd kunnen worden via rollen, taken en vaardigheidscomponenten, wat relevant is voor de opbouw van een meetbaar framework \autocite{NISTNICE800181r1}. 
+Domeinspecifieke kaders bestaan eveneens, zoals IBM-competentie- en apprenticeshipframeworks voor mainframe system administrators (Level~1 en Level~2), maar deze zijn niet altijd uitgewerkt als onderwijs- en onboardinggericht competentieframework met concrete leeractiviteiten en expliciete, meetbare indicatoren \autocite{IBMZSysAdminLevel1,IBMZSysAdminLevel2}.
 
 \textcolor{blue}{De centrale onderzoeksvraag van deze bachelorproef luidt als volgt:}
 
@@ -33,9 +40,10 @@ Om deze onderzoeksvraag te beantwoorden, worden de volgende deelvragen onderzoch
 \textcolor{purple}{\textbf{Deelvragen met betrekking tot het probleemdomein:}}
 \textcolor{purple}{
 	\begin{itemize}
-	\item Welke taken en verantwoordelijkheden worden in de praktijk verwacht van een System Administrator binnen een z/OS omgeving?
-	\item Welke verschillen bestaan er tussen het profiel van een System Administrator Level~1 en Level~2 in mainframe omgevingen?
-	\item Welke knelpunten ervaren organisaties bij het ontbreken van een gestructureerde rol- en competentieafbakening?
+	\item Welke taken en operationele verantwoordelijkheden (operaties, incident/change, monitoring, batch, security, automatisering) worden binnen z/OS-omgevingen verwacht van System Administrators in organisaties zoals banken en financiële diensten?
+	\item Welke verantwoordelijkheden en beslissingsruimte verschillen tussen Level~1 en Level~2 (bv.\ triage vs.\ root-cause, standaard changes vs.\ complexe changes)?
+    \item Welke knelpunten en risico's ervaren organisaties wanneer rol- en competentieafbakening ontbreekt (bv.\ escalaties, fouten in changes, compliance-risico)?
+    \item Welke leer en onboardingnoden worden het vaakst genoemd bij startende z/OS System Administrators?
 \end{itemize}
 }
 
@@ -43,19 +51,19 @@ Om deze onderzoeksvraag te beantwoorden, worden de volgende deelvragen onderzoch
 \textcolor{orange}{
 		\begin{itemize}
 		\item Hoe kunnen competenties voor System Administrators binnen z/OS-omgevingen gestructureerd worden in een overzichtelijk framework?
+		\item Welke bestaande competentie- en rolframeworks zijn bruikbaar als basis (bv.\ SFIA, e-CF, NICE, IBM Z frameworks), en welke tekortkomingen blijven bestaan voor z/OS System Administration Level~1--2?
 		\item Op welke manier kan een onderscheid tussen Level~1 en Level~2 worden uitgewerkt binnen dit framework?
-		\item Hoe kan dit competentieframework op een toegankelijke manier worden voorgesteld via een proof of concept (PoC) namelijk een website?
+		\item Welke minimale requirements moet een PoC-website bevatten om dit framework bruikbaar te ontsluiten?
+		\item Hoe kunnen framework en PoC gevalideerd worden met stakeholders (industrie + onderwijs) op bruikbaarheid, volledigheid en duidelijk onderscheid tussen levels?
 	\end{itemize}
 }
-
-Het doel van dit onderzoek is het ontwikkelen van een gestructureerd en toepasbaar competentieframework voor System Administrators Level~1 en Level~2 binnen z/OS-omgevingen. Dit framework brengt de vereiste competenties in kaart op het vlak van technische kennis, operationele vaardigheden en professionele verantwoordelijkheden.
-
 \textcolor{green}{
-	De doelgroep van deze bachelorproef bestaat uit studenten met een focus op mainframe tech\- nologie aan HOGENT of andere onderwijsinstellingen met mainframe-gerelateerde opleidingsonderdelen, evenals uit junior of startende System Administrators die actief zijn binnen organisaties waar gebruik wordt gemaakt van IBM mainframes en/of z/OS.
+	De doelgroep van deze bachelorproef bestaat uit studenten met een focus op mainframe technologie aan HOGENT of andere onderwijsinstellingen met mainframe-gerelateerde opleidingsonderdelen, evenals uit junior of startende System Administrators die actief zijn binnen organisaties waar gebruik wordt gemaakt van IBM mainframes en/of z/OS.
 }
 
+In deze bachelorproef wordt het competentieframework inhoudelijk afgebakend en ge\"orienteerd op de IBM Level~1 en Level~2 competency- en apprenticeshipframeworks, zodat de scope aansluit bij de industrieel gehanteerde competenties \autocite{IBMZSysAdminLevel1,IBMZSysAdminLevel2}.
 
-Het concrete eindresultaat van deze bachelorproef is een proof of concept (PoC) in de vorm van een website waarin het competentieframework op een overzichtelijke manier wordt voorgesteld. Dit framework kan dienen als fundament voor verdere verfijning, opleidingstrajecten en evaluatie binnen organisaties die afhankelijk zijn van mainframe-infrastructuur. Het onderzoek wordt als succesvol beschouwd wanneer het framework voldoende duidelijk, herkenbaar en bruikbaar is voor professionals die actief zijn binnen een z/OS context.
+Het concrete eindresultaat van deze bachelorproef is een proof of concept (PoC) in de vorm van een website waarin het competentieframework op een overzichtelijke manier wordt voorgesteld. Met de feedback van een vak-expert (co-promotor) zal de PoC beoordeeld  en verbeterd worden. Het onderzoek wordt als succesvol beschouwd wanneer het framework voldoende duidelijk, herkenbaar en bruikbaar is voor professionals/studenten die actief zijn binnen een z/OS context.
 
 
 %---------- Stand van zaken ---------------------------------------------------
@@ -63,47 +71,28 @@ Het concrete eindresultaat van deze bachelorproef is een proof of concept (PoC) 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Mainframes blijven een essentieel onderdeel van de IT infrastructuur van grote organisaties, met name in sectoren waar betrouwbaarheid, schaalbaarheid en beveiliging cruciaal zijn. Volgens \textcite{MainframeReliabilityEnterprise} onderscheiden mainframes zich van alternatieve platformen door hun hoge beschikbaarheid en robuuste fouttolerantie, wat hen bijzonder geschikt maakt voor bedrijfskritische toepassingen.
+Mainframes blijven een essentieel onderdeel van de IT infrastructuur van grote organisaties, met name in sectoren waar betrouwbaarheid, schaalbaarheid en beveiliging cruciaal zijn zoals banken, overheidsinstellingen en verzekeringsmaatschappijen.
+Binnen deze omgevingen speelt het besturingssysteem z/OS een centrale rol. z/OS is specifiek ontworpen om grote hoeveelheden transacties gelijktijdig te verwerken en biedt uitgebreide ondersteuning voor beveiliging, workloadmanagement en systeemautomatisering \autocite{IBMZArchitecture}. Deze eigenschappen maken het beheer van z/OS omgevingen complex en kennisintensief.
 
-Binnen deze omgevingen speelt het besturingssysteem z/OS een centrale rol. z/OS is specifiek ontworpen om grote hoeveelheden transacties gelijktijdig te verwerken en biedt uitgebreide ondersteuning voor beveiliging, workloadmanagement en systeemautomatisering \autocite{IBMzOSOverview}. Deze eigenschappen maken het beheer van z/OS omgevingen complex en kennisintensief.
+\subsection{De rol van de System Administrator (Level 1 en Level 2)}
 
-\subsection{Mainframe omgevingen en z/OS}
+Binnen IBM mainframe-omgevingen wordt de rol van de z/OS System Administrator onderscheiden in ervaringsniveaus, met name Level~1 (instapniveau) en Level~2 (gevorderd niveau). Elk niveau wordt gekenmerkt door een toenemende mate van autonomie, taakcomplexiteit en impact op de productieomgeving \autocite{IBMZSysAdminLevel1,IBMZSysAdminLevel2}.
 
-Mainframes vormen al decennialang een stabiele pijler binnen de IT-infrastructuur van grote organisaties, in het bijzonder in sectoren waar betrouwbaarheid, schaalbaarheid en beveiliging van cruciaal belang zijn. In tegenstelling tot gedistribueerde of cloudgebaseerde platformen zijn mainframes specifiek ontworpen om grote volumes aan transacties continu en fouttolerant te verwerken. Daarnaast beschrijft IBM Z architectuurdocumentatie de sterke integratie tussen hardware en software als kenmerkend voor mainframe systemen \autocite{IBMZArchitecture}.
+Een \textit{System Administrator Level~1} richt zich voornamelijk op operationele en ondersteunende taken binnen de z/OS-omgeving. Volgens het IBM Z System Mainframe Administrator Level~1 Competency Framework omvat dit onder andere het uitvoeren van standaardoperaties, het monitoren van systemen, het ondersteunen bij incidenten, het uitvoeren van vooraf gedefinieerde changes, en het assisteren bij batchverwerking, securityconfiguratie en automatisering \autocite{IBMZSysAdminLevel1}. Deze rol vereist een solide basiskennis van z/OS-concepten en procedures, maar werkt doorgaans onder begeleiding en volgens vastgelegde processen.
 
+De rol van \textit{System Administrator Level~2} bouwt voort op deze operationele basis en omvat een breder en complexer takenpakket. Het IBM zSystems Administrator Level~2 Apprenticeship Framework beschrijft dat Level~2-profielen verantwoordelijk zijn voor het zelfstandig analyseren en oplossen van complexere incidenten, het uitvoeren en beoordelen van niet-standaard changes, het optimaliseren van systeemprestaties en het actief bijdragen aan security-, continuïteits- en recoverystrategieën \autocite{IBMZSysAdminLevel2}. Daarnaast wordt van Level~2 System Administrators verwacht dat zij een coachende rol opnemen ten aanzien van junior profielen en bijdragen aan documentatie en kennisoverdracht binnen het team.
 
-Een kerncomponent binnen moderne mainframe omgevingen is het besturingssysteem z/OS. Dit besturingssysteem is ontwikkeld met het oog op hoge beschikbaarheid, geavanceerd workloadmanagement en strikte beveiligingscontrole. Volgens de officiële documentatie van IBM ondersteunt z/OS het gelijktijdig uitvoeren van meerdere bedrijfskritische toepassingen, terwijl het systeem continu beschikbaar blijft voor eindgebruikers \autocite{IBMzOSOverview}.
-Deze complexiteit wordt verder versterkt door de nauwe samenwerking tussen verschillende subsystemen en het centrale workloadmanagement binnen z/OS, waarbij resources dynamisch worden toegewezen op basis van prioriteit en systeemstatus \autocite{IBMZOSArchitectureWLM}.
-
-Het beheer van z/OS omgevingen vereist een hoge mate van technische expertise en inzicht in de onderliggende systeemarchitectuur. Naast het configureren en onderhouden van het besturingssysteem dienen beheerders rekening te houden met aspecten zoals performance optimalisatie, beveiligingsconfiguratie en foutafhandeling. De IBM Redbooks reeks onderstreept dat z/OS systemen gekenmerkt worden door een sterke samenhang tussen hardware, software en operationele processen, wat het beheer ervan fundamenteel verschilt van andere serverplatformen \autocite{IBMRedbookzOS}.
-
-Deze combinatie van complexiteit, kriticiteit en langdurig gebruik binnen organisaties verklaart waarom mainframe omgevingen een gespecialiseerd kennisdomein vormen. De literatuur toont aan dat een gebrek aan gestructureerde kennisoverdracht en duidelijke rolafbakening binnen dergelijke omgevingen een verhoogd risico kan vormen voor de continuïteit van IT diensten, wat het belang van verdere studie naar competenties binnen dit domein onderstreept \autocite{MainframeReliabilityEnterprise}.
-
-
-\subsection{De rol van de System Administrator}
-
-De rol van de System Administrator omvat traditioneel het configureren, beheren en monitoren van IT systemen met als doel een stabiele en veilige werking te garanderen. Binnen servicegerichte IT organisaties wordt deze rol vaak geplaatst binnen operationele processen zoals incidentbeheer, wijzigingsbeheer en continuïteitsbewaking, zoals beschreven binnen IT-servicemana\- gementkaders \textcite{ITILFoundation}.
-
-In complexe infrastructuren, waaronder mainframe omgevingen, reikt de rol van de System Administrator verder dan louter operationele ondersteuning. Dergelijke omgevingen vereisen diepgaande kennis van systeemarchitectuur, beveiligingsmechanismen en fouttolerantie. \textcite{MainframeReliabilityEnterprise} tonen aan dat mainframes specifiek worden ingezet omwille van hun uitzonderlijke betrouwbaarheid en beschikbaarheid, wat impliceert dat beheerders een cruciale verantwoordelijkheid dragen in het waarborgen van deze eigenschappen.
-
-De literatuur over system administration beschouwt deze rol als een combinatie van technische expertise en operationele verantwoordelijkheid \autocite{NemethEtAl2017}.
-
-Binnen de context van z/OS besturing systeem impliceert dit dat System Administrators niet alleen instaan voor dagelijkse operationele taken, maar ook voor het proactief beheren van prestaties, beveiliging en systeemstabiliteit op lange termijn. De officiële documentatie van IBM Redbooks benadrukt dat het beheer van z/OS-systemen een hoge mate van specialisatie vereist, wat de nood aan duidelijke rolafbakening en competentiedefinitie verder versterkt \autocite{IBMzOSOverview,IBMRedbookzOS}.
+Het expliciete onderscheid tussen beide niveaus is essentieel voor gerichte opleiding, onboarding en doorgroei binnen z/OS-teams en vormt een belangrijke basis voor het competentieframework dat in deze bachelorproef wordt ontwikkeld.
 
 
 \subsection{Competenties en competentieframeworks in IT}
 
-Competenties worden in de literatuur doorgaans gedefinieerd als een samenhangend geheel van kennis, vaardigheden en professionele attitudes die nodig zijn om een bepaalde functie effectief uit te voeren. Binnen IT-organisaties worden competentieframeworks gebruikt om deze elementen te structureren en te koppelen aan rollen, verantwoordelijkheden en opleidingsdoelstellingen \textcite{ITILFoundation}.
+Competenties worden in de literatuur omschreven als een combinatie van kennis, vaardigheden en professionele attitudes die nodig zijn om een functie effectief uit te voeren. In IT-organisaties worden competentieframeworks gebruikt om deze elementen te structureren en te koppelen aan rollen, verantwoordelijkheden en opleidingsdoelstellingen \autocite{ITILFoundation}.
 
-Competentieframeworks bieden organisaties ondersteuning bij het evalueren van medewerkers, het uittekenen van opleidingstrajecten en het faciliteren van doorgroei. In de context van complexe IT omgevingen dragen dergelijke frameworks bij tot het expliciteren van verwachtingen en het verminderen van operationele risico’s. Toch blijkt uit de literatuur dat veel bestaande frameworks een generiek karakter hebben en onvoldoende rekening houden met domeinspecifieke kenmerken.
-
-
-Voor gespecialiseerde infrastructuren zoals mainframe en z/OS-omgevingen leidt dit tot een spanningsveld tussen theoretische competentiemodellen en de praktische realiteit van systeembeheer. De complexiteit en kriticiteit van deze omgevingen vereisen een meer gedifferentieerde benadering van competenties, afgestemd op specifieke verantwoordelijkheden en ervaringsniveaus \autocite{IBMRedbookzOS}.
+Generieke frameworks zoals SFIA en het European e-Competence Framework (e-CF) bieden een breed en niveaugebaseerd overzicht van IT-competenties, maar blijven bewust technologie-onafhankelijk \autocite{SFIA9,eCF2020}. Voor gespecialiseerde en bedrijfskritische omgevingen zoals z/OS volstaat deze generieke benadering echter niet. De complexiteit en kriticiteit van mainframeomgevingen vereisen een domeinspecifiek competentieframework dat expliciet rekening houdt met taken, verantwoordelijkheden en ervaringsniveaus \autocite{IBMRedbookzOS,IBMABCsZOSV1}.
 
 
 \subsection{Kennisoverdracht en ervaringsniveaus binnen IT teams}
-
-Binnen IT-teams vormt kennisoverdracht een cruciale factor voor de continuïteit van dienstverlening, zeker in omgevingen waar expertise schaars en sterk gespecialiseerd is. In het bijzonder binnen mainframe contexten wordt deze uitdaging versterkt door de vergrijzing van ervaren profielen en de beperkte instroom van nieuwe specialisten \autocite{MainframeReliabilityEnterprise}.
 
 Het expliciet definiëren van ervaringsniveaus, zoals System Administrator Level~1 en Level~2, kan bijdragen tot een duidelijker onderscheid in verantwoordelijkheden, verwachtingen en opleidingsbehoeften. Dergelijke niveaudifferentiatie ondersteunt niet alleen kennisoverdracht, maar faciliteert ook gerichte coaching en doorgroei binnen teams.
 
@@ -126,60 +115,115 @@ Deze bachelorproef positioneert zich binnen deze vastgestelde lacune door te foc
 
 
 %---------- Methodologie ------------------------------------------------------
-\section{Methodologie}%
+\section{Methodologie}
 \label{sec:methodologie}
 
-Deze bachelorproef hanteert een ontwerpend onderzoeksopzet met als doel het ontwikkelen van een gestructureerd competentieframework voor System Administrators Level~1 en Level~2 binnen z/OS-omgevingen. Het onderzoek combineert literatuurstudie, documentanalyse en de ontwikkeling van een proof of concept. De methodologie bestaat uit vier opeenvolgende fasen.
+Deze bachelorproef hanteert een ontwerpend onderzoeksopzet (design science research) met als doel het ontwikkelen en valideren van een competentieframework voor z/OS System Administrators Level~1 en Level~2. Het onderzoek combineert literatuuronderzoek, praktijkgericht kwalitatief onderzoek en iteratief ontwerp, en wordt ondersteund door feedback van een vakexpert (co-promotor), praktijkstakeholders (KBC/IBS Markets) en domeinspecifieke documentatie (IBM Redbooks). 
 
-\subsection{Literatuurstudie}
+De methodologie is bestaat uit vijf fasen.
 
-In een eerste fase wordt een uitgebreide literatuurstudie uitgevoerd naar mainframe omgevingen, het beheer van z/OS-systemen en bestaande competentie- en rolframeworks binnen IT. Hierbij wordt gebruikgemaakt van wetenschappelijke artikels, professionele vakliteratuur en officiële documentatie, zoals IBM Redbooks en IT-serviceman\-
-agementkaders.
 
-Deze literatuurstudie vormt de basis voor het identificeren van relevante competentiedomeinen en biedt inzicht in bestaande benaderingen van rolafbakening en ervaringsniveaus binnen IT-functies.
+\subsection{Scope (afbakening t.o.v.\ IBM Level~1/Level~2)}
+De inhoudelijke scope van dit onderzoek wordt afgebakend op basis van de IBM competency- en apprenticeshipframeworks voor \textit{Mainframe System Administrator} Level~1 en Level~2 \autocite{IBMZSysAdminLevel1,IBMZSysAdminLevel2}. 
+De competenties worden niet \'e\'en-op-\'e\'en overgenomen, maar geclusterd tot een onderwijs- en onboardinggericht framework.
 
-\subsection{Analyse van bestaande rol en competentiemodellen}
+\textbf{In scope} vallen de IBM-competentieclusters rond:
+\begin{itemize}
+	\item(i) professionele skills (teamwork, communicatie, feedback, leren), 
+	\item(ii) change/process/documentatie,
+    \item(iii) z/OS systeemcomponenten en interacties (ISPF, TSO commandos, SDSF),
+	\item(iv) security concepten (RACF),
+	\item(v) batch concepten, JCL en basis scripting/REXX,
+	\item(vi) probleemherkenning en operationele troubleshooting op hoofdlijnen
+\end{itemize}
 
-In de tweede fase worden bestaande rolbeschrijvingen en competentiemodellen geanalyseerd, zoals ITIL roldefinities en andere relevante industriestandaarden. Deze analyse richt zich op het identificeren van taken, verantwoordelijkheden en competenties die relevant zijn voor system administrators in complexe IT-omgevingen.
+\textbf{Out of scope} vallen diepgaande specialistrollen en subsystemexpertise (bv.\ volledige CICS, IMS, Db2 roluitvoering of advanced performance engineering). 
+Deze onderwerpen worden enkel vermeld als context omdat ze in de IBM-lijsten voorkomen, maar ze worden niet tot leerdoelen uitgewerkt binnen het eindframework.
 
-De focus ligt hierbij op het vergelijken van generieke modellen met de specifieke kenmerken van mainframe- en z/OS-omgevingen, met bijzondere aandacht voor het onderscheid tussen junior- en meer ervaren profielen.
+\subsection{Fase 1: Literatuurstudie}
 
-\subsection{Ontwerp van het competentieframework}
+In de eerste fase wordt een systematische literatuurstudie uitgevoerd met focus op vier categorieën:
+\begin{itemize}
+	\item \textbf{Competentieframeworks en pedagogische literatuur}: SFIA, European e-Competence Framework (e-CF), NIST NICE Framework, IBM Z System Administrator frameworks (Level~1 en Level~2) en competentiegericht leren en constructive alignment ter ondersteuning van onderwijs en onboardingtoepassingen.
+	\item \textbf{Mainframe en z/OS-literatuur}: IBM Redbooks en officiële z/OS-documentatie met betrekking tot systeembeheer, workload management en operationele verantwoordelijkheden.
+	\item \textbf{Mainframe career- en competency studies}: publicaties over skills gaps, vergrijzing en instroomproblematiek binnen mainframe omgevingen.
+\end{itemize}
 
-Op basis van de bevindingen uit de literatuurstudie en de analysefase wordt een conceptueel competentieframework opgesteld voor System Administrator Level~1 en Level~2 binnen z/OS-omgevingen. Dit framework structureert competenties volgens verschillende domeinen, waaronder technische kennis, operationele vaardigheden en professionele verantwoordelijkheden.
+Deze fase resulteert in een eerste set competentiedomeinen en niveau-indicatoren die als input dienen voor het verdere frameworkontwerp.
 
-Het framework wordt ontworpen met het oog op toepasbaarheid binnen organisaties en bruikbaarheid voor opleiding, onboarding en doorgroei, zonder in detail in te gaan op specifieke tools of bedrijfsspecifieke processen.
+\subsection{Fase 2: Praktijkonderzoek (interviews)}
 
-\subsection{Proof of Concept (PoC): website}
+Om het probleemdomein te concretiseren en te valideren wordt kwalitatief onderzoek uitgevoerd via semigestructureerde interviews met praktijkstakeholders.
+Er wordt minstens één interview gepland met medewerkers actief in een z/OS-context binnen de financiele sector, meer bepaald binnen het \textit{International Banking Systems (IBS)}-team van KBC (Markets).
+Deze stakeholders vertegenwoordigen zowel de industriële als de opleidingscontext waarin het competentieframework zal worden toegepast.
 
-Als laatste fase wordt een proof of concept ontwikkeld in de vorm van een website waarin het competentieframework op een overzichtelijke en toegankelijke manier wordt voorgesteld. De website bevat theoretische toelichting per competentiedomein, gekoppeld aan het onderscheid tussen Level 1 en Level 2.
+De interviews richten zich op:
+\begin{itemize}
+	\item het dagelijkse takenpakket van z/OS System Administrators;
+	\item ervaren knelpunten bij onboarding en kennisoverdracht;
+	\item vereiste competenties vanuit praktijkperspectief.
+\end{itemize}
 
-Daarnaast worden voorbeeldscenario’s en oefenvormen opgenomen om de praktische toepasbaarheid van het framework te illustreren binnen een opleidingscontext. Deze proof of concept dient als validatie van het framework en toont aan hoe het model kan worden ingezet binnen de praktijk.
+De interviewdata wordt geanalyseerd via thematische analyse, waarbij terugkerende patronen en competenties worden geïdentificeerd en vergeleken met de bevindingen uit de literatuur.
+
+\subsection{Fase 3: Requirementsanalyse en ontwerp van het competentieframework (Bachelorproef)}
+
+In deze fase worden de vereisten voor het competentieframework expliciet afgeleid uit de literatuurstudie en de interviewresultaten. Deze requirements bepalen onder meer welke competentiedomeinen worden opgenomen, hoe het onderscheid tussen Level~1 en Level~2 wordt uitgewerkt en welke inhoud minimaal ontsloten moet worden via de proof of concept website.
+
+\subsection{Fase 4: Proof of Concept (PoC)}
+
+Als demonstratie van de toepasbaarheid wordt een proof of concept ontwikkeld in de vorm van een website.
+Deze website presenteert het competentieframework op een gestructureerde manier en bevat per competentiedomein:
+\begin{itemize}
+	\item een theoretische toelichting;
+	\item een duidelijke Level~1/Level~2-afbakening;
+	\item voorbeeldleeractiviteiten en oefenvormen (meerkeuze vragen, open vragen, quiz).
+\end{itemize}
+
+\subsection{Fase 5: Validatie}
+
+Het ontwikkelde competentieframework en de PoC worden gevalideerd via:
+\begin{itemize}
+	\item feedback van de co-promotor (expert in het vakdomein).
+	\item feedback van praktijkstakeholders (o.a.\ interviewdeelnemers).
+	\item vergelijking met bestaande IBM-frameworks voor Level~1 en Level~2 (\autocite{IBMZSysAdminLevel1} en \autocite{IBMZSysAdminLevel2})
+	\item evaluatie van duidelijkheid en bruikbaarheid voor de doelgroep.
+\end{itemize}
+
+Deze validatie waarborgt dat het framework zowel theoretisch onderbouwd als praktisch relevant is.
 
 \subsection{Gebruikte tools en technologieën}
 
-Voor de uitvoering van dit onderzoek worden verschillende tools ingezet. Voor literatuurbeheer wordt gebruikgemaakt van JabRef in combinatie met \LaTeX{} en Bib\LaTeX{}. De proof of concept website wordt ontwikkeld met behulp van webtechnologieën zoals HTML, CSS en JavaScript.
-
-De website wordt gehost via een publieke repository op GitHub en publiek toegankelijk gemaakt met behulp van GitHub Pages. Op deze manier kan het ontwikkelde competentieframework eenvoudig gedeeld worden en blijft het resultaat transparant en reproduceerbaar.
+Voor de uitvoering van dit onderzoek worden volgende tools en technologieën gebruikt:
+\begin{itemize}
+	\item \textbf{Literatuurbeheer}: JabRef in combinatie met \LaTeX{} en Bib\LaTeX{};
+	\item \textbf{Kwalitatieve analyse}: semigestructureerde interviews en thematische analyse;
+	\item \textbf{Proof of Concept}: HTML, CSS en JavaScript;
+	\item \textbf{Versiebeheer en publicatie}: GitHub en GitHub Pages.
+\end{itemize}
 
 \subsection{Planning en deliverables}
 
-Het onderzoek wordt uitgevoerd over een periode van meerdere maanden. In de eerste fase wordt de literatuurstudie afgerond. Vervolgens worden bestaande rol en competentiemodellen geanalyseerd. De derde fase resulteert in een uitgewerkt competentieframework (bachelorproef). Parallel aan deze fases wordt een PoC website ontwikkeld.
+Deze bachelorproef wordt uitgevoerd binnen het academiejaar 2025--2026 met volgende planning:
+\begin{itemize}
+	\item \textbf{Februari 2026}: literatuurstudie (z/OS, bestaande competentieframeworks) en opstellen eerste domeinstructuur;
+	\item \textbf{Maart 2026}: praktijkinput via (minstens) één semigestructureerd interview met stakeholders uit een z/OS-context (bv.\ KBC/IBS Markets) en verwerking van de resultaten en meer inhoudelijke informatie over Sys Admin verzamelen met de hulp van IBM Redbooks;
+	\item \textbf{April 2026}: uitwerking van het competentieframework (inhoudelijk) binnen de bachelorproef met niveau's Level 1 en Level 2.
+	\item \textbf{Maart--Mei 2026 (parallel en continu)}: ontwikkeling van een proof of concept website die het framework ontsluit;
+	\item \textbf{Februari--Mei 2026 (parallel en continu)}: validatie (stakeholder feedback) en finale rapportering (in Mei).
+\end{itemize}
 
-De belangrijkste deliverables van deze bachelorproef zijn de bachelorproeftekst waarin het competentieframework wordt uitgewerkt en onderbouwd, en een proof of concept website die dit framework op een toegankelijke en praktische manier visualiseert.
+\textbf{Deliverables:}
+\begin{itemize}
+	\item \textbf{Competentieframework (Bachelorproef)} voor z/OS System Administrators Level~1 en Level~2 (gestructureerd per domein en voorzien van Level-onderscheid);
+	\item \textbf{Proof of Concept website}, in de vorm van een informatieve en educatieve webpagina, waarin het competentieframework op een overzichtelijke manier wordt gepresenteerd, met ondersteunende toelichting en voorbeeldoefeningen die het onderscheid tussen Level~1 en Level~2 illustreren.
+\end{itemize}
 
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwachte resultaten en conclusie}%
 \label{sec:verwachte_resultaten}
 
-Het verwachte resultaat van deze bachelorproef is de ontwikkeling van een gestructureerd en toepasbaar competentieframework voor System Administrators Level~1 en Level~2 binnen z/OS-omgevingen. Dit framework brengt de kerncompetenties in kaart die nodig zijn om deze rollen effectief te kunnen invullen, met aandacht voor technische kennis, operationele vaardigheden en professionele verantwoordelijkheden.
+Het verwachte resultaat van deze bachelorproef is de ontwikkeling van een gestructureerd en toepasbaar competentieframework voor z/OS System Administrators Level~1 en Level~2. Dit framework brengt de kerncompetenties in kaart die nodig zijn om deze rollen effectief uit te voeren, met aandacht voor technische kennis, operationele vaardigheden en professionele verantwoordelijkheden, en maakt het onderscheid tussen beide niveaus expliciet.
 
-Daarnaast wordt een proof of concept ontwikkeld in de vorm van een website waarin het competentieframework op een overzichtelijke en toegankelijke manier wordt voorgesteld. Deze website fungeert als praktische vertaling van het theoretische framework en illustreert hoe het model kan worden ingezet binnen een opleidings- of onboardingcontext.
-
-Er wordt verwacht dat het voorgestelde framework bijdraagt aan een duidelijkere rolafbakening tussen System Administrator Level~1 en Level~2, wat organisaties kan ondersteunen bij het structureren van opleidingstrajecten en doorgroeipaden. Voor (startende) System Administrators kan het framework fungeren als referentiepunt voor professionele ontwikkeling en het verwerven van domeinspecifieke kennis binnen z/OS-omgevingen.
-
-De meerwaarde van deze bachelorproef situeert zich in het expliciteren van impliciete kennis binnen een gespecialiseerd IT domein. Door competenties te structureren en toegankelijk te maken, kan het onderzoek bijdragen aan kennisoverdracht, continuïteit van beheer en het verminderen van afhankelijkheid van individuele expertise. Hoewel de concrete impact afhankelijk is van de organisatiecontext waarin het framework wordt toegepast, wordt verwacht dat het ontwikkelde model voldoende flexibel is om als fundament te dienen voor verdere verfijning en praktische toepassing.
-
-Tot slot biedt deze bachelorproef een basis voor toekomstig onderzoek, bijvoorbeeld door het framework verder te valideren in een bedrijfscontext of uit te breiden naar andere ervaringsniveaus of gespecialiseerde rollen binnen mainframe omgevingen.
-
+Daarnaast wordt een proof of concept ontwikkeld in de vorm van een website die het competentieframework overzichtelijk ontsluit en illustreert met ondersteunende toelichting en voorbeeldleeractiviteiten. De meerwaarde van dit onderzoek ligt in het expliciteren en structureren van kennis binnen een gespecialiseerd domein, zodat onboarding en opleiding gerichter kunnen verlopen en kennisoverdracht minder persoonsafhankelijk wordt. 
