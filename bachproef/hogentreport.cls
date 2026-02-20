@@ -347,91 +347,77 @@
     \def\tocfont{\fontseries{m}\selectfont}
     \def\titlestyle{\titlefont\bfseries}
 \else
-    %% Using fontspec for font rendering, first check system paths
-    %% for font availability, if not fall back to local .otf files
-    \IfFontExistsTF{Montserrat}{%
-        \newfontfamily\montserratblack{Montserrat}[BoldFont={Montserrat Black}]
-        \newfontfamily\montserratextrabold{Montserrat}%
-            [BoldFont={Montserrat ExtraBold}]
+    %% Using fontspec for font rendering
+    %% FORCE LOCAL FONTS ONLY (no system font lookup)
 
-        \def\titlefont{\montserratblack\bfseries}
-        \def\subtitlefont{\montserratextrabold\bfseries}
-        \def\tocfont{\montserratblack}
+    % --- Montserrat (local files only) ---
+    \newfontfamily\titlefont{Montserrat}[
+        Path = ../fonts/Montserrat/,
+        Extension = .otf,
+        UprightFont = *-Black,
+        BoldFont    = *-Black,
+        ItalicFont  = *-BlackItalic,
+        BoldItalicFont = *-BlackItalic
+    ]
 
-        \setmainfont{Montserrat}
-        \setsansfont{Montserrat}
-    }{%
-        \newfontfamily\titlefont{Montserrat}[
-            Path = ../fonts/Montserrat/,
-            Extension = .otf,
-            UprightFont = *-Black, %% Force black
-            BoldFont=*-Black,
-            ItalicFont=*-BlackItalic,
-            BoldItalicFont= *-BlackItalic]
+    \newfontfamily\subtitlefont{Montserrat}[
+        Path = ../fonts/Montserrat/,
+        Extension = .otf,
+        UprightFont = *-ExtraBold,
+        BoldFont    = *-ExtraBold,
+        ItalicFont  = *-ExtraBoldItalic,
+        BoldItalicFont = *-ExtraBoldItalic
+    ]
 
-        \newfontfamily\subtitlefont{Montserrat}[
-            Path = ../fonts/Montserrat/,
-            Extension = .otf,
-            UprightFont = *-ExtraBold, %% Force extra bold
-            BoldFont=*-ExtraBold,
-            ItalicFont=*-ExtraBoldItalic,
-            BoldItalicFont= *-ExtraBoldItalic]
+    \newfontfamily\tocfont{Montserrat}[
+        Path = ../fonts/Montserrat/,
+        Extension = .otf,
+        UprightFont = *-Regular,
+        BoldFont    = *-Bold,
+        ItalicFont  = *-Italic,
+        BoldItalicFont = *-BoldItalic
+    ]
 
-        \newfontfamily\tocfont{Montserrat}[
-            Path = ../fonts/Montserrat/,
-            Extension = .otf,
-            UprightFont = *-Regular,
-            BoldFont=*-Bold,
-            ItalicFont=*-Italic,
-            BoldItalicFont= *-BoldItalic]
+    \setmainfont{Montserrat}[
+        Path = ../fonts/Montserrat/,
+        Extension = .otf,
+        UprightFont = *-Regular,
+        BoldFont    = *-Bold,
+        ItalicFont  = *-Italic,
+        BoldItalicFont = *-BoldItalic
+    ]
 
-        \setmainfont{Montserrat}[
-            Path = ../fonts/Montserrat/,
-            Extension = .otf,
-            UprightFont = *-Regular,
-            BoldFont=*-Bold,
-            ItalicFont=*-Italic,
-            BoldItalicFont= *-BoldItalic]
+    \setsansfont{Montserrat}[
+        Path = ../fonts/Montserrat/,
+        Extension = .otf,
+        UprightFont = *-Regular,
+        BoldFont    = *-Bold,
+        ItalicFont  = *-Italic,
+        BoldItalicFont = *-BoldItalic
+    ]
 
-        \setsansfont{Montserrat}[
-            Path = fonts/Montserrat/,
-            Extension = .otf,
-            UprightFont = *-Regular,
-            BoldFont=*-Bold,
-            ItalicFont=*-Italic,
-            BoldItalicFont= *-BoldItalic]
-    }
+   % --- Fira Code (LOCAL, explicit filenames) ---
+\setmonofont{FiraCode}[
+  Path = ../fonts/FiraCode/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  ItalicFeatures = FakeSlant,
+  BoldItalicFeatures = FakeSlant
+]
 
-    \IfFontExistsTF{Fira Code}{%
-            \setmonofont{Fira Code}[StylisticSet={1,3}]
-            %% Shapely l, upright quotes, striked zeroes
-
-    }{%
-            \setmonofont{Fira Code}[
-                Path = fonts/FiraCode/,
-                Extension = .otf,
-                UprightFont = *-Regular,
-                BoldFont=*-Bold,
-                ItalicFeatures = FakeSlant,
-                BoldItalicFeatures = FakeSlant]
-    }
-
-    % Use a unicode-compliant sans serif math font
-    \IfFontExistsTF{Fira Math Regular}{%
-        \setmathfont{Fira Math Regular}[BoldFont=Fira Math Bold]
-        \setmathfont{Fira Math Regular}[FakeSlant, range={bfit->it}]
-    }{%
-        \setmathfont{FiraMath-Regular.otf}[
-            Path = fonts/FiraMath/,
-            BoldFont=FiraMath-Bold.otf]
-        \setmathfont{FiraMath-Regular.otf}[
-            Path = fonts/FiraMath/,
-            FakeSlant,
-            range={bfit->it}]
-    }
+    % --- Fira Math (local files only) ---
+    \setmathfont{FiraMath-Regular.otf}[
+        Path = ../fonts/FiraMath/,
+        BoldFont = FiraMath-Bold.otf
+    ]
+    \setmathfont{FiraMath-Regular.otf}[
+        Path = ../fonts/FiraMath/,
+        FakeSlant,
+        range={bfit->it}
+    ]
 
     \def\titlestyle{\titlefont\bfseries}
-
 \fi
 
 %% Use the length of the 'HO' part of the logo to set the padding of the logo

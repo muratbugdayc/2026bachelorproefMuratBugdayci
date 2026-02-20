@@ -5,7 +5,7 @@
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
 \label{ch:inleiding}
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
+%De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
 
 \begin{itemize}
   \item context, achtergrond
@@ -16,7 +16,27 @@ De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te
   \item onderzoeksvraag
   \item \ldots
 \end{itemize}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=2cm,
+    topic/.style={rectangle, draw, rounded corners, align=center, minimum width=3cm, minimum height=1cm},
+    main/.style={topic, fill=hogent-blue!20}
+]
 
+\node[main] (main) {Bachelorproef\\(z/OS System Admin)};
+
+\node[topic, below left=of main] (t1) {Competenties};
+\node[topic, below=of main] (t2) {Operational Tasks};
+\node[topic, below right=of main] (t3) {Frameworks};
+
+\draw[-] (main) -- (t1);
+\draw[-] (main) -- (t2);
+\draw[-] (main) -- (t3);
+
+\end{tikzpicture}
+\caption{Overzicht van topics binnen de bachelorproef}
+\end{figure}
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
 
