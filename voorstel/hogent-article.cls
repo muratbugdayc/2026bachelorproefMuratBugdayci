@@ -234,7 +234,7 @@
 
 \newfontfamily\montserratblack{Montserrat}[BoldFont={Montserrat Black}]
 \newfontfamily\montserratextrabold{Montserrat}%
-[BoldFont={Montserrat ExtraBold}]
+[BoldFont={Montserrat-ExtraBold}]
 
 \def\titlefont{\montserratblack\bfseries}
 \def\tocfont{\montserratblack}
