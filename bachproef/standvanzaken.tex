@@ -10,12 +10,14 @@
 %Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
 
 %Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+
 Dit hoofdstuk biedt een analyse van de huidige situatie in de mainframe-industrie,
 bestaande competentiemodellen en opleidingsmethoden. Het bouwt voort op de
 inleiding door dieper in te gaan op de context en relevantie van mainframes en
 z/OS systeembeheer, en legt de basis voor de methodologie en het ontwikkeldeframe
 work in de volgende hoofdstukken. Hierbij wordt verwezen naar relevante litera
 tuur om de stand van zaken te schetsen.
+
 \section{\IfLanguageName{dutch}{Wat zijn mainframes}{What are mainframes}}
 \label{sec:wat-zijn-mainframes}
 
@@ -139,7 +141,7 @@ Door het gebruik van concepten en technologieen zoals Parallel Sysplex kan deze 
 
 Dit niveau van betrouwbaarheid is essentieel voor bedrijfskritieke operaties, zoals het verwerken van financiële transacties of het beheren van luchtvaartreserveringen
 
-\subsection{\IfLanguageName{dutch}{Beveiliging}{Security of mainframes}}
+\subsection{\IfLanguageName{dutch}{Beveiligingsfuncties}{Security of mainframes}}
 \label{sec:beveiliging}
 Mainframes zijn uitgerust met geavanceerde beveiligingsfuncties, zoals quantumsafeencryptie, dieervoorzorgendatgegevensveiligblijven,zelfs in het tijdperk van quantum computing \autocite{IBMMainframe}. 
 
@@ -158,6 +160,33 @@ Bovendien kunnen mainframes honderden virtuele machines parallellaten draaien, w
 Moderne mainframes zijn uitgerust met ingebouwde AI-chips, waardoor AI-modellen dicht bij de data kunnen worden verwerkt, zonder dat gegevens eerst moeten worden verplaatst naar een externe AI-server \autocite{IBMMainframe}. 
 
 Dit maakt mainframes ideaal voor het uitvoeren van complexe AI-workloads, zoals risicoanalyse en fraudedetectie.
+
+
+
+\section{\IfLanguageName{dutch}{Rol van z/OS in mainframes}{Role of z/OS in mainframes}}
+\label{sec:role-van-zos-in-mainframes}
+z/OS vormt het centrale besturingssysteem van IBM Z-mainframes en fungeert als het operationele hart van de mainframeomgeving. Het beheert de hardwarebronnen zoals CPU, geheugen, opslag (DASD) en I/O-apparaten, en coördineert de gelijktijdige uitvoering van duizenden programma’s en gebruikerssessies.
+
+\subsection{\IfLanguageName{dutch}{Wat zijn de taken van een system administrator en system programmer}{What is the role of a system administrator in a z/OS context}}
+\label{sec:rol-van-een-system-administrator-in-zos-context}
+Binnen een z/OS-omgeving varieert het onderscheid tussen een system programmer en een system administrator afhankelijk van de grootte en structuur van de organisatie. In kleinere IT-omgevingen kunnen beide rollen door één persoon worden uitgevoerd. In grotere organisaties worden de verantwoordelijkheden doorgaans gescheiden omwille van efficiëntie en auditvereisten. \autocite{IBM_z/OS_SA}
+
+De system administrator is in hoofdzaak verantwoordelijk voor het dagelijkse operationele beheer van de mainframeomgeving vanuit een bedrijfsgericht perspectief. Waar de system programmer zich richt op het onderhoud van het besturingssysteem en de onderliggende infrastructuur, concentreert de system administrator zich op het beheer van bedrijfskritische data, applicaties en toegangscontrole. \autocite{IBM_z/OS_SA}
+
+Volgens \autocite{IBM_z/OS_SA} typische taken van een system administrator omvatten:
+
+\begin{itemize}
+\item Installeren en configureren van softwarecomponenten
+\item Beheren van gebruikersaccounts en gebruikersprofielen
+\item Onderhouden van beveiligings- en toegangsrechten
+\item Beheren van opslagmiddelen, printers en randapparatuur
+\item Beheren van netwerkconnectiviteit
+\item Monitoren van systeemprestaties en beschikbaarheid
+\end{itemize}
+
+Daarnaast werkt de system administrator nauw samen met applicatieontwikkelaars en eindgebruikers om te verzekeren dat toepassingen correct functioneren binnen de operationele omgeving. In grotere organisaties kunnen gespecialiseerde rollen bestaan, zoals database administrators (DBA’s) of security administrators, die specifieke onderdelen van het beheer uitvoeren. \autocite{IBM_z/OS_SA}
+
+Bij complexe technische problemen of foutanalyse kan de system administrator beroep doen op de ondersteuning van softwareleveranciers, tenzij deze taken expliciet onder de verantwoordelijkheid van de system programmer vallen. Door deze scheiding van verantwoordelijkheden wordt het principe van functiescheiding ondersteund, wat belangrijk is binnen audit- en compliancekaders. \autocite{IBM_z/OS_SA}
 
 \section{\IfLanguageName{dutch}{Kenmerken van z/OS architectuur}{Characteristics of z/OS architecture}}
 \label{sec:kenmerken-van-zos-architectuur}
@@ -233,18 +262,18 @@ Tot slot kan een proces meerdere threads bevatten. Een thread is een afzonderlij
 
 \subsection{\IfLanguageName{dutch}{TSO (Time Sharing Option) op z/OS}{TSO on z/OS}}
 \label{sec:tso-op-zos}
-TSO/E (Time Sharing Option/Extensions) is een component van z/OS die gebruikers in staat stelt om een interactieve sessie met het mainframesysteem te starten. In tegenstelling tot batchverwerking biedt TSO een single-user logonomgeving waarbij een gebruiker via een command prompt rechtstreeks commando’s kan uitvoeren op het systeem. Elke gebruiker krijgt een unieke user ID en wachtwoord toegewezen (beheerd via RACF) om toegang te verkrijgen tot TSO.
+TSO/E (Time Sharing Option/Extensions) is een component van z/OS die gebruikers in staat stelt om een interactieve sessie met het mainframesysteem te starten. In tegenstelling tot batchverwerking biedt TSO een single-user logonomgeving waarbij een gebruiker via een command prompt rechtstreeks commando’s kan uitvoeren op het systeem. Elke gebruiker krijgt een unieke user ID en wachtwoord toegewezen (beheerd via RACF) om toegang te verkrijgen tot TSO. \autocite{IBM_z/OS_TSO}
 
-In de praktijk werken de meeste gebruikers niet rechtstreeks met de TSO commandoregel, maar via ISPF (Interactive System Productivity Facility). ISPF is een menu- en paneelgebaseerde interface bovenop TSO die het beheer van data sets, programmabewerking en systeeminteractie vereenvoudigt. Hierdoor wordt z/OS toegankelijker voor systeemprogrammeurs, applicatieontwikkelaars en beheerders. Toegang gebeurt meestal via een 3270-terminal of een TN3270-emulator op een pc.
+In de praktijk werken de meeste gebruikers niet rechtstreeks met de TSO commandoregel, maar via ISPF (Interactive System Productivity Facility). ISPF is een menu- en paneelgebaseerde interface bovenop TSO die het beheer van data sets, programmabewerking en systeeminteractie vereenvoudigt. Hierdoor wordt z/OS toegankelijker voor systeemprogrammeurs, applicatieontwikkelaars en beheerders. Toegang gebeurt meestal via een 3270-terminal of een TN3270-emulator op een pc. \autocite{IBM_z/OS_TSO}
 \subsection{\IfLanguageName{dutch}{TSO Native Mode}{TSO Native Mode}}
 \label{sec:tso-native-mode}
-Hoewel TSO meestal automatisch overschakelt naar ISPF na het inloggen, kan het ook in native mode worden gebruikt. In deze modus werkt de gebruiker uitsluitend met de basis TSO-commando’s zonder grafische menu-interface. Dit biedt directe toegang tot systeemfuncties en wordt vaak gebruikt voor scripting of specifieke administratieve taken.
+Hoewel TSO meestal automatisch overschakelt naar ISPF na het inloggen, kan het ook in native mode worden gebruikt. In deze modus werkt de gebruiker uitsluitend met de basis TSO-commando’s zonder grafische menu-interface. Dit biedt directe toegang tot systeemfuncties en wordt vaak gebruikt voor scripting of specifieke administratieve taken. \autocite{IBM_z/OS_TSO}
 
 \subsection{\IfLanguageName{dutch}{CLIST en REXX binnen TSO}{CLIST and REXX within TSO}}
 \label{sec:tso-clist-rexx}
-Binnen TSO kunnen gebruikers taken automatiseren via CLIST en REXX, twee commandotalen voor scripting. Deze talen maken het mogelijk om herhaalbare beheertaken te automatiseren, parameters te verwerken en interactief met z/OS-componenten te communiceren. Vooral REXX wordt veel gebruikt binnen systeembeheer vanwege de leesbaarheid en flexibiliteit.
+Binnen TSO kunnen gebruikers taken automatiseren via CLIST en REXX, twee commandotalen voor scripting. Deze talen maken het mogelijk om herhaalbare beheertaken te automatiseren, parameters te verwerken en interactief met z/OS-componenten te communiceren. Vooral REXX wordt veel gebruikt binnen systeembeheer vanwege de leesbaarheid en flexibiliteit. \autocite{IBM_z/OS_TSO}
 
-\subsection{\IfLanguageName{dutch}{Focus op REXX in deze bachelorproef}{Focus on JCL and REXX in this bachelor thesis}}
+\subsection{\IfLanguageName{dutch}{Focus op REXX in deze bachelorproef}{Focus on REXX in this bachelor thesis}}
 \label{sec:focus-op-jcl-en-rexx-in-deze-bachelorproef}
 In deze bachelorproef ligt de focus op REXX als scriptingtaal. Om de scope beheersbaar te houden, zal er geen diepgaande analyse worden gemaakt van CLIST. REXX biedt uitgebreide mogelijkheden voor systeembeheer en automatisering binnen z/OS, waardoor het een waardevolle tool is voor systeembeheerders.
 
@@ -337,9 +366,51 @@ IBM Workload Scheduler (IWS) is een plannings- en automatiseringsoplossing voor 
 
 Daarnaast beschikt IBM Workload Scheduler over de Dynamic Workload Console, een webgebaseerde en gebruiksvriendelijke interface waarmee beheerders planningen kunnen configureren, monitoren en beheren. Deze console fungeert als de strategische grafische gebruikersinterface binnen het bredere IBM Workload Automation-portfolio en maakt centraal beheer van workloads mogelijk via een standaard webbrowser. \autocite{IBM_z/OS_IWS}
 
+\section{\IfLanguageName{dutch}{Beveiliging in z/OS (RACF)}{Security in z/OS}}
+\label{sec:network-and-security}
+RACF (Resource Access Control Facility) is een beveiligingscomponent binnen z/OS die organisaties ondersteunt bij het beheren van toegang tot kritieke systeemresources. Het implementeert logische toegangscontrole door gebruikers te identificeren, te authenticeren en te autoriseren op basis van gedefinieerde beveiligingsprofielen. Deze profielen, opgeslagen in de RACF-database, bepalen welke gebruikers toegang krijgen tot specifieke datasets, applicaties of systeemfuncties. \autocite{IBM_z/OS_racf}
 
+RACF werkt volgens het principe van least privilege, waarbij gebruikers enkel toegang krijgen tot de resources die noodzakelijk zijn voor hun functie. Het systeem registreert en rapporteert pogingen tot ongeautoriseerde toegang en ondersteunt beleidsregels zoals wachtwoordvereisten, accountverval en gebruikersintrekking. Daarnaast laat RACF toe om toegangsrechten gedelegeerd te beheren, waardoor flexibiliteit wordt gecombineerd met scheiding van verantwoordelijkheden. \autocite{IBM_z/OS_racf}
 
+Subsystemen zoals CICS en Db2 maken gebruik van RACF voor de beveiliging van transacties en bestanden. \autocite{IBM_z/OS_racf}
+\subsection{\IfLanguageName{dutch}{RACF profiles, user profiles en group profiles}{Security Measures in z/OS}}
+\label{sec:security-measures-in-zos}
 
+\subsection{\IfLanguageName{TODO}{TODO}{TODO}}
+\label{sec:todo}
+System administrators in context van bedrijven, het feit dat zijn taken verdeeld zijn over verschillende teams meestal in echte omgevingen.
+
+Rol van system administrators.
+
+Competentieprofielen voor Sys admins.
+
+educatieve theorieen in competentieontwikkeling voor sys admins.
+
+modellen voor competentieontwikkeling; kennis, vaardigheden en attitude.
+
+Leertheorieën voor volwassenen: ervaring en sociale interactie.
+
+Operating model in productie: change, incident, problem, service management
+
+Competentieontwikkeling in een onderwijscontext.
+
+Modernisering & hybride integratie (web tools zoals z/OSMF en mss zowe)
+
+De kloof tussen onderwijs en industrie.
+
+Vergrijzing van mainframespecialisten.
+
+Impact op organisaties en mogelijke oplossingen.
+
+Toekomstperspectief en strategische overwegingen.
+
+Opleiding van mainframe-specialisten: een vergelijking met andere platforms.
+
+De rol van educatie in mainframe-opleidingen. En HOGENT
+
+Vergelijking met andere competentieraamwerken. e-CF, SFIA en IBM System Administrator competency framework level 1 en level 2.
+
+Conclusie: waarom framework nodig is
 
 %\begin{table}
 %  \centering
