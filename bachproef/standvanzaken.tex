@@ -167,10 +167,12 @@ Dit maakt mainframes ideaal voor het uitvoeren van complexe AI-workloads, zoals 
 \label{sec:role-van-zos-in-mainframes}
 z/OS vormt het centrale besturingssysteem van IBM Z-mainframes en fungeert als het operationele hart van de mainframeomgeving. Het beheert de hardwarebronnen zoals CPU, geheugen, opslag (DASD) en I/O-apparaten, en coördineert de gelijktijdige uitvoering van duizenden programma’s en gebruikerssessies.
 
-\subsection{\IfLanguageName{dutch}{Wat zijn de taken van een system administrator en system programmer}{What is the role of a system administrator in a z/OS context}}
-\label{sec:rol-van-een-system-administrator-in-zos-context}
+\subsection{\IfLanguageName{dutch}{Wat is de verschil tussen system administrator en system programmer}{What is the role of a system administrator in a z/OS context}}
+\label{sec:verschil-sysadmin-sysprog}
 Binnen een z/OS-omgeving varieert het onderscheid tussen een system programmer en een system administrator afhankelijk van de grootte en structuur van de organisatie. In kleinere IT-omgevingen kunnen beide rollen door één persoon worden uitgevoerd. In grotere organisaties worden de verantwoordelijkheden doorgaans gescheiden omwille van efficiëntie en auditvereisten. \autocite{IBM_z/OS_SA}
 
+\subsection{\IfLanguageName{dutch}{Wat zijn de taken van een system administrator}{What is the role of a system administrator in a z/OS context}}
+\label{sec:rol-van-een-system-administrator-in-zos-context}
 De system administrator is in hoofdzaak verantwoordelijk voor het dagelijkse operationele beheer van de mainframeomgeving vanuit een bedrijfsgericht perspectief. Waar de system programmer zich richt op het onderhoud van het besturingssysteem en de onderliggende infrastructuur, concentreert de system administrator zich op het beheer van bedrijfskritische data, applicaties en toegangscontrole. \autocite{IBM_z/OS_SA}
 
 Volgens \autocite{IBM_z/OS_SA} typische taken van een system administrator omvatten:
@@ -188,12 +190,19 @@ Daarnaast werkt de system administrator nauw samen met applicatieontwikkelaars e
 
 Bij complexe technische problemen of foutanalyse kan de system administrator beroep doen op de ondersteuning van softwareleveranciers, tenzij deze taken expliciet onder de verantwoordelijkheid van de system programmer vallen. Door deze scheiding van verantwoordelijkheden wordt het principe van functiescheiding ondersteund, wat belangrijk is binnen audit- en compliancekaders. \autocite{IBM_z/OS_SA}
 
+\subsection{\IfLanguageName{dutch}{De verschil van Level 1 en Level 2 taken in system administrator context}{The difference between level 1 and level 2 in system administrator context}}
+\label{sec:vershil-level1-level-2-sysadmin}
+De verschillen tussen Level 1 en Level 2 worden geanalyseerd op basis van bestaande competentiekaders, waaronder het Competency Framework for z/OS System Administrators (Level 1 & Level 2) van IBM, input van co-promotor J.E. Kok en H. Hartman, evenals het gebruikte lesmateriaal tijdens de lessen van mijn opleiding.
+
+De verschillen in taken, verantwoordelijkheden en vereiste competenties tussen beide niveaus zullen verder verduidelijkt en overzichtelijk voorgesteld in de Proof-of-Concept (PoC) website.
+
 \section{\IfLanguageName{dutch}{Kenmerken van z/OS architectuur}{Characteristics of z/OS architecture}}
 \label{sec:kenmerken-van-zos-architectuur}
+In de volgende hoofdstukken wordt er eigenschappen over z/OS architectuur, interactie met z/OS en subsystemen van z/OS besproken. Deze onderwerpen zullen behandeld worden in de proof of concept website met praktische oefeningen.
 
 \subsection{\IfLanguageName{dutch}{Datasets}{Datasets on z/OS}}
 \label{sec:datasets-op-zos}
-Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe-equivalent is van bestanden. Een data set bestaat uit één of meerdere records, waarbij een record de basisinformatie-eenheid vormt voor programma’s.
+Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe equivalent is van bestanden. Een data set bestaat uit één of meerdere records, waarbij een record de basisinformatie eenheid vormt voor programma’s.
 
 \begin{itemize}
     \item \textbf{Record}: een vaste hoeveelheid bytes die als één geheel wordt verwerkt.
@@ -201,7 +210,21 @@ Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe-equiva
     \item \textbf{Cataloged data set}: een data set die via naam kan worden opgeroepen zonder fysieke locatie te vermelden.
 \end{itemize}
 
-z/OS ondersteunt verschillende types data sets, afhankelijk van de manier waarop gegevens worden opgeslagen en geraadpleegd. \textbf{Sequential data sets} slaan records opeenvolgend op en zijn geschikt voor seriële verwerking. \textbf{Partitioned Data Sets (PDS)} bestaan uit een directory met afzonderlijke members en worden vaak gebruikt als programmabibliotheken. \textbf{VSAM-datasets}, zoals Key Sequenced Data Sets (KSDS), maken snelle, directe toegang mogelijk via sleutels. Data sets worden doorgaans opgeslagen op \textbf{DASD-schijven of tape} en worden beheerd via specifieke access methods die bepalen hoe data fysiek wordt opgeslagen en opgehaald. \autocite{IBM_z/OS_datasets}
+z/OS ondersteunt verschillende types data sets, afhankelijk van de manier waarop gegevens worden opgeslagen en geraadpleegd. 
+
+\textbf{Sequential data sets} slaan records opeenvolgend op en zijn geschikt voor seriële verwerking.
+
+\textbf{Partitioned Data Sets (PDS)} bestaan uit een directory met afzonderlijke members en worden vaak gebruikt als programmabibliotheken. 
+
+\textbf{VSAM-datasets} zijn met vier types en altijd met variabele recordlengte (VB);
+\begin{itemize}
+	\item \textbf{KSDS (Key Sequenced Data Set):} De records hebben een sleutel.
+	\item \textbf{ESDS (Entry Sequenced Data Set):} De records worden sequentieel opgeslagen.
+	\item \textbf{RRDS (Relative Record Data Set):} De records worden benaderd via recordnummer (record 1,2,3...).
+	\item \textbf{LDS (Linear Data Set):}De dataset wordt opgeslagen als byte-stream. 
+\end{itemize}
+
+Data sets worden doorgaans opgeslagen op \textbf{DASD-schijven of tape} en worden beheerd via specifieke access methods die bepalen hoe data fysiek wordt opgeslagen en opgehaald. \autocite{IBM_z/OS_datasets}
 
 \subsection{\IfLanguageName{dutch}{EBCDIC op z/OS}{EBCDIC on z/OS}}
 \label{sec:ebcdic-op-zos}
@@ -211,18 +234,35 @@ Zowel ASCII als EBCDIC zijn 8-bit tekensets, maar ze verschillen in de binaire t
 
 Bij gegevensoverdracht tussen ASCII-gebaseerde systemen en EBCDIC-gebaseerde systemen wordt conversie meestal automatisch uitgevoerd, bijvoorbeeld bij terminalemulatie. Bij het overbrengen van programma’s of binaire bestanden moet echter expliciet een binaire transfer worden gekozen om ongewenste karakterconversie te vermijden. Sommige speciale tekens, zoals het logische NOT-symbool of bepaalde programmeersymbolen, hebben geen directe equivalent in de andere tekenset, wat extra aandacht vereist bij conversie. Ondanks de dominantie van ASCII in moderne omgevingen blijft EBCDIC relevant vanwege de grote hoeveelheid bestaande data en applicaties die ervan afhankelijk zijn binnen mainframearchitecturen. \autocite{IBM_z/OS_EBCDIC}
 
-\subsection{\IfLanguageName{dutch}{Adress spaces}{Adress spaces}}
+\subsection{\IfLanguageName{dutch}{Adress spaces en virtual storage}{Adress spaces}}
 \label{sec:adress-spaces}
 Een address space in z/OS is het bereik van virtuele adressen dat het besturingssysteem toewijst aan een gebruiker of een afzonderlijk draaiend programma. Dit bereik start bij adres nul en loopt tot de maximale grens die door de architectuur wordt toegelaten. Elke gebruiker of job krijgt een eigen, unieke address space, waardoor programma’s en data strikt van elkaar gescheiden blijven. Binnen één address space kunnen meerdere taken gelijktijdig uitgevoerd worden via Task Control Blocks (TCB’s), wat multiprogramming mogelijk maakt. Door gebruik te maken van virtuele adressering kan z/OS meer geheugen aanspreken dan fysiek aanwezig is, terwijl fouten doorgaans beperkt blijven tot één address space. Deze isolatie verhoogt zowel de betrouwbaarheid als de beveiliging van het systeem. \autocite{MainframeAdressSpaces}
 
 Hoewel address spaces van elkaar gescheiden zijn, voorziet z/OS mechanismen voor communicatie tussen verschillende address spaces. Dit kan asynchroon via een Service Request Block (SRB), waarmee een proces in een andere address space wordt gestart, of synchroon via cross-memory services, waarmee een programma rechtstreeks toegang krijgt tot een andere address space. Deze laatste methode vereist speciale autorisatie (APF) en biedt een efficiënte en veilige manier om data te delen tussen subsystemen zoals transactiemanagers of databases. Dankzij deze combinatie van isolatie en gecontroleerde communicatie kan z/OS zowel veiligheid als hoge performantie garanderen in een multi-useromgeving.\autocite{MainframeAdressSpaces}
 
+\paragraph{Virtual storage}
+In z/OS is virtual storage een manier op meer ruimte aan te bieden ondanks het feit dat de fysieke ruimte niet dat groot is.
+Elke gebruiker in z/OS krijgt zijn eigen address space. Elke address space heeft dezelfde addresrange. Alleen actieve delen worden in centrale geheugen (RAM) geladen en de inactieve delen worden opgeslagen in auxiliary storage (schijf).
+
+De grottes bij virtuele storage van 64-bit zijn verdeeld over 4 categorieen:
+\begin{itemize}
+	\item Region Index (RX): 0 tot 32 bits 
+	\item Segment Index (SX): 33 tot 43 bits
+	\item Page Index (PX): 44 tot 51 bits
+	\item Byte Index (BX): 52 tot 63 bits
+\end{itemize}
+De Region Index is gesplitst in 3 delen.
+\begin{itemize}
+	\item Region First Index (RFX), van 0 tot 10 bits (inclusief)
+	\item Region Second Index (RSX), van 11 tot 21 bits
+	\item Region Third Index (RTX), van 22 tot 32
+In RFX, kan er worden 16 exabyte virtuele storage gemaakt, wat maximum is (64-bit). \autocite{IBM_z/OS_VirtuelStorage}
 
 \subsection{\IfLanguageName{dutch}{Parallel Sysplex}{Parallel Sysplex}}
 \label{sec:parallel-sysplex}
-IBM Parallel Sysplex is een geavanceerde clusteringtechnologie voor IBM z/OS-mainframes waarmee meerdere z/OS-systemen samenwerken als één enkel, logisch, hoog-presterend platform. Het kan tot 32 z/OS-systemen koppelen, waardoor ze een uniforme omgeving vormen waarin workloads en resources gedeeld en dynamisch beheerd worden. \autocite{ibm_parallel_sysplex}
+IBM Parallel Sysplex is een geavanceerde clusteringtechnologie voor IBM z/OS mainframes waarmee meerdere z/OS-systemen samenwerken als één enkel, logisch platform. Het kan tot 32 z/OS-systemen koppelen, waardoor ze een uniforme omgeving vormen waarin workloads en resources gedeeld en dynamisch beheerd worden. \autocite{ibm_parallel_sysplex}
 
-Het voornaamste voordeel van een Parallel Sysplex is de extreem hoge beschikbaarheid en betrouwbaarheid van toepassingen—tot zelfs 99,99999\% uptime—door het wegnemen van single points of failure op server-, LPAR- of subsystemniveau. \autocite{ibm_parallel_sysplex}
+Het voornaamste voordeel van een Parallel Sysplex is de extreem hoge beschikbaarheid en betrouwbaarheid van toepassingen tot 99,99999\% uptime door het wegnemen van single points of failure op server-, LPAR- of subsystemniveau. \autocite{ibm_parallel_sysplex}
 
 Een belangrijk onderdeel van Parallel Sysplex is de Coupling Facility (CF), een speciale hardware- of virtuele component die zorgt voor coherente, gedeelde toegang tot data tussen systemen zonder corruptie. Dit maakt gelijktijdig lezen en schrijven door meerdere systemen mogelijk en ondersteunt toepassingen zoals databases, message queues en workload balancing. \autocite{ibm_parallel_sysplex}
 Parallel Sysplex maakt het ook mogelijk om meerdere systemen te beheren als één enkele eenheid (single system image), wat centrale controle, workloadverdeling, schaalvergroting en eenvoudiger beheer van grote mainframe-omgevingen bevordert. \autocite{ibm_parallel_sysplex}
@@ -258,7 +298,30 @@ Tot slot kan een proces meerdere threads bevatten. Een thread is een afzonderlij
 
 \section{\IfLanguageName{dutch}{Interactie met z/OS}{Interacting with z/OS}}
 \label{sec:interactie-met-zos}
+z/OS biedt verschillende manieren waarop gebruikers en systeembeheerders met het systeem kunnen interageren.
 
+\paragraph{Traditionele interactiemethoden}
+Historisch gezien gebeurde interactie met z/OS via fysieke 3270-terminals 
+die rechtstreeks verbonden waren met het mainframe. Gebruikers bevonden zich 
+in hetzelfde datacenter of maakten gebruik van dedicated netwerkverbindingen 
+naar het systeem. De terminal fungeerde als invoer en uitvoerapparaat, 
+waarmee sessies in TSO, ISPF of CICS konden worden gestart.
+
+Deze vorm van interactie vereiste fysieke infrastructuur en directe 
+netwerkconnectiviteit met het mainframe. Hoewel fysieke terminals vandaag 
+grotendeels vervangen zijn door softwarematige emulators.
+
+\paragraph{Emulators en externe toegang}
+Fysieke 3270-terminals zijn vervangen door softwarematige 3270-emulators die via het TN3270-protocol 
+verbinding maken met het mainframe. Daarnaast ondersteunt z/OS via UNIX System Services (USS) 
+toegang via SSH. Voor developers wordt vaak gebruikgemaakt van IBM Developer for z/OS (IDz), 
+een Eclipse gebaseerde ontwikkelomgeving die integratie biedt met z/OS. 
+
+\paragraph{Moderne API en cloudintegratie}
+Moderne z/OS-omgevingen ondersteunen steeds vaker API-gebaseerde interactie. 
+Via z/OS Management Facility (z/OSMF) worden RESTful services aangeboden 
+die programmatische toegang tot datasets, jobs en systeemfuncties mogelijk maken. 
+Dit maakt integratie met automatiseringstools en DevOps-pipelines mogelijk.
 
 \subsection{\IfLanguageName{dutch}{TSO (Time Sharing Option) op z/OS}{TSO on z/OS}}
 \label{sec:tso-op-zos}
@@ -275,8 +338,7 @@ Binnen TSO kunnen gebruikers taken automatiseren via CLIST en REXX, twee command
 
 \subsection{\IfLanguageName{dutch}{Focus op REXX in deze bachelorproef}{Focus on REXX in this bachelor thesis}}
 \label{sec:focus-op-jcl-en-rexx-in-deze-bachelorproef}
-In deze bachelorproef ligt de focus op REXX als scriptingtaal. Om de scope beheersbaar te houden, zal er geen diepgaande analyse worden gemaakt van CLIST. REXX biedt uitgebreide mogelijkheden voor systeembeheer en automatisering binnen z/OS, waardoor het een waardevolle tool is voor systeembeheerders.
-
+In deze bachelorproef ligt de focus op REXX als scriptingtaal. Om de scope beheersbaar te houden, zal er geen diepgaande analyse worden gemaakt van CLIST.
 \subsection{\IfLanguageName{dutch}{ISPF (Interactive System Productivity Facility)}{ISPF (Interactive System Productivity Facility)}}
 \label{sec:ispf}
 ISPF (Interactive System Productivity Facility) is een menu- en paneelgebaseerde interface die gebruikers na het inloggen op TSO/E vaak als primaire werkomgeving gebruiken. ISPF wordt volledig via het toetsenbord bediend en biedt kernfunctionaliteit zoals een teksteditor, browser, en utilities voor het opzoeken, weergeven en beheren van data sets en andere systeembronnen. Hierdoor kunnen gebruikers (zoals systeemprogrammeurs, applicatieontwikkelaars en administrators) efficiënt interactief werken op z/OS zonder uitsluitend commandoregelcommando’s te gebruiken. \autocite{IBM_z/OS_ISPF}
@@ -340,7 +402,7 @@ IMS TM ondersteunt gelijktijdige sessies van gebruikers en applicaties, zowel lo
 
 \subsection{\IfLanguageName{dutch}{Db2}{Db2}}
 \label{sec:db2}
-DB2 for z/OS is IBM’s relationeel databasebeheersysteem (DBMS) voor het z/OS-besturingssysteem. Het is nauw geïntegreerd met de IBM System z-mainframearchitectuur en maakt gebruik van de sterke punten van het platform, zoals betrouwbaarheid, schaalbaarheid en hoge beschikbaarheid. DB2 gebruikt Structured Query Language (SQL) als standaardtaal voor het definiëren, manipuleren en opvragen van gegevens. De SQL-implementatie is grotendeels compatibel met andere DB2-varianten op verschillende besturingssystemen, wat portabiliteit van applicaties ondersteunt.\autocite{IBM_z/OS_Db2}
+DB2 for z/OS is IBM’s relationeel databasebeheersysteem (DBMS) voor het z/OS-besturingssysteem. Het is nauw geïntegreerd met de IBM System Z mainframearchitectuur en maakt gebruik van de sterke punten van het platform, zoals betrouwbaarheid, schaalbaarheid en hoge beschikbaarheid. DB2 gebruikt Structured Query Language (SQL) als standaardtaal voor het definiëren, manipuleren en opvragen van gegevens. De SQL-implementatie is grotendeels compatibel met andere DB2-varianten op verschillende besturingssystemen, wat portabiliteit van applicaties ondersteunt.\autocite{IBM_z/OS_Db2}
 
 De architectuur van DB2 omvat diverse databankstructuren en processen die zorgen voor efficiënte verwerking van transacties en query’s. Het ondersteunt uiteenlopende applicatieontwerpen, van eenvoudige single-tier toepassingen tot complexe multitier-architecturen. Tijdens de implementatiefase worden databankobjecten gedefinieerd en integriteitsregels vastgelegd om consistente en betrouwbare gegevensopslag te garanderen. Dankzij deze integratie met z/OS vormt DB2 een kerncomponent voor bedrijfskritische data-intensieve toepassingen binnen mainframeomgevingen.\autocite{IBM_z/OS_Db2}
 
@@ -360,7 +422,7 @@ System Modification Program Extended (SMP/E) is de standaardtool binnen z/OS voo
 
 Volgens SMP/E bestaat z/OS niet uit één monolithisch geheel, maar uit verschillende afzonderlijke systeemfuncties zoals BCP, CICS, JES, TSO/E en z/OS UNIX. Elke functie is opgebouwd uit één of meerdere load modules, de uitvoerbare eenheden van het systeem. Deze worden samengesteld uit objectmodules en via link-editing omgezet naar uitvoerbare code. SMP/E beheert deze modulaire structuur en zorgt ervoor dat updates en onderhoud gecontroleerd en consistent worden toegepast. \autocite{IBMRedbook_zOSBasics}
 
-\subsection{\IfLanguageName{dutch}{IWS}{IWS}}
+\subsection{\IfLanguageName{dutch}{IWS (IBM Workload Scheduler)}{IWS}}
 \label{sec:iws}
 IBM Workload Scheduler (IWS) is een plannings- en automatiseringsoplossing voor het beheren van batch- en workloadprocessen binnen gedistribueerde IT-omgevingen. Het systeem bestaat uit een Workload Scheduler engine, die op elke computer in het netwerk draait en verantwoordelijk is voor de effectieve planning en uitvoering van taken. Afhankelijk van de configuratie kan een node functioneren als master domain manager, domain manager of agent, waarbij elke rol specifieke verantwoordelijkheden heeft binnen het planningsnetwerk. \autocite{IBM_z/OS_IWS}
 
@@ -378,9 +440,10 @@ Subsystemen zoals CICS en Db2 maken gebruik van RACF voor de beveiliging van tra
 
 \subsection{\IfLanguageName{TODO}{TODO}{TODO}}
 \label{sec:todo}
-System administrators in context van bedrijven, het feit dat zijn taken verdeeld zijn over verschillende teams meestal in echte omgevingen.
 
-Rol van system administrators.
+\section{\IfLanguageName{dutch}{Competentieprofielen voor system administrators}{Competency framework for system adminstrators}}
+\label{sec:comp-framework-sys-admin}
+
 
 Competentieprofielen voor Sys admins.
 
