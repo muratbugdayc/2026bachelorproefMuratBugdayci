@@ -7,48 +7,45 @@
 
 %De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
 
-\begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
-\end{itemize}
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[
-    node distance=2cm,
-    topic/.style={rectangle, draw, rounded corners, align=center, minimum width=3cm, minimum height=1cm},
-    main/.style={topic, fill=hogent-blue!20}
-]
+%\begin{itemize}
+%  \item context, achtergrond
+%  \item afbakenen van het onderwerp
+%  \item verantwoording van het onderwerp, methodologie
+ % \item probleemstelling
+%  \item onderzoeksdoelstelling
+%  \item onderzoeksvraag
+%  \item \ldots
+%\end{itemize}
+%\begin{figure}[H]
+%\centering
+%\begin{tikzpicture}[
+%    node distance=2cm,
+%    topic/.style={rectangle, draw, rounded corners, align=center, minimum width=3cm, minimum height=1cm},
+%    main/.style={topic, fill=hogent-blue!20}
+%]
 
-\node[main] (main) {Bachelorproef\\(z/OS System Admin)};
+%\node[main] (main) {Bachelorproef\\(z/OS System Admin)};
 
-\node[topic, below left=of main] (t1) {Competenties};
-\node[topic, below=of main] (t2) {Operational Tasks};
-\node[topic, below right=of main] (t3) {Frameworks};
+%\node[topic, below left=of main] (t1) {Competenties};
+%\node[topic, below=of main] (t2) {Operational Tasks};
+%\node[topic, below right=of main] (t3) {Frameworks};
 
-\draw[-] (main) -- (t1);
-\draw[-] (main) -- (t2);
-\draw[-] (main) -- (t3);
+%\draw[-] (main) -- (t1);
+%\draw[-] (main) -- (t2);
+%\draw[-] (main) -- (t3);
 
-\end{tikzpicture}
-\caption{Overzicht van topics binnen de bachelorproef}
-\end{figure}
+%\end{tikzpicture}
+%\caption{Overzicht van topics binnen de bachelorproef}
+%\end{figure}
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
-De mainframe-industrie, en in het bijzonder de z/OS-omgeving, vormt nog steeds de ruggengraat van vele kritieke bedrijfsprocessen binnen grote organisaties zoals banken, verzekeringsmaatschappijen en overheidsinstellingen. Ondanks de opkomst van nieuwe technologieën zoals cloudcomputing en gedistribueerde systemen blijft de z/OS-omgeving essentieel voor het verwerken van miljoenen transacties per dag. Betrouwbaarheid, veiligheid en schaalbaarheid staan hierbij centraal.
+De mainframe-industrie, en meer specifiek de z/OS-omgeving, vormt nog steeds een fundamentele component van de IT-architectuur binnen grote organisaties zoals banken, verzekeringsmaatschappijen en overheidsinstellingen. Hoewel cloudoplossingen en gedistribueerde systemen sterk in opmars zijn, blijft z/OS verantwoordelijk voor de verwerking van een aanzienlijk volume aan bedrijfskritische transacties. Betrouwbaarheid, beveiliging en hoge beschikbaarheid zijn daarbij kernvereisten, waardoor z/OS een cruciale rol speelt in het waarborgen van de operationele continuïteit van ondernemingen.
 
-Binnen deze omgeving spelen z/OS System Administrators een cruciale rol bij het beheren, configureren en onderhouden van de mainframe-infrastructuur. Zij zijn verantwoordelijk voor het dagelijkse operationele beheer van het systeem, waaronder workload management, batch processing, automatisatie, storagebeheer, systeemmonitoring en het ondersteunen van kritieke middleware en applicaties. Hun expertise zorgt ervoor dat systemen stabiel, performant en veilig blijven functioneren binnen complexe enterprise-omgevingen.
+Binnen deze context vervullen z/OS System Administrators een essentiële functie in het beheer en de optimalisatie van de omgeving. Hun verantwoordelijkheden omvatten onder meer systeemconfiguratie, onderhoud, performantiebeheer, security-implementatie en lifecycle management. In de praktijk zijn deze taken echter vaak verspreid over meerdere gespecialiseerde teams, waarbij de exacte invulling van de rol varieert afhankelijk van de organisatie en infrastructuur. Deze variabiliteit bemoeilijkt het afbakenen van een uniform en praktijkgericht competentieprofiel dat zowel technische als niet-technische vaardigheden omvat.
 
-De sector staat echter voor een significante uitdaging: een toenemend tekort aan gekwalificeerd personeel. Uit de meest recente BMC Mainframe Survey (2024) blijkt dat de gemiddelde leeftijd van mainframe-specialisten rond de 50 jaar ligt, met een groot percentage dat binnen de komende vijf tot tien jaar met pensioen zal gaan (BMC, 2024). Dit demografische probleem wordt versterkt door het feit dat er onvoldoende nieuwe professionals instromen om deze ervaren medewerkers te vervangen. Bovendien besteden onderwijsinstellingen beperkt aandacht aan mainframe-technologieën binnen hun IT-curricula, waardoor er een kloof ontstaat tussen de vaardigheden van afgestudeerden en de noden van de industrie.
+Tegelijkertijd wordt de sector geconfronteerd met een structureel tekort aan gekwalificeerde mainframe-specialisten. Industrieonderzoek wijst op een vergrijzende workforce en een toenemende uitstroom van ervaren medewerkers \autocite{BMC2024}. Volgens het 2025 State of Mainframe Modernization Survey Report \autocite{Kyndryl2025} wordt deze skills gap verder versterkt door de snelle evolutie van technologieën zoals cloud, artificiële intelligentie en geavanceerde security, in combinatie met de pensionering van professionals met diepgaande mainframe-expertise. Organisaties staan hierdoor voor de uitdaging om traditionele z/OS-kennis te combineren met moderne technologiecompetenties.
 
-Specifiek voor de rol van z/OS System Administrator op instapniveau ontbreekt een gestandaardiseerd, praktijkgericht competentieframework dat als leidraad kan dienen voor zowel opleiders als studenten. Het gebrek aan een duidelijk gestructureerd opleidingsmodel leidt ertoe dat organisaties moeite hebben om geschikte kandidaten te vinden en dat nieuwe medewerkers vaak een langere inwerktijd nodig hebben voordat zij zelfstandig operationele taken kunnen uitvoeren. Het ontwikkelen van een competentiegericht framework kan bijdragen aan een duidelijker leerpad, betere kennisoverdracht en een snellere integratie van nieuwe professionals binnen de mainframe-omgeving.
-%Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
-
-\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
+Daarnaast besteden onderwijsinstellingen doorgaans beperkte aandacht aan mainframe-technologieën binnen hun IT-curricula, waardoor een kloof ontstaat tussen de verworven academische kennis en de verwachtingen vanuit de industrie. Specifiek voor instapfuncties zoals z/OS System Administrator Level 1 en Level 2 rijst de vraag in welke mate bestaande competentiekaders voldoende aansluiten bij de hedendaagse praktijk en de veranderende technologische context. Het ontwikkelen of verfijnen van een praktijkgericht competentieframework kan bijdragen aan een betere afstemming tussen onderwijs, industriële verwachtingen en toekomstige workforcebehoeften, en zo het duurzaam borgen van mainframe-expertise ondersteunen.\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
 De centrale onderzoeksvraag van deze bachelorproef luidt: “Welke competenties
 moet een z/OS System Administrator Level 1 en Level 2 bezitten om effectief te functioneren, en hoe kunnen deze competenties in een
@@ -72,11 +69,11 @@ Het doel van deze bachelorproef is het ontwikkelen van een omvattend en toekomst
 
 Het voorgestelde framework zal:
 \begin{itemize}
-\item Een gedetailleerd overzicht bieden van de vereiste technische competenties, met specifieke aandacht voor systeembeheer binnen z/OS, waaronder platform fundamentals, storagebeheer, batch processing en JCL, automation en scripting (REXX), systeemmonitoring en workload management.
+\item Een gedetailleerd overzicht bieden van de vereiste technische competenties, met specifieke aandacht voor systeembeheer binnen z/OS, waaronder platform fundamentals, storagebeheer, batch processing en JCL, automation en scripting (REXX), systeemmonitoring, security, storage en workload management.
 
 \item De relevante soft skills identificeren die noodzakelijk zijn om effectief te functioneren binnen een mainframe-omgeving, zoals probleemoplossend vermogen, analytisch denken, documentatievaardigheden en samenwerking binnen enterprise IT-teams.
 
-\item Concrete, praktijkgerichte oefeningen en use cases bevatten die gericht zijn op realistische operationele scenario’s, zodat studenten praktische ervaring opdoen met tools zoals TSO/ISPF, SDSF, JCL en automatisatieprocessen.
+\item Concrete, praktijkgerichte oefeningen en use cases bevatten die gericht zijn op realistische operationele scenario’s, zodat studenten praktische ervaring opdoen met tools zoals TSO/ISPF, REXX, SDSF, JCL en automatisatieprocessen.
 
 \item Gepresenteerd worden via een proof-of-concept webapplicatie die het competentieframework op een interactieve en toegankelijke manier visualiseert, waarbij verschillende competentiedomeinen en niveaus (Level 1 en Level 2) duidelijk worden weergegeven voor zowel studenten als opleiders.
 \end{itemize}

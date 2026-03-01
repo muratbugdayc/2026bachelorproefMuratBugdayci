@@ -7,45 +7,368 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+%Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+%Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+Dit hoofdstuk biedt een analyse van de huidige situatie in de mainframe-industrie,
+bestaande competentiemodellen en opleidingsmethoden. Het bouwt voort op de
+inleiding door dieper in te gaan op de context en relevantie van mainframes en
+z/OS systeembeheer, en legt de basis voor de methodologie en het ontwikkeldeframe
+work in de volgende hoofdstukken. Hierbij wordt verwezen naar relevante litera
+tuur om de stand van zaken te schetsen.
+\section{\IfLanguageName{dutch}{Wat zijn mainframes}{What are mainframes}}
+\label{sec:wat-zijn-mainframes}
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+Vooraleer dieper in te gaan op de kern van deze bachelorproef, is het noodzakelijk om een duidelijk beeld te schetsen van wat mainframes zijn. Mainframes zijn krachtige, hoogperformant computersystemen die ontworpen zijn voor het verwerken van grote hoeveelheden transacties en data met een uitzonderlijk hoge betrouwbaarheid en beschikbaarheid~\autocite{IBMMainframe}.
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+Mainframes functioneren continu (24/7) en halen beschikbaarheidsniveaus van 99,999\% uptime~\autocite{MainframeUptime}, wat neerkomt op slechts enkele minuten ongeplande downtime per jaar. In combinatie met hun schaalbaarheid en ingebouwde fouttolerantie maakt dit hen bijzonder geschikt voor omgevingen waar systeemuitval grote financiële of maatschappelijke gevolgen kan hebben.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
+Naast mainframes bestaan er andere platformen voor het uitvoeren van toepassingen en het opslaan van gegevens, zoals Linux- en Windows-servers. Hoewel deze systemen flexibel en breed inzetbaar zijn, verschillen zij fundamenteel van mainframes op het vlak van architectuur, geïntegreerde betrouwbaarheid en schaalbaarheid. Waar klassieke servers vaak afhankelijk zijn van clustering en externe virtualisatietechnologieën om vergelijkbare redundantie te realiseren, zijn deze eigenschappen inherent ingebouwd in mainframe-architecturen.
+\subsection{\IfLanguageName{dutch}{Waarom IBM Mainframes of z/OS}{Why IBM Mainframes or z/OS}}
+\label{sec:waarom-ibm-mainframe-of-zos}
+Binnen de huidige mainframemarkt wordt het overgrote deel van de mainframes geleverd door IBM, dat meer dan 90\% van het wereldwijde marktaandeel in handen heeft~\autocite{MarketReportsWorld2026}. Daarnaast vertegenwoordigen IBM Z-systemen ongeveer 63,25\% van de wereldwijde mainframemarkt in 2025~\autocite{MordorIntelligence2026}. 
 
-\begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
+Het meest gebruikte besturingssysteem binnen IBM-mainframes is z/OS. Aangezien IBM de marktleider is binnen de mainframemarkt en z/OS gedurende meerdere decennia de standaard heeft gevormd voor IBM Z-omgevingen, is dit platform het meest relevant om te bestuderen in het kader van deze bachelorproef. Alternatieve mainframesystemen, zoals het stack-gebaseerde besturingssysteem MCP van Unisys, hebben een beperkter marktaandeel en een kleinere aanwezigheid in hedendaagse enterprise-omgevingen.
 
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
+\subsection{\IfLanguageName{dutch}{Hardware-onderscheid}{Hardware difference}}
+\label{sec:hardware-onderscheid}
 
-\lipsum[7-20]
+Mainframes onderscheiden zich van andere platformen door hun gespecialiseerde hardware-architectuur, die ontworpen is met het oog op hoge betrouwbaarheid en prestaties. Ze beschikken over redundante componenten, geavanceerde fouttolerantiemechanismen en ondersteunen duizenden gelijktijdige gebruikers en applicaties. Daarnaast zijn mainframes in staat om grote hoeveelheden gegevens te verwerken en complexe transacties efficiënt af te handelen.
 
-\begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+Linux- en Windows-servers daarentegen zijn doorgaans opgebouwd uit standaard hardwarecomponenten en worden vaak geconfigureerd voor specifieke toepassingen of workloads. Hoewel dergelijke systemen schaalbaar zijn, bereiken zij doorgaans niet hetzelfde niveau van geïntegreerde betrouwbaarheid en beschikbaarheid als mainframes. Om vergelijkbare schaalbaarheid te realiseren, worden servers vaak gegroepeerd in clusters. Dit kan echter leiden tot bijkomende complexiteit op het vlak van beheer, configuratie en onderhoud~\autocite{EES2025}.
 
+\subsection{\IfLanguageName{dutch}{Virtualisatie, logische partities en resourcebeheer}{Virtualization, logical partitions and resource management}}
+\label{sec:virtualisatie-en-resourcebeheer}
+Mainframes bieden geavanceerde virtualisatiemogelijkheden, waardoor één fysiek systeem kan worden opgedeeld in meerdere logische partities (LPARs). Deze partities worden beheerd door de ingebouwde hypervisor PR/SM (Processor Resource/System Manager), die zorgt voor een strikte isolatie tussen omgevingen. Elke LPAR kan een eigen besturingssysteem draaien, zoals z/OS, z/VM of Linux on Z, en beschikt over toegewezen resources zoals CPU, geheugen en I/O-capaciteit.\autocite{IBMIntroLPAR}
+
+Een belangrijk kenmerk van deze architectuur is de mogelijkheid tot dynamische resource-allocatie. Resources kunnen tijdens runtime worden aangepast zonder het systeem te herstarten, wat bijdraagt aan flexibiliteit en hoge beschikbaarheid. Daarnaast maakt Workload Management (WLM) het mogelijk om prioriteiten toe te kennen aan verschillende workloads, zodat kritieke transacties voorrang krijgen bij piekbelasting.\autocite{IBMWhatisWLM}
+
+Deze combinatie van virtualisatie, isolatie en intelligent resourcebeheer stelt organisaties in staat om meerdere bedrijfskritische toepassingen efficiënt en veilig op één fysiek platform te consolideren, zonder in te boeten aan stabiliteit of prestaties.
+
+\section{\IfLanguageName{dutch}{Soorten besturingsystemen in IBM mainframes}{Types of operating systems in IBM mainframes}}
+\label{sec:soorten-besturingsystemen-in-ibm-mainframe}
+Hieronder vindt u een overzicht van de verschillende besturingssystemen die op IBM-mainframes kunnen draaien en eventueel in een logische partitie (LPAR) worden geïnstalleerd. Elk van deze besturingssystemen heeft zijn eigen kenmerken, toepassingen.
+\subsection{\IfLanguageName{dutch}{z/OS}{z/OS}}
+\label{sec:zos-besturingssysteem}
+z/OS is een 64-bits mainframebesturingssysteem dat programmabeheerdiensten biedt voor het aanmaken, laden, wijzigen, bekijken, lezen en kopiëren van uitvoerbare programma’s. \autocite{IBMRedbook_ABCzOS} 
+
+Het is ontworpen voor een stabiele, veilige, continu beschikbare en schaalbare uitvoering van bedrijfskritische toepassingen. Doorheen decennia evolueerde het van een systeem dat slechts één programma tegelijk kon verwerken naar een omgeving die duizenden programma’s en interactieve gebruikers gelijktijdig ondersteunt, waarbij efficiënte taakverdeling wachttijden minimaliseert en de CPU optimaal benut wordt. \autocite{IBMRedbook_zOSBasics}
+
+z/OS functioneert als een share-everything runtime-omgeving met sterke virtualisatie, waardoor hardwarebronnen efficiënt gedeeld worden. Het systeem bevat optimalisatiefuncties voor specifieke workloads, zoals datawarehousing en business intelligence, en maakt volledig gebruik van moderne mainframehardware. Het draait in het processorgeheugen en beheert onder meer CPU’s, DASD-schijven, tapedrives en consoles, waarbij hoge I/O-bandbreedte, ingebouwde redundantie en dynamische capaciteitsvoorziening worden ondersteund. \autocite{IBMRedbook_zOSBasics} 
+
+Als opvolger van OS/360, MVS en OS/390 combineert z/OS klassieke mainframefunctionaliteit met moderne netwerk-, cloud- en encryptiemogelijkheden en blijft het een centraal platform binnen hedendaagse enterprise-omgevingen. \autocite{IBMzOSOverview}
+
+
+\subsection{\IfLanguageName{dutch}{z/VM}{z/VM}}
+\label{sec:zvm-besturingssysteem}
+z/VM is een besturingssysteem voor IBM-mainframes dat bestaat uit twee hoofdcomponenten: het Control Program (CP) en het Conversational Monitor System (CMS). \autocite{IBMRedbook_zOSBasics}
+
+Het Control Program fungeert als een hypervisor. Dit betekent dat het meerdere virtuele machines (VM’s) aanmaakt op basis van de fysieke hardware. Binnen deze virtuele machines kunnen verschillende besturingssystemen als guest draaien, zoals z/OS, Linux on System z, z/VSE en z/TPF. Het is mogelijk om meerdere en verschillende gastbesturingssystemen gelijktijdig te combineren op één fysieke machine.\autocite{IBMRedbook_zOSBasics}
+
+Het CP verdeelt en beheert de fysieke hardwarebronnen, zoals CPU, schijfopslag en printers, zodat elke virtuele machine lijkt te beschikken over eigen, toegewijde middelen. Daarbij wordt gezorgd voor isolatie en beveiliging tussen de verschillende gasten. Hardware kan gedeeld worden tussen meerdere virtuele machines of exclusief worden toegewezen aan één virtuele machine voor betere prestaties.\autocite{IBMRedbook_zOSBasics}
+
+Door deze virtualisatielaag kunnen organisaties efficiënter gebruikmaken van hun hardware, waardoor vaak geen uitbreiding naar grotere fysieke systemen nodig is.
+\subsection{\IfLanguageName{dutch}{z/TPF}{z/TPF}}
+\label{sec:ztpf-besturingssysteem}
+z/TPF (z/Transaction Processing Facility) is een gespecialiseerd besturingssysteem dat ontworpen is voor omgevingen met extreem hoge transactiesnelheden, zoals in de luchtvaartsector, kredietkaartverwerking en grootschalige detailhandel. In tegenstelling tot algemene mainframebesturingssystemen zoals z/OS, is z/TPF volledig geoptimaliseerd voor realtime transactieverwerking met minimale responstijd. \autocite{IBMRedbook_zOSBasics}
+
+Het systeem vindt zijn oorsprong in het Airline Control Program (ACP), dat specifiek werd ontwikkeld voor luchtvaartreserveringssystemen. Doorheen de jaren werd het platform verder uitgebreid naar andere sectoren waar continue beschikbaarheid en hoge verwerkingscapaciteit cruciaal zijn. \autocite{IBMRedbook_zOSBasics}
+
+z/TPF ondersteunt geen traditionele relationele databases zoals Db2 of IMS DB. In plaats daarvan maakt het gebruik van z/TPFDF (z/TPF Database Facility), een geïntegreerde databankfaciliteit die geoptimaliseerd is voor snelle, directe toegang tot grote hoeveelheden transactionele gegevens. Deze architectuur draagt bij aan de zeer lage latency en hoge performantie van het systeem. \autocite{ibm_ztpf_2026}
+
+Daarnaast kan z/TPF functioneren in een los gekoppelde configuratie waarbij meerdere mainframes samenwerken. Hierdoor kunnen routinematig tienduizenden transacties per seconde worden verwerkt, met een beschikbaarheid die vaak in jaren zonder ongeplande onderbreking wordt gemeten. Het systeem wordt doorgaans gebruikt in combinatie met uitgebreide terminal- en netwerkstructuren, waaronder gespecialiseerde protocollen binnen de reserveringsindustrie. \autocite{IBMRedbook_zOSBasics}
+
+\subsection{\IfLanguageName{dutch}{Linux on Z}{Linux on Z}}
+\label{sec:linux-on-z-besturingssysteem}
+Op IBM-mainframes kunnen verschillende (niet-IBM) Linuxdistributies draaien. Er wordt onderscheid gemaakt tussen:
+\begin{itemize}
+    \item Linux on System z: gebruikt 64-bit adressering en 64-bit registers.
+    \item Linux on S/390: gebruikt 31-bit adressering en 32-bit registers.
+\end{itemize}
+De term Linux on System z wordt vaak algemeen gebruikt wanneer het onderscheid tussen 31-bit en 64-bit niet relevant is. \autocite{IBMRedbook_zOSBasics}
+
+Voor mainframegebruik zijn enkele specifieke kenmerken van belang:
+\begin{itemize}
+    \item Opslag: Linux maakt gebruik van traditionele CKD-schijven en SAN-gekoppelde SCSI-apparaten. Andere mainframebesturingssystemen kunnen deze schijven herkennen, maar de dataformaten niet delen. Er is dus geen rechtstreekse gegevensuitwisseling via dezelfde schijf. \autocite{IBMRedbook_zOSBasics}
+    \item Terminalgebruik: In tegenstelling tot andere mainframe-OS’en gebruikt Linux geen 3270-terminals. Het werkt met X Window System-gebaseerde terminals of emulators op pc’s en ondersteunt ook ASCII-terminals via bijvoorbeeld Telnet. Het X Window System vormt de standaard grafische interface binnen Linux. \autocite{IBMRedbook_zOSBasics}
+    \item Virtualisatie met z/VM: Linux-systemen die onder z/VM draaien, kunnen eenvoudig gekloond worden tot aparte Linux-omgevingen. Via een door z/VM geëmuleerd LAN kunnen meerdere Linux-images met elkaar en met externe netwerken worden verbonden. Bepaalde read-only bestandssystemen (zoals /usr) kunnen tussen meerdere Linux-instances gedeeld worden. \autocite{IBMRedbook_zOSBasics}
+    \item Tekencodering: Linux op een mainframe gebruikt de ASCII-tekenset in plaats van de typisch mainframe-gebaseerde EBCDIC-codering. Enkel bij communicatie met karaktergevoelige apparaten (zoals schermen en printers) wordt EBCDIC gebruikt, waarbij Linux-drivers instaan voor de automatische conversie. \autocite{IBMRedbook_zOSBasics}
+\end{itemize}
+
+\subsection{\IfLanguageName{dutch}{z/VSE}{z/VSE}}
+\label{sec:zvse-besturingssysteem}
+z/VSE (z/Virtual Storage Extended) is een mainframe-besturingssysteem dat vooral populair is bij organisaties met kleinere IBM-mainframes. Wanneer hun verwerkingsbehoeften toenemen, migreren sommige gebruikers later naar z/OS. \autocite{IBMRedbook_zOSBasics}
+
+In vergelijking met z/OS is z/VSE eenvoudiger en minder complex. Het is geoptimaliseerd voor batchverwerking (meerdere gelijktijdige batchjobs) en traditionele transactieverwerking in productieomgevingen. Veel z/VSE-gebruikers combineren het systeem met z/VM, dat wordt ingezet voor terminaltoegang, applicatieontwikkeling en systeembeheer.\autocite{IBMRedbook_zOSBasics}
+
+Historisch gezien begon z/VSE als DOS (Disk Operating System) voor de System/360-mainframes. Hoewel DOS oorspronkelijk bedoeld was als tijdelijke oplossing tot OS/360 beschikbaar was, bleef het populair vanwege zijn eenvoud en beperkte omvang. Doorheen de jaren evolueerde het via DOS/VS, VSE/SP en VSE/ESA naar de huidige naam z/VSE. De term VSE wordt vaak gebruikt als verzamelnaam voor deze latere versies.\autocite{IBMRedbook_zOSBasics}
+\subsection{\IfLanguageName{dutch}{KVM}{KVM}}
+\label{sec:kvm-besturingssysteem}
+KVM (Kernel-based Virtual Machine) is een open source alternatief voor de IBM z/VM hypervisor voor de virtulisatie van Linux workloads op IBM Z en IBM LinuxONE systemen. \autocite{ibm_kvm_ibmz_linuxone}
+
+\section{\IfLanguageName{dutch}{Welke sectoren gebruiken mainframes?}{Which sectors use mainframes?}}
+\label{sec:welke-sectoren-gebruiken-mainframes}
+
+Mainframes worden voornamelijk ingezet in sectoren waar betrouwbaarheid, schaalbaarheid en beveiliging van cruciaal belang zijn. Mainframes worden wereldwijd gebruikt in onder meer de volgende sectoren:
+
+\begin{itemize}
+
+\item \textbf{Financiële sector:} Mainframes zijn de technologische ruggengraat van de globale financiële sector. 44 van de top 50 banken wereldwijd implementeren IBM mainframes voor de verwerking van miljarden dagelijkse transacties~\autocite{ibm_case_bankwest}. 
+\item \textbf{Overheidsinstanties:} Overheden maken gebruik van mainframes voor belastingverwerking, sociale zekerheid, burgeradministratie en andere kritieke publieke diensten. Daarnaast vertrouwen overheidsorganisaties, waaronder rechtshandhavingsinstanties en nationale veiligheidsdiensten, op mainframes vanwege hun combinatie van beveiliging, prestaties en veerkracht. In deze context is bescherming tegen systeemuitval en beveiligingsincidenten van bijzonder belang. Moderne mainframeplatformen integreren bovendien geavanceerde analysemogelijkheden en AI-functionaliteiten om gegevens efficiënter te verwerken en cybersecurityprocessen te versterken~\autocite{IBMMainframe}.
+\item \textbf{Gezondheidszorg:} Ziekenhuizen, zorgverzekeraars en andere gezondheidsorganisaties gebruiken mainframes voor het verwerken en beheren van grote hoeveelheden gevoelige gegevens, waaronder persoonlijk identificeerbare informatie (PII), medische dossiers en facturatiegegevens. Vooral grote internationale verzekeringsmaatschappijen vertrouwen op mainframes om deze data veilig en betrouwbaar te verwerken. In deze sector zijn gegevensintegriteit, privacy en beveiliging van essentieel belang~\autocite{IBMMainframe}.
+\item \textbf{Detailhandel:} Grote retailorganisaties vertrouwen op mainframes voor voorraadbeheer, point-of-sale transactieverwerking en analyse van klantgegevens, vooral tijdens piekperiodes zoals promoties en feestdagen. Ook online retailers maken gebruik van mainframes om grote hoeveelheden transacties via mobiele en digitale kanalen op schaal te verwerken. De verwerkingscapaciteit van mainframes ondersteunt e-commerceplatformen die continu beschikbaar moeten zijn en hoge transactiesnelheden vereisen~\autocite{IBMMainframe}.
+\item \textbf{Luchtvaartmaatschappijen:} Mainframes ondersteunen reserveringssystemen, vluchtplanning en passagiersbeheer. De mogelijkheid om grote aantallen transacties gelijktijdig te verwerken is hierbij essentieel ~\autocite{IBMMainframe}.
+\item \textbf{Telecommunicatie:} Telecombedrijven gebruiken mainframes voor het beheren van klantendatabases, facturatie en netwerkbeheer, waarbij hoge beschikbaarheid en real-time verwerking noodzakelijk zijn ~\autocite{IBMMainframe}.
+\item \textbf{Overige sectoren:} Ook in sectoren zoals energie, transport en productie (bijvoorbeeld, Arcelor Mittal) worden mainframes ingezet voor grootschalige dataverwerking en kritieke operationele systemen.
+
+\end{itemize}
+
+\section{\IfLanguageName{dutch}{Kenmerken van mainframes}{Characteristics of mainframes}}
+\label{sec:kenmerken-van-mainframe}
+Alhoewel bestaan er alternatieven voor mainframes, zoals Linux- en Windows-servers, onderscheiden mainframes zich door hun unieke kenmerken die hen bijzonder geschikt maken voor bedrijfskritische toepassingen.
+
+Uit het onderzoek van \textcite{candido2024_mainframe_cloud} blijven mainframes relevant en vaak zelfs voordeliger voor bedrijfskritische, transactionele workloads, terwijl cloud computing superieur is voor elastische, schaalbare en moderne applicaties. Beide hebben hun plaats binnen hedendaagse IT-infrastructuren.
+
+Hieronder vindt u de belangrijkste kenmerken van mainframes.
+
+\subsection{\IfLanguageName{dutch}{Beschikbaarheid en uptime}{Availability and uptime of mainframes}}
+\label{sec:beschikbaarheid-en-uptime}
+Mainframes zijn ontworpen om 24/7 te draaien zonder noemenswaardige onderbrekingen. De IBM Z-mainframefamilie heeft een uptime van 99,999997\%, wat betekent dat bedrijven die afhankelijk zijn van mainframes zelden tot nooit te maken hebben metsysteemuitval \autocite{IBMMainframe}.
+
+Door het gebruik van concepten en technologieen zoals Parallel Sysplex kan deze beschikbaarheid verder worden verhoogd. Hierbij werken meerdere systemen samen als één logisch geheel, waardoor workloads automatisch kunnen worden overgenomen bij uitval van een component. Dit beperkt het risico op onderbrekingen tot een minimum.
+
+Dit niveau van betrouwbaarheid is essentieel voor bedrijfskritieke operaties, zoals het verwerken van financiële transacties of het beheren van luchtvaartreserveringen
+
+\subsection{\IfLanguageName{dutch}{Beveiliging}{Security of mainframes}}
+\label{sec:beveiliging}
+Mainframes zijn uitgerust met geavanceerde beveiligingsfuncties, zoals quantumsafeencryptie, dieervoorzorgendatgegevensveiligblijven,zelfs in het tijdperk van quantum computing \autocite{IBMMainframe}. 
+
+Bovendien staan compliance en beveiliging al vijf jaar op rij bovenaan de lijst van prioriteiten voor mainframe-gebruikers \autocite{BMC2024}.
+
+\subsection{\IfLanguageName{dutch}{Verwerkingskracht}{Processing power of mainframes}}
+\label{sec:verwerkingskracht}
+Mainframes zijn uitgerust met krachtige CPU-architecturen, zoals de S/390x, die meer dan 13 keer sneller zijn dan gemiddelde Intel-processors \autocite{IBMMainframe}. 
+
+Dit stelt mainframes in staat om immense workloads aan te kunnen zonder prestatie verlies. 
+
+Bovendien kunnen mainframes honderden virtuele machines parallellaten draaien, wat zorgt voor een flexibele en efficiënte inzet van IT-middelen
+
+\subsection{\IfLanguageName{dutch}{AI-capaciteit}{AI capacity of mainframes}}
+\label{sec:ai-capaciteit}
+Moderne mainframes zijn uitgerust met ingebouwde AI-chips, waardoor AI-modellen dicht bij de data kunnen worden verwerkt, zonder dat gegevens eerst moeten worden verplaatst naar een externe AI-server \autocite{IBMMainframe}. 
+
+Dit maakt mainframes ideaal voor het uitvoeren van complexe AI-workloads, zoals risicoanalyse en fraudedetectie.
+
+\section{\IfLanguageName{dutch}{Kenmerken van z/OS architectuur}{Characteristics of z/OS architecture}}
+\label{sec:kenmerken-van-zos-architectuur}
+
+\subsection{\IfLanguageName{dutch}{Datasets}{Datasets on z/OS}}
+\label{sec:datasets-op-zos}
+Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe-equivalent is van bestanden. Een data set bestaat uit één of meerdere records, waarbij een record de basisinformatie-eenheid vormt voor programma’s.
+
+\begin{itemize}
+    \item \textbf{Record}: een vaste hoeveelheid bytes die als één geheel wordt verwerkt.
+    \item \textbf{Field}: een specifiek deel van een record dat een bepaalde categorie gegevens bevat.
+    \item \textbf{Cataloged data set}: een data set die via naam kan worden opgeroepen zonder fysieke locatie te vermelden.
+\end{itemize}
+
+z/OS ondersteunt verschillende types data sets, afhankelijk van de manier waarop gegevens worden opgeslagen en geraadpleegd. \textbf{Sequential data sets} slaan records opeenvolgend op en zijn geschikt voor seriële verwerking. \textbf{Partitioned Data Sets (PDS)} bestaan uit een directory met afzonderlijke members en worden vaak gebruikt als programmabibliotheken. \textbf{VSAM-datasets}, zoals Key Sequenced Data Sets (KSDS), maken snelle, directe toegang mogelijk via sleutels. Data sets worden doorgaans opgeslagen op \textbf{DASD-schijven of tape} en worden beheerd via specifieke access methods die bepalen hoe data fysiek wordt opgeslagen en opgehaald. \autocite{IBM_z/OS_datasets}
+
+\subsection{\IfLanguageName{dutch}{EBCDIC op z/OS}{EBCDIC on z/OS}}
+\label{sec:ebcdic-op-zos}
+Het Extended Binary Coded Decimal Interchange Code (EBCDIC) is de standaard tekencodering die wordt gebruikt in z/OS-datasets. EBCDIC werd ontwikkeld vóór de brede adoptie van ASCII en vormt nog steeds de basis voor de karakterrepresentatie binnen traditionele mainframeomgevingen. Hoewel de meeste moderne systemen gebruikmaken van ASCII, blijven klassieke z/OS-datasets standaard in EBCDIC gecodeerd. Een uitzondering hierop vormen z/OS UNIX-bestanden, die doorgaans ASCII gebruiken. \autocite{IBM_z/OS_EBCDIC}
+
+Zowel ASCII als EBCDIC zijn 8-bit tekensets, maar ze verschillen in de binaire toewijzing van karakters. Dit heeft gevolgen voor sorteeroperaties en tekstverwerking, aangezien beide tekensets een verschillende collating sequence (sorteervolgorde) hanteren. Zo zijn numerieke tekens in ASCII kleiner dan alfabetische tekens, terwijl dit in EBCDIC omgekeerd is. Daarnaast zijn letters in ASCII aaneengesloten in hun binaire volgorde, terwijl er in EBCDIC hiaten bestaan tussen bepaalde letters. Deze verschillen maken correcte conversie tussen beide systemen essentieel bij gegevensuitwisseling. \autocite{IBM_z/OS_EBCDIC}
+
+Bij gegevensoverdracht tussen ASCII-gebaseerde systemen en EBCDIC-gebaseerde systemen wordt conversie meestal automatisch uitgevoerd, bijvoorbeeld bij terminalemulatie. Bij het overbrengen van programma’s of binaire bestanden moet echter expliciet een binaire transfer worden gekozen om ongewenste karakterconversie te vermijden. Sommige speciale tekens, zoals het logische NOT-symbool of bepaalde programmeersymbolen, hebben geen directe equivalent in de andere tekenset, wat extra aandacht vereist bij conversie. Ondanks de dominantie van ASCII in moderne omgevingen blijft EBCDIC relevant vanwege de grote hoeveelheid bestaande data en applicaties die ervan afhankelijk zijn binnen mainframearchitecturen. \autocite{IBM_z/OS_EBCDIC}
+
+\subsection{\IfLanguageName{dutch}{Adress spaces}{Adress spaces}}
+\label{sec:adress-spaces}
+Een address space in z/OS is het bereik van virtuele adressen dat het besturingssysteem toewijst aan een gebruiker of een afzonderlijk draaiend programma. Dit bereik start bij adres nul en loopt tot de maximale grens die door de architectuur wordt toegelaten. Elke gebruiker of job krijgt een eigen, unieke address space, waardoor programma’s en data strikt van elkaar gescheiden blijven. Binnen één address space kunnen meerdere taken gelijktijdig uitgevoerd worden via Task Control Blocks (TCB’s), wat multiprogramming mogelijk maakt. Door gebruik te maken van virtuele adressering kan z/OS meer geheugen aanspreken dan fysiek aanwezig is, terwijl fouten doorgaans beperkt blijven tot één address space. Deze isolatie verhoogt zowel de betrouwbaarheid als de beveiliging van het systeem. \autocite{MainframeAdressSpaces}
+
+Hoewel address spaces van elkaar gescheiden zijn, voorziet z/OS mechanismen voor communicatie tussen verschillende address spaces. Dit kan asynchroon via een Service Request Block (SRB), waarmee een proces in een andere address space wordt gestart, of synchroon via cross-memory services, waarmee een programma rechtstreeks toegang krijgt tot een andere address space. Deze laatste methode vereist speciale autorisatie (APF) en biedt een efficiënte en veilige manier om data te delen tussen subsystemen zoals transactiemanagers of databases. Dankzij deze combinatie van isolatie en gecontroleerde communicatie kan z/OS zowel veiligheid als hoge performantie garanderen in een multi-useromgeving.\autocite{MainframeAdressSpaces}
+
+
+\subsection{\IfLanguageName{dutch}{Parallel Sysplex}{Parallel Sysplex}}
+\label{sec:parallel-sysplex}
+IBM Parallel Sysplex is een geavanceerde clusteringtechnologie voor IBM z/OS-mainframes waarmee meerdere z/OS-systemen samenwerken als één enkel, logisch, hoog-presterend platform. Het kan tot 32 z/OS-systemen koppelen, waardoor ze een uniforme omgeving vormen waarin workloads en resources gedeeld en dynamisch beheerd worden. \autocite{ibm_parallel_sysplex}
+
+Het voornaamste voordeel van een Parallel Sysplex is de extreem hoge beschikbaarheid en betrouwbaarheid van toepassingen—tot zelfs 99,99999\% uptime—door het wegnemen van single points of failure op server-, LPAR- of subsystemniveau. \autocite{ibm_parallel_sysplex}
+
+Een belangrijk onderdeel van Parallel Sysplex is de Coupling Facility (CF), een speciale hardware- of virtuele component die zorgt voor coherente, gedeelde toegang tot data tussen systemen zonder corruptie. Dit maakt gelijktijdig lezen en schrijven door meerdere systemen mogelijk en ondersteunt toepassingen zoals databases, message queues en workload balancing. \autocite{ibm_parallel_sysplex}
+Parallel Sysplex maakt het ook mogelijk om meerdere systemen te beheren als één enkele eenheid (single system image), wat centrale controle, workloadverdeling, schaalvergroting en eenvoudiger beheer van grote mainframe-omgevingen bevordert. \autocite{ibm_parallel_sysplex}
+
+\subsection{\IfLanguageName{dutch}{Coupling Facility}{Coupling Facility}}
+\label{sec:coupling-facility}
+Een Coupling Facility (CF) is een gespecialiseerd onderdeel van de IBM-mainframe Parallel Sysplex-architectuur dat gebruikt wordt om gegevens en statusinformatie tussen meerdere z/OS-systemen te delen zonder corruptie of inconsistentie. Het speelt een cruciale rol bij het realiseren van hoge beschikbaarheid, schaalbaarheid en prestaties in een Parallel Sysplex.
+
+De CF kan draaien als een aparte LPAR (Logical Partition) op een mainframe of als een externe hardware-eenheid, en is via speciale hoge-snelheidsverbindingen verbonden met de z/OS-systemen.
+
+Binnen de Coupling Facility wordt geheugen ingedeeld in objecten die “structuren” worden genoemd. Deze structuren bieden diensten zoals:
+\begin{itemize}
+    \item \textbf{Locking:} vergrendeling van gedeelde resources
+    \item \textbf{Caching:} snelle toegang tot gedeelde data
+    \item \textbf{List-processing:} bericht of wachtrijinformatie waardoor meerdere systemen tegelijkertijd en efficiënt kunnen samenwerken op gedeelde data.
+\end{itemize}
+De CF maakt het mogelijk dat toepassingen en subsystemen over verschillende z/OS-members heen coherente data delen en bewerken met lage latency. Dit ondersteunt dynamische workloadverdeling, resource-sharing en verbetert de overall prestaties en beschikbaarheid van de mainframe-omgeving. \autocite{ibm_parallel_sysplex}
+
+\subsection{\IfLanguageName{dutch}{Workload Manager (WLM)}{Workload Manager (WLM)}}
+\label{sec:workload-management}
+De Workload Manager (WLM) is een component van z/OS die meerdere workloads gelijktijdig kan beheren, zowel binnen één z/OS-image als over meerdere images. In goal mode verdeelt WLM automatisch systeemresources op basis van vooraf gedefinieerde doelstellingen, zonder dat handmatige tuning of commando’s nodig zijn. De kernel gebruikt WLM onder andere om nieuwe adresruimtes (address spaces) aan te maken voor child-processen. \autocite{ibm_zos_wlm}
+
+Wanneer een programma een fork() of spawn() uitvoert, wordt via de BPXAS-procedure (in SYS1.PROCLIB) een nieuwe address space gecreëerd. Bij een fork() wordt het bestaande proces (het parent-proces) gekopieerd naar een nieuw proces (het child-proces). Deze nieuwe address space wordt door WLM beheerd. \autocite{ibm_zos_wlm}
+
+Bestaande MVS-address space types zoals TSO, STC, Batch en APPC kunnen gebruikmaken van z/OS UNIX-services. Wanneer zo’n address space voor het eerst de z/OS-kernel aanspreekt, wordt het proces als een z/OS UNIX-proces geïdentificeerd. Er bestaan twee soorten processen: 
+\begin{itemize}
+    \item User processen (gekoppeld aan een gebruiker)
+    \item Daemon processen (achtergrondprocessen die systeemdiensten leveren, zoals webservers)
+\end{itemize}
+Daemons worden meestal gestart bij het opstarten van het systeem en blijven actief om standaarddiensten te leveren (bijv. cron, inetd, rlogind). Indien een daemon stopt, kan deze opnieuw worden gestart via een operator, een systeemprogrammeur of automatiseringstools zoals Tivoli NetView. \autocite{ibm_zos_wlm}
+
+Tot slot kan een proces meerdere threads bevatten. Een thread is een afzonderlijke uitvoeringsstroom binnen een proces. Door meerdere threads te gebruiken kunnen applicaties parallel werken en systeemresources efficiënter benutten. \autocite{ibm_zos_wlm}
+
+\section{\IfLanguageName{dutch}{Interactie met z/OS}{Interacting with z/OS}}
+\label{sec:interactie-met-zos}
+
+
+\subsection{\IfLanguageName{dutch}{TSO (Time Sharing Option) op z/OS}{TSO on z/OS}}
+\label{sec:tso-op-zos}
+TSO/E (Time Sharing Option/Extensions) is een component van z/OS die gebruikers in staat stelt om een interactieve sessie met het mainframesysteem te starten. In tegenstelling tot batchverwerking biedt TSO een single-user logonomgeving waarbij een gebruiker via een command prompt rechtstreeks commando’s kan uitvoeren op het systeem. Elke gebruiker krijgt een unieke user ID en wachtwoord toegewezen (beheerd via RACF) om toegang te verkrijgen tot TSO.
+
+In de praktijk werken de meeste gebruikers niet rechtstreeks met de TSO commandoregel, maar via ISPF (Interactive System Productivity Facility). ISPF is een menu- en paneelgebaseerde interface bovenop TSO die het beheer van data sets, programmabewerking en systeeminteractie vereenvoudigt. Hierdoor wordt z/OS toegankelijker voor systeemprogrammeurs, applicatieontwikkelaars en beheerders. Toegang gebeurt meestal via een 3270-terminal of een TN3270-emulator op een pc.
+\subsection{\IfLanguageName{dutch}{TSO Native Mode}{TSO Native Mode}}
+\label{sec:tso-native-mode}
+Hoewel TSO meestal automatisch overschakelt naar ISPF na het inloggen, kan het ook in native mode worden gebruikt. In deze modus werkt de gebruiker uitsluitend met de basis TSO-commando’s zonder grafische menu-interface. Dit biedt directe toegang tot systeemfuncties en wordt vaak gebruikt voor scripting of specifieke administratieve taken.
+
+\subsection{\IfLanguageName{dutch}{CLIST en REXX binnen TSO}{CLIST and REXX within TSO}}
+\label{sec:tso-clist-rexx}
+Binnen TSO kunnen gebruikers taken automatiseren via CLIST en REXX, twee commandotalen voor scripting. Deze talen maken het mogelijk om herhaalbare beheertaken te automatiseren, parameters te verwerken en interactief met z/OS-componenten te communiceren. Vooral REXX wordt veel gebruikt binnen systeembeheer vanwege de leesbaarheid en flexibiliteit.
+
+\subsection{\IfLanguageName{dutch}{Focus op REXX in deze bachelorproef}{Focus on JCL and REXX in this bachelor thesis}}
+\label{sec:focus-op-jcl-en-rexx-in-deze-bachelorproef}
+In deze bachelorproef ligt de focus op REXX als scriptingtaal. Om de scope beheersbaar te houden, zal er geen diepgaande analyse worden gemaakt van CLIST. REXX biedt uitgebreide mogelijkheden voor systeembeheer en automatisering binnen z/OS, waardoor het een waardevolle tool is voor systeembeheerders.
+
+\subsection{\IfLanguageName{dutch}{ISPF (Interactive System Productivity Facility)}{ISPF (Interactive System Productivity Facility)}}
+\label{sec:ispf}
+ISPF (Interactive System Productivity Facility) is een menu- en paneelgebaseerde interface die gebruikers na het inloggen op TSO/E vaak als primaire werkomgeving gebruiken. ISPF wordt volledig via het toetsenbord bediend en biedt kernfunctionaliteit zoals een teksteditor, browser, en utilities voor het opzoeken, weergeven en beheren van data sets en andere systeembronnen. Hierdoor kunnen gebruikers (zoals systeemprogrammeurs, applicatieontwikkelaars en administrators) efficiënt interactief werken op z/OS zonder uitsluitend commandoregelcommando’s te gebruiken. \autocite{IBM_z/OS_ISPF}
+
+ISPF bestaat uit een hiërarchische menustructuur (Primary Option Menu) waarmee verschillende functies en subsystemen toegankelijk worden gemaakt, zoals data set-allocatie, sorteerfuncties (DFSORT), SMP/E, RACF en WLM. De interface is aanpasbaar per installatie (bijv. menu-opties en PF-toetsen), waardoor het uiterlijk en de beschikbare opties kunnen verschillen tussen organisaties. Hoewel ISPF traditioneel “panel-driven” is, bestaan er ook GUI-clients die muisgebruik mogelijk maken. \autocite{IBM_z/OS_ISPF}
+
+\subsection{\IfLanguageName{dutch}{z/OS UNIX System Services}{z/OS UNIX System Services}}
+\label{sec:z-os-unix-system-services}
+z/OS UNIX System Services (USS) biedt een UNIX-compatibele omgeving binnen het z/OS-besturingssysteem. Het levert een interactieve shell en utilities waarmee gebruikers commando’s kunnen uitvoeren, scripts kunnen schrijven en programma’s (zoals C-programma’s) kunnen starten. Functioneel kan de z/OS UNIX-shell worden vergeleken met TSO, maar dan gebaseerd op UNIX-standaarden (System V met kenmerken van de Korn shell) en conform de POSIX-specificaties. \autocite{IBM_z/OS_UNIX}
+
+De shell kan gebruikt worden om:
+\begin{itemize}
+    \item UNIX-commando’s en utilities uit te voeren
+    \item Shellscripts te schrijven en uit te voeren
+    \item Programma’s interactief, in TSO-background of in batch te starten
+\end{itemize}
+Gebruikers kunnen de z/OS UNIX-omgeving op verschillende manieren openen:
+\begin{itemize}
+    \item Via een 3270-terminal of emulator
+    \item Via TCP/IP (bijv. telnet of rlogin)
+    \item Vanuit een TSO-sessie met het OMVS-commando
+    \item Via ISHELL, een ISPF-gebaseerde panelinterface voor UNIX-beheer
+\end{itemize}
+OMVS start een traditionele UNIX-shellsessie, terwijl ISHELL een menu-gestuurde interface biedt die vooral geschikt is voor systeembeheerders die vertrouwd zijn met TSO/ISPF. ISHELL bevat functies voor bestandsbeheer, directorybeheer en het mounten/unmounten van filesystems. \autocite{IBM_z/OS_UNIX}
+\section{\IfLanguageName{dutch}{Subsystemen in z/OS}{Subsystems in z/OS}}
+\label{sec:subsystemen-in-zos}
+z/OS werkt met gespecialiseerde subsystemen zoals:
+\begin{itemize}
+    \item \textbf{JES2/JES3:} Job Entry Subsystem voor jobverwerking
+    \item \textbf{CICS:} Customer Information Control System voor transactionele toepassingen
+    \item \textbf{IMS DB:} Information Management System voor databasebeheer
+    \item \textbf{IMS TM:} Information Management System voor transactiebeheer
+    \item \textbf{DB2:} relationele database
+    \item \textbf{MQ:} message queuing voor communicatie tussen applicaties
+    \item \textbf{SMP/E:} System Modification Program/Extended voor software-installatie en -onderhoud
+    \item \textbf{IWS}: Integrated Workload Scheduler voor geavanceerde jobplanning en -beheer
+\end{itemize}
+Deze subsystemen draaien binnen z/OS maar beheren elk hun eigen type workload (batch, transacties, databasebeheer).
+
+\subsection{\IfLanguageName{dutch}{Verschil van JES2 en JES3}{Difference between JES2 and JES3}}
+\label{sec:verschil-jes2-jes3}
+JES2 en JES3 zijn twee varianten van het Job Entry Subsystem in z/OS en vervullen grotendeels dezelfde basisfuncties: ze lezen jobs in, plaatsen ze in wachtrijen, plannen ze voor uitvoering, verwerken de output en verwijderen (purgen) ze na afloop.  \autocite{IBMRedbook_zOSBasics}
+
+Het belangrijkste verschil ligt in de manier waarop jobverwerking wordt beheerd. JES2 werkt gedecentraliseerd: in een multi-processoromgeving beheert elke JES2-instantie zelfstandig haar eigen jobinput, scheduling en output. In een sysplex kan JES2 via Multi-Access Spool (MAS) spool- en checkpointdata delen met andere JES2-systemen.  \autocite{IBMRedbook_zOSBasics}
+
+JES3 daarentegen werkt gecentraliseerd: één globale JES3-processor controleert de jobselectie, scheduling en device-allocatie voor alle aangesloten systemen. Hierdoor biedt JES3 meer centrale controle, zoals afhankelijkheidsbeheer tussen jobs en geavanceerde scheduling, maar is het minder flexibel dan JES2.  \autocite{IBMRedbook_zOSBasics}
+
+In de praktijk wordt JES2 het meest gebruikt, vooral vanwege de eenvoud en de gedistribueerde controle. \autocite{IBMRedbook_zOSBasics}
+
+\subsection{\IfLanguageName{dutch}{CICS (Customer Information Control System)}{CICS}}
+\label{sec:cics}
+CICS (Customer Information Control System) is een transaction processing subsystem voor het z/OS-besturingssysteem. Het ondersteunt online transactieverwerking waarbij meerdere gebruikers gelijktijdig toegang hebben tot dezelfde applicaties en databestanden. CICS beheert resource-deling, data-integriteit, gebruikersautorisatie en prioriteitsstelling, en zorgt voor snelle responstijden. Daarnaast fungeert het als tussenlaag tussen applicaties en databasesystemen zoals Db2, waardoor het veel beheertaken uitvoert die vergelijkbaar zijn met die van het besturingssysteem zelf. \Autocite{IBM_z/OS_CICS}
+
+Binnen een z/OS-omgeving draait CICS als een afzonderlijke address space en vormt het een extra functionele laag boven het besturingssysteem. Applicaties communiceren niet rechtstreeks met hardware of terminals, maar via CICS, dat op zijn beurt gebruikmaakt van z/OS-services. In grotere omgevingen kan CICS in meerdere regio’s (address spaces) worden opgesplitst via Multi-Region Operation (MRO), waarbij specifieke regio’s instaan voor terminalbeheer (TOR), applicatieverwerking (AOR) of bestandsbeheer (FOR). Hierdoor biedt CICS een schaalbare en gestructureerde aanpak voor bedrijfskritische online transacties. \autocite{IBM_z/OS_CICS}
+
+\subsection{\IfLanguageName{dutch}{IMS TM(Information Management System Transaction Manager)}{IMS}}
+\label{sec:ims}
+IMS Transaction Manager (IMS TM) is een message-based transaction processing systeem binnen de z/OS-omgeving. Het verwerkt transacties die worden gestart door een inkomend bericht, waarbij een specifieke set invoergegevens de uitvoering van een bijbehorend applicatieprogramma activeert. IMS TM beheert zowel inkomende als uitgaande berichten en gebruikt een geïntegreerd wachtrijmechanisme om hoge transactieniveaus efficiënt te verwerken. \autocite{IBM_z/OS_IMS}
+
+IMS TM ondersteunt gelijktijdige sessies van gebruikers en applicaties, zowel lokaal als via andere systemen of netwerken. In combinatie met databasesystemen zoals IMS DB of Db2 maakt IMS TM realtime, online transactieverwerking mogelijk. Het systeem is ontworpen voor hoge volumes, snelle responstijden en schaalbaarheid, en ondersteunt uiteenlopende toepassingen zoals data-entry, interactieve transacties en vooraf gedefinieerde query’s. Hierdoor is IMS TM bijzonder geschikt voor grootschalige, bedrijfskritische omgevingen met gecentraliseerd databeheer en geografisch verspreide gebruikers. \autocite{IBM_z/OS_IMS}
+
+\subsection{\IfLanguageName{dutch}{Db2}{Db2}}
+\label{sec:db2}
+DB2 for z/OS is IBM’s relationeel databasebeheersysteem (DBMS) voor het z/OS-besturingssysteem. Het is nauw geïntegreerd met de IBM System z-mainframearchitectuur en maakt gebruik van de sterke punten van het platform, zoals betrouwbaarheid, schaalbaarheid en hoge beschikbaarheid. DB2 gebruikt Structured Query Language (SQL) als standaardtaal voor het definiëren, manipuleren en opvragen van gegevens. De SQL-implementatie is grotendeels compatibel met andere DB2-varianten op verschillende besturingssystemen, wat portabiliteit van applicaties ondersteunt.\autocite{IBM_z/OS_Db2}
+
+De architectuur van DB2 omvat diverse databankstructuren en processen die zorgen voor efficiënte verwerking van transacties en query’s. Het ondersteunt uiteenlopende applicatieontwerpen, van eenvoudige single-tier toepassingen tot complexe multitier-architecturen. Tijdens de implementatiefase worden databankobjecten gedefinieerd en integriteitsregels vastgelegd om consistente en betrouwbare gegevensopslag te garanderen. Dankzij deze integratie met z/OS vormt DB2 een kerncomponent voor bedrijfskritische data-intensieve toepassingen binnen mainframeomgevingen.\autocite{IBM_z/OS_Db2}
+
+\subsection{\IfLanguageName{dutch}{IMS DB(Information Management System Database)}{IMS DB}}
+\label{sec:imsdb}
+IMS Database Manager (IMS DB) is een hiërarchisch databasebeheersysteem binnen de z/OS-omgeving dat program- en device-onafhankelijke toegang tot bedrijfsgegevens biedt. De kern van IMS DB wordt gevormd door het hiërarchische datamodel en de bijbehorende Data Language/I (DL/I)-aanroepen. Gegevens worden georganiseerd in een boomstructuur waarbij segmenten op lagere niveaus afhankelijk zijn van segmenten op hogere niveaus. Data wordt slechts één keer opgeslagen, maar kan via meerdere toegangswegen worden geraadpleegd, onder andere via logische relaties en secundaire indexen. \autocite{IMS_BOOk}
+
+IMS DB ondersteunt dataintegriteit, transactieverwerking (inserts, updates en deletes als één atomaire eenheid), gelijktijdige verwerking met isolatie tussen transacties, en uitgebreide onderhoudsfuncties zoals back-up, recovery en reorganisatie. De databases kunnen worden benaderd vanuit verschillende omgevingen, waaronder IMS Transaction Manager (IMS TM), CICS, z/OS-batchjobs, WebSphere Application Server en DB2 stored procedures. Via de IMS Open Database Manager (ODBM) kunnen ook Java-toepassingen binnen het enterprise-netwerk toegang krijgen tot IMS-databases. Hierdoor blijft IMS DB een schaalbare en betrouwbare oplossing voor bedrijfskritische dataverwerking binnen mainframeomgevingen. \Autocite{IMS_BOOk}
+\subsection{\IfLanguageName{dutch}{IBM MQ (Message Queue)}{MQ}}
+\label{sec:mq}
+IBM MQ is een messaging middleware-oplossing die betrouwbare en asynchrone communicatie tussen applicaties mogelijk maakt. Het fungeert als een universele messaging backbone en ondersteunt veilige gegevensuitwisseling binnen en tussen systemen. Berichten worden verzonden via queue managers, die instaan voor het opslaan, routeren en afleveren van berichten zonder dat applicaties rechtstreeks met elkaar hoeven te communiceren. Dankzij transactionele verwerking en persistente messaging garandeert IBM MQ dat berichten correct en precies één keer worden afgeleverd, zelfs bij systeem- of netwerkstoringen. Beveiliging kan worden versterkt via TLS en Advanced Message Security (AMS), waarmee berichten versleuteld en digitaal ondertekend worden. \autocite{IBM_z/OS_MQ}
+
+IBM MQ ondersteunt verschillende programmeertalen en platformen, en kan zowel lokaal (server) als op afstand (client) worden gebruikt. In een z/OS-omgeving kunnen meerdere queue managers queues delen via de Coupling Facility, wat hoge beschikbaarheid en schaalbaarheid mogelijk maakt. Beheer en configuratie gebeuren via commandoregeltools (MQSC), programmeerbare interfaces (PCF, REST API) of grafische omgevingen zoals IBM MQ Explorer en de IBM MQ Console. Hierdoor vormt IBM MQ een essentiële component binnen servicegerichte architecturen (SOA) en moderne, gedistribueerde IT-omgevingen.\autocite{IBM_z/OS_MQ}
+\subsection{\IfLanguageName{dutch}{SMP/E (System Modification Program/Extended)}{SMP/E (System Modification Program/Extended)}}
+\label{sec:smp/e}
+System Modification Program Extended (SMP/E) is de standaardtool binnen z/OS voor het beheren van software-installaties en het opvolgen van wijzigingen aan systeemcomponenten. Het selecteert de correcte versies van code, stuurt systeemutilities aan om updates te installeren en houdt alle wijzigingen bij in de Consolidated Software Inventory (CSI), een database opgebouwd uit één of meerdere VSAM-datasets. SMP/E kan zowel via batchjobs als via interactieve ISPF-dialogen worden gebruikt en maakt het mogelijk om de status van software te controleren en wijzigingen indien nodig terug te draaien. \autocite{IBMRedbook_zOSBasics}
+
+Volgens SMP/E bestaat z/OS niet uit één monolithisch geheel, maar uit verschillende afzonderlijke systeemfuncties zoals BCP, CICS, JES, TSO/E en z/OS UNIX. Elke functie is opgebouwd uit één of meerdere load modules, de uitvoerbare eenheden van het systeem. Deze worden samengesteld uit objectmodules en via link-editing omgezet naar uitvoerbare code. SMP/E beheert deze modulaire structuur en zorgt ervoor dat updates en onderhoud gecontroleerd en consistent worden toegepast. \autocite{IBMRedbook_zOSBasics}
+
+\subsection{\IfLanguageName{dutch}{IWS}{IWS}}
+\label{sec:iws}
+IBM Workload Scheduler (IWS) is een plannings- en automatiseringsoplossing voor het beheren van batch- en workloadprocessen binnen gedistribueerde IT-omgevingen. Het systeem bestaat uit een Workload Scheduler engine, die op elke computer in het netwerk draait en verantwoordelijk is voor de effectieve planning en uitvoering van taken. Afhankelijk van de configuratie kan een node functioneren als master domain manager, domain manager of agent, waarbij elke rol specifieke verantwoordelijkheden heeft binnen het planningsnetwerk. \autocite{IBM_z/OS_IWS}
+
+Daarnaast beschikt IBM Workload Scheduler over de Dynamic Workload Console, een webgebaseerde en gebruiksvriendelijke interface waarmee beheerders planningen kunnen configureren, monitoren en beheren. Deze console fungeert als de strategische grafische gebruikersinterface binnen het bredere IBM Workload Automation-portfolio en maakt centraal beheer van workloads mogelijk via een standaard webbrowser. \autocite{IBM_z/OS_IWS}
+
+
+
+
+
+%\begin{table}
+%  \centering
+%  \begin{tabular}{lcr}
+%    \toprule
+%    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
+%    $\alpha$         & $\beta$          & $\gamma$         \\
+%    \midrule
+%    A                & 10.230           & a                \\
+%    B                & 45.678           & b                \\
+%    C                & 99.987           & c                \\
+%    \bottomrule
+%  \end{tabular}
+%  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
+%\end{table}
+
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{grail.jpg}
+%  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
+%\end{figure}
+
+%\begin{listing}
+%  \begin{minted}{python}
+%    import pandas as pd
+%    import seaborn as sns
+%
+%    penguins = sns.load_dataset('penguins')
+%    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+%  \end{minted}
+%  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
+%\end{listing}
