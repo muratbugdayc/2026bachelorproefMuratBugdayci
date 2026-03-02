@@ -23,14 +23,14 @@ tuur om de stand van zaken te schetsen.
 
 Vooraleer dieper in te gaan op de kern van deze bachelorproef, is het noodzakelijk om een duidelijk beeld te schetsen van wat mainframes zijn. Mainframes zijn krachtige, hoogperformant computersystemen die ontworpen zijn voor het verwerken van grote hoeveelheden transacties en data met een uitzonderlijk hoge betrouwbaarheid en beschikbaarheid~\autocite{IBMMainframe}.
 
-Mainframes functioneren continu (24/7) en halen beschikbaarheidsniveaus van 99,999\% uptime~\autocite{MainframeUptime}, wat neerkomt op slechts enkele minuten ongeplande downtime per jaar. In combinatie met hun schaalbaarheid en ingebouwde fouttolerantie maakt dit hen bijzonder geschikt voor omgevingen waar systeemuitval grote financiële of maatschappelijke gevolgen kan hebben.
+Mainframes functioneren continu (24/7) en halen beschikbaarheidsniveaus van 99,999\% uptime~\autocite{IBM_zOS_Concepts}, wat neerkomt op slechts enkele minuten ongeplande downtime per jaar. In combinatie met hun schaalbaarheid en ingebouwde fouttolerantie maakt dit hen bijzonder geschikt voor omgevingen waar systeemuitval grote financiële of maatschappelijke gevolgen kan hebben.
 
 Naast mainframes bestaan er andere platformen voor het uitvoeren van toepassingen en het opslaan van gegevens, zoals Linux- en Windows-servers. Hoewel deze systemen flexibel en breed inzetbaar zijn, verschillen zij fundamenteel van mainframes op het vlak van architectuur, geïntegreerde betrouwbaarheid en schaalbaarheid. Waar klassieke servers vaak afhankelijk zijn van clustering en externe virtualisatietechnologieën om vergelijkbare redundantie te realiseren, zijn deze eigenschappen inherent ingebouwd in mainframe-architecturen.
 \subsection{\IfLanguageName{dutch}{Waarom IBM Mainframes of z/OS}{Why IBM Mainframes or z/OS}}
 \label{sec:waarom-ibm-mainframe-of-zos}
-Binnen de huidige mainframemarkt wordt het overgrote deel van de mainframes geleverd door IBM, dat meer dan 90\% van het wereldwijde marktaandeel in handen heeft~\autocite{MarketReportsWorld2026}. Daarnaast vertegenwoordigen IBM Z-systemen ongeveer 63,25\% van de wereldwijde mainframemarkt in 2025~\autocite{MordorIntelligence2026}. 
+Binnen de huidige mainframemarkt wordt het overgrote deel van de mainframes geleverd door IBM, dat meer dan 90\% van het wereldwijde marktaandeel in handen heeft~\autocite{MarketReportsWorld2026}. Daarnaast vertegenwoordigen IBM Z-systemen ongeveer 63,25\% van de wereldwijde mainframemarkt in 2025~\autocite{MordorIntelligence2026}. Dit onderbouwt de keuze om z/OS als focusplatform te nemen, aangezien IBM Z het dominante commerciële mainframe-ecosysteem vormt.
 
-Het meest gebruikte besturingssysteem binnen IBM-mainframes is z/OS. Aangezien IBM de marktleider is binnen de mainframemarkt en z/OS gedurende meerdere decennia de standaard heeft gevormd voor IBM Z-omgevingen, is dit platform het meest relevant om te bestuderen in het kader van deze bachelorproef. Alternatieve mainframesystemen, zoals het stack-gebaseerde besturingssysteem MCP van Unisys, hebben een beperkter marktaandeel en een kleinere aanwezigheid in hedendaagse enterprise-omgevingen.
+Alternatieve mainframesystemen, zoals het stack-gebaseerde besturingssysteem MCP van Unisys, hebben een beperkter marktaandeel en een kleinere aanwezigheid in hedendaagse enterprise-omgevingen.
 
 \subsection{\IfLanguageName{dutch}{Hardware-onderscheid}{Hardware difference}}
 \label{sec:hardware-onderscheid}
@@ -43,70 +43,26 @@ Linux- en Windows-servers daarentegen zijn doorgaans opgebouwd uit standaard har
 \label{sec:virtualisatie-en-resourcebeheer}
 Mainframes bieden geavanceerde virtualisatiemogelijkheden, waardoor één fysiek systeem kan worden opgedeeld in meerdere logische partities (LPARs). Deze partities worden beheerd door de ingebouwde hypervisor PR/SM (Processor Resource/System Manager), die zorgt voor een strikte isolatie tussen omgevingen. Elke LPAR kan een eigen besturingssysteem draaien, zoals z/OS, z/VM of Linux on Z, en beschikt over toegewezen resources zoals CPU, geheugen en I/O-capaciteit.\autocite{IBMIntroLPAR}
 
-Een belangrijk kenmerk van deze architectuur is de mogelijkheid tot dynamische resource-allocatie. Resources kunnen tijdens runtime worden aangepast zonder het systeem te herstarten, wat bijdraagt aan flexibiliteit en hoge beschikbaarheid. Daarnaast maakt Workload Management (WLM) het mogelijk om prioriteiten toe te kennen aan verschillende workloads, zodat kritieke transacties voorrang krijgen bij piekbelasting.\autocite{IBMWhatisWLM}
+Een belangrijk kenmerk van deze architectuur is de mogelijkheid tot dynamische resource-allocatie. Resources kunnen tijdens runtime worden aangepast zonder het systeem te herstarten, wat bijdraagt aan flexibiliteit en hoge beschikbaarheid. Daarnaast maakt Workload Management (WLM) het mogelijk om prioriteiten toe te kennen aan verschillende workloads, zodat kritieke transacties voorrang krijgen bij piekbelasting.\autocite{IBM_zOS_Concepts}
 
 Deze combinatie van virtualisatie, isolatie en intelligent resourcebeheer stelt organisaties in staat om meerdere bedrijfskritische toepassingen efficiënt en veilig op één fysiek platform te consolideren, zonder in te boeten aan stabiliteit of prestaties.
 
-\section{\IfLanguageName{dutch}{Soorten besturingsystemen in IBM mainframes}{Types of operating systems in IBM mainframes}}
+\subsection{\IfLanguageName{dutch}{Soorten besturingsystemen in IBM mainframes}{Types of operating systems in IBM mainframes}}
 \label{sec:soorten-besturingsystemen-in-ibm-mainframe}
-Hieronder vindt u een overzicht van de verschillende besturingssystemen die op IBM-mainframes kunnen draaien en eventueel in een logische partitie (LPAR) worden geïnstalleerd. Elk van deze besturingssystemen heeft zijn eigen kenmerken, toepassingen.
-\subsection{\IfLanguageName{dutch}{z/OS}{z/OS}}
-\label{sec:zos-besturingssysteem}
-z/OS is een 64-bits mainframebesturingssysteem dat programmabeheerdiensten biedt voor het aanmaken, laden, wijzigen, bekijken, lezen en kopiëren van uitvoerbare programma’s. \autocite{IBMRedbook_ABCzOS} 
-
-Het is ontworpen voor een stabiele, veilige, continu beschikbare en schaalbare uitvoering van bedrijfskritische toepassingen. Doorheen decennia evolueerde het van een systeem dat slechts één programma tegelijk kon verwerken naar een omgeving die duizenden programma’s en interactieve gebruikers gelijktijdig ondersteunt, waarbij efficiënte taakverdeling wachttijden minimaliseert en de CPU optimaal benut wordt. \autocite{IBMRedbook_zOSBasics}
-
-z/OS functioneert als een share-everything runtime-omgeving met sterke virtualisatie, waardoor hardwarebronnen efficiënt gedeeld worden. Het systeem bevat optimalisatiefuncties voor specifieke workloads, zoals datawarehousing en business intelligence, en maakt volledig gebruik van moderne mainframehardware. Het draait in het processorgeheugen en beheert onder meer CPU’s, DASD-schijven, tapedrives en consoles, waarbij hoge I/O-bandbreedte, ingebouwde redundantie en dynamische capaciteitsvoorziening worden ondersteund. \autocite{IBMRedbook_zOSBasics} 
-
-Als opvolger van OS/360, MVS en OS/390 combineert z/OS klassieke mainframefunctionaliteit met moderne netwerk-, cloud- en encryptiemogelijkheden en blijft het een centraal platform binnen hedendaagse enterprise-omgevingen. \autocite{IBMzOSOverview}
-
-
-\subsection{\IfLanguageName{dutch}{z/VM}{z/VM}}
-\label{sec:zvm-besturingssysteem}
-z/VM is een besturingssysteem voor IBM-mainframes dat bestaat uit twee hoofdcomponenten: het Control Program (CP) en het Conversational Monitor System (CMS). \autocite{IBMRedbook_zOSBasics}
-
-Het Control Program fungeert als een hypervisor. Dit betekent dat het meerdere virtuele machines (VM’s) aanmaakt op basis van de fysieke hardware. Binnen deze virtuele machines kunnen verschillende besturingssystemen als guest draaien, zoals z/OS, Linux on System z, z/VSE en z/TPF. Het is mogelijk om meerdere en verschillende gastbesturingssystemen gelijktijdig te combineren op één fysieke machine.\autocite{IBMRedbook_zOSBasics}
-
-Het CP verdeelt en beheert de fysieke hardwarebronnen, zoals CPU, schijfopslag en printers, zodat elke virtuele machine lijkt te beschikken over eigen, toegewijde middelen. Daarbij wordt gezorgd voor isolatie en beveiliging tussen de verschillende gasten. Hardware kan gedeeld worden tussen meerdere virtuele machines of exclusief worden toegewezen aan één virtuele machine voor betere prestaties.\autocite{IBMRedbook_zOSBasics}
-
-Door deze virtualisatielaag kunnen organisaties efficiënter gebruikmaken van hun hardware, waardoor vaak geen uitbreiding naar grotere fysieke systemen nodig is.
-\subsection{\IfLanguageName{dutch}{z/TPF}{z/TPF}}
-\label{sec:ztpf-besturingssysteem}
-z/TPF (z/Transaction Processing Facility) is een gespecialiseerd besturingssysteem dat ontworpen is voor omgevingen met extreem hoge transactiesnelheden, zoals in de luchtvaartsector, kredietkaartverwerking en grootschalige detailhandel. In tegenstelling tot algemene mainframebesturingssystemen zoals z/OS, is z/TPF volledig geoptimaliseerd voor realtime transactieverwerking met minimale responstijd. \autocite{IBMRedbook_zOSBasics}
-
-Het systeem vindt zijn oorsprong in het Airline Control Program (ACP), dat specifiek werd ontwikkeld voor luchtvaartreserveringssystemen. Doorheen de jaren werd het platform verder uitgebreid naar andere sectoren waar continue beschikbaarheid en hoge verwerkingscapaciteit cruciaal zijn. \autocite{IBMRedbook_zOSBasics}
-
-z/TPF ondersteunt geen traditionele relationele databases zoals Db2 of IMS DB. In plaats daarvan maakt het gebruik van z/TPFDF (z/TPF Database Facility), een geïntegreerde databankfaciliteit die geoptimaliseerd is voor snelle, directe toegang tot grote hoeveelheden transactionele gegevens. Deze architectuur draagt bij aan de zeer lage latency en hoge performantie van het systeem. \autocite{ibm_ztpf_2026}
-
-Daarnaast kan z/TPF functioneren in een los gekoppelde configuratie waarbij meerdere mainframes samenwerken. Hierdoor kunnen routinematig tienduizenden transacties per seconde worden verwerkt, met een beschikbaarheid die vaak in jaren zonder ongeplande onderbreking wordt gemeten. Het systeem wordt doorgaans gebruikt in combinatie met uitgebreide terminal- en netwerkstructuren, waaronder gespecialiseerde protocollen binnen de reserveringsindustrie. \autocite{IBMRedbook_zOSBasics}
-
-\subsection{\IfLanguageName{dutch}{Linux on Z}{Linux on Z}}
-\label{sec:linux-on-z-besturingssysteem}
-Op IBM-mainframes kunnen verschillende (niet-IBM) Linuxdistributies draaien. Er wordt onderscheid gemaakt tussen:
+Hieronder vindt u een overzicht van de verschillende besturingssystemen die op IBM-mainframes kunnen draaien en eventueel in een logische partitie (LPAR) worden geïnstalleerd/gedraaid. Elk van deze besturingssystemen heeft zijn eigen kenmerken, toepassingen.
 \begin{itemize}
-    \item Linux on System z: gebruikt 64-bit adressering en 64-bit registers.
-    \item Linux on S/390: gebruikt 31-bit adressering en 32-bit registers.
+	\item \textbf{z/OS:} Het belangrijkste enterprise-besturingssysteem van IBM Z voor bedrijfskritische workloads, met sterke focus op beschikbaarheid, beveiliging en grootschalige batch- en transactieverwerking \autocite{IBMRedbook_ABCzOS,IBMRedbook_zOSBasics,IBMzOSOverview}.
+	
+	\item \textbf{z/VM:} IBM’s virtualisatieplatform (hypervisor) dat meerdere virtuele machines op één mainframe mogelijk maakt en vaak wordt gebruikt om z/OS en Linux omgevingen te consolideren \autocite{IBMRedbook_zOSBasics}.
+	
+	\item \textbf{z/TPF:} Een gespecialiseerd besturingssysteem voor extreem hoge transactiesnelheden en lage latency, typisch in sectoren zoals luchtvaart en betalingsverkeer \autocite{IBMRedbook_zOSBasics,ibm_ztpf_2026}.
+	
+	\item \textbf{Linux on Z:} Linuxdistributies die draaien op IBM Z-hardware, vaak ingezet voor moderne middleware, microservices en integratie met open-source ecosystemen \autocite{IBMRedbook_zOSBasics}.
+	
+	\item \textbf{z/VSE:} Een eenvoudiger mainframebesturingssysteem dat vooral gebruikt wordt in kleinere omgevingen, met ondersteuning voor batch- en transactionele workloads \autocite{IBMRedbook_zOSBasics}.
+	
+	\item \textbf{KVM:} Een open-source virtualisatielaag voor Linux workloads op IBM Z en LinuxONE, als alternatief voor z/VM in specifieke scenario’s \autocite{ibm_kvm_ibmz_linuxone}.
 \end{itemize}
-De term Linux on System z wordt vaak algemeen gebruikt wanneer het onderscheid tussen 31-bit en 64-bit niet relevant is. \autocite{IBMRedbook_zOSBasics}
-
-Voor mainframegebruik zijn enkele specifieke kenmerken van belang:
-\begin{itemize}
-    \item Opslag: Linux maakt gebruik van traditionele CKD-schijven en SAN-gekoppelde SCSI-apparaten. Andere mainframebesturingssystemen kunnen deze schijven herkennen, maar de dataformaten niet delen. Er is dus geen rechtstreekse gegevensuitwisseling via dezelfde schijf. \autocite{IBMRedbook_zOSBasics}
-    \item Terminalgebruik: In tegenstelling tot andere mainframe-OS’en gebruikt Linux geen 3270-terminals. Het werkt met X Window System-gebaseerde terminals of emulators op pc’s en ondersteunt ook ASCII-terminals via bijvoorbeeld Telnet. Het X Window System vormt de standaard grafische interface binnen Linux. \autocite{IBMRedbook_zOSBasics}
-    \item Virtualisatie met z/VM: Linux-systemen die onder z/VM draaien, kunnen eenvoudig gekloond worden tot aparte Linux-omgevingen. Via een door z/VM geëmuleerd LAN kunnen meerdere Linux-images met elkaar en met externe netwerken worden verbonden. Bepaalde read-only bestandssystemen (zoals /usr) kunnen tussen meerdere Linux-instances gedeeld worden. \autocite{IBMRedbook_zOSBasics}
-    \item Tekencodering: Linux op een mainframe gebruikt de ASCII-tekenset in plaats van de typisch mainframe-gebaseerde EBCDIC-codering. Enkel bij communicatie met karaktergevoelige apparaten (zoals schermen en printers) wordt EBCDIC gebruikt, waarbij Linux-drivers instaan voor de automatische conversie. \autocite{IBMRedbook_zOSBasics}
-\end{itemize}
-
-\subsection{\IfLanguageName{dutch}{z/VSE}{z/VSE}}
-\label{sec:zvse-besturingssysteem}
-z/VSE (z/Virtual Storage Extended) is een mainframe-besturingssysteem dat vooral populair is bij organisaties met kleinere IBM-mainframes. Wanneer hun verwerkingsbehoeften toenemen, migreren sommige gebruikers later naar z/OS. \autocite{IBMRedbook_zOSBasics}
-
-In vergelijking met z/OS is z/VSE eenvoudiger en minder complex. Het is geoptimaliseerd voor batchverwerking (meerdere gelijktijdige batchjobs) en traditionele transactieverwerking in productieomgevingen. Veel z/VSE-gebruikers combineren het systeem met z/VM, dat wordt ingezet voor terminaltoegang, applicatieontwikkeling en systeembeheer.\autocite{IBMRedbook_zOSBasics}
-
-Historisch gezien begon z/VSE als DOS (Disk Operating System) voor de System/360-mainframes. Hoewel DOS oorspronkelijk bedoeld was als tijdelijke oplossing tot OS/360 beschikbaar was, bleef het populair vanwege zijn eenvoud en beperkte omvang. Doorheen de jaren evolueerde het via DOS/VS, VSE/SP en VSE/ESA naar de huidige naam z/VSE. De term VSE wordt vaak gebruikt als verzamelnaam voor deze latere versies.\autocite{IBMRedbook_zOSBasics}
-\subsection{\IfLanguageName{dutch}{KVM}{KVM}}
-\label{sec:kvm-besturingssysteem}
-KVM (Kernel-based Virtual Machine) is een open source alternatief voor de IBM z/VM hypervisor voor de virtulisatie van Linux workloads op IBM Z en IBM LinuxONE systemen. \autocite{ibm_kvm_ibmz_linuxone}
 
 \section{\IfLanguageName{dutch}{Welke sectoren gebruiken mainframes?}{Which sectors use mainframes?}}
 \label{sec:welke-sectoren-gebruiken-mainframes}
@@ -125,27 +81,19 @@ Mainframes worden voornamelijk ingezet in sectoren waar betrouwbaarheid, schaalb
 
 \end{itemize}
 
-\section{\IfLanguageName{dutch}{Kenmerken van mainframes}{Characteristics of mainframes}}
+\subsection{\IfLanguageName{dutch}{Kenmerken van mainframes}{Characteristics of mainframes}}
 \label{sec:kenmerken-van-mainframe}
-Alhoewel bestaan er alternatieven voor mainframes, zoals Linux- en Windows-servers, onderscheiden mainframes zich door hun unieke kenmerken die hen bijzonder geschikt maken voor bedrijfskritische toepassingen.
+Alhoewel er alternatieven voor mainframes bestaan, zoals Linux- en Windows-servers, onderscheiden mainframes zich door hun unieke kenmerken die hen bijzonder geschikt maken voor bedrijfskritische toepassingen.
 
 Uit het onderzoek van \textcite{candido2024_mainframe_cloud} blijven mainframes relevant en vaak zelfs voordeliger voor bedrijfskritische, transactionele workloads, terwijl cloud computing superieur is voor elastische, schaalbare en moderne applicaties. Beide hebben hun plaats binnen hedendaagse IT-infrastructuren.
-
-Hieronder vindt u de belangrijkste kenmerken van mainframes.
 
 \subsection{\IfLanguageName{dutch}{Beschikbaarheid en uptime}{Availability and uptime of mainframes}}
 \label{sec:beschikbaarheid-en-uptime}
 Mainframes zijn ontworpen om 24/7 te draaien zonder noemenswaardige onderbrekingen. De IBM Z-mainframefamilie heeft een uptime van 99,999997\%, wat betekent dat bedrijven die afhankelijk zijn van mainframes zelden tot nooit te maken hebben metsysteemuitval \autocite{IBMMainframe}.
 
-Door het gebruik van concepten en technologieen zoals Parallel Sysplex kan deze beschikbaarheid verder worden verhoogd. Hierbij werken meerdere systemen samen als één logisch geheel, waardoor workloads automatisch kunnen worden overgenomen bij uitval van een component. Dit beperkt het risico op onderbrekingen tot een minimum.
+Door het gebruik van concepten en technologieën zoals Parallel Sysplex kan deze beschikbaarheid verder worden verhoogd. Hierbij werken meerdere systemen samen als één logisch geheel, waardoor workloads automatisch kunnen worden overgenomen bij uitval van een component. Dit beperkt het risico op onderbrekingen tot een minimum. (zie Sectie 2.3.4)
 
-Dit niveau van betrouwbaarheid is essentieel voor bedrijfskritieke operaties, zoals het verwerken van financiële transacties of het beheren van luchtvaartreserveringen
-
-\subsection{\IfLanguageName{dutch}{Beveiligingsfuncties}{Security of mainframes}}
-\label{sec:beveiliging}
-Mainframes zijn uitgerust met geavanceerde beveiligingsfuncties, zoals quantumsafeencryptie, dieervoorzorgendatgegevensveiligblijven,zelfs in het tijdperk van quantum computing \autocite{IBMMainframe}. 
-
-Bovendien staan compliance en beveiliging al vijf jaar op rij bovenaan de lijst van prioriteiten voor mainframe-gebruikers \autocite{BMC2024}.
+Dit niveau van betrouwbaarheid is essentieel voor bedrijfskritieke operaties, zoals het verwerken van financiële transacties of het beheren van luchtvaartreserveringen.
 
 \subsection{\IfLanguageName{dutch}{Verwerkingskracht}{Processing power of mainframes}}
 \label{sec:verwerkingskracht}
@@ -153,7 +101,7 @@ Mainframes zijn uitgerust met krachtige CPU-architecturen, zoals de S/390x, die 
 
 Dit stelt mainframes in staat om immense workloads aan te kunnen zonder prestatie verlies. 
 
-Bovendien kunnen mainframes honderden virtuele machines parallellaten draaien, wat zorgt voor een flexibele en efficiënte inzet van IT-middelen
+Bovendien kunnen mainframes honderden virtuele machines parallellaten draaien, wat zorgt voor een flexibele en efficiënte inzet van IT-middelen.
 
 \subsection{\IfLanguageName{dutch}{AI-capaciteit}{AI capacity of mainframes}}
 \label{sec:ai-capaciteit}
@@ -161,146 +109,130 @@ Moderne mainframes zijn uitgerust met ingebouwde AI-chips, waardoor AI-modellen 
 
 Dit maakt mainframes ideaal voor het uitvoeren van complexe AI-workloads, zoals risicoanalyse en fraudedetectie.
 
+\subsection{\IfLanguageName{dutch}{Beveiliging}{Security and military context}}
+\label{sec:beveiliging-militaire-context}
+Mainframes zijn uitgerust met geavanceerde beveiligingsfuncties, zoals quantum-safe encryptie, die ervoor zorgen dat gegevens veilig blijven,zelfs in het tijdperk van quantum computing \autocite{IBMMainframe}. 
 
+Bovendien staan compliance en beveiliging al vijf jaar op rij bovenaan de lijst van prioriteiten voor mainframe-gebruikers \autocite{BMC2024}.
 
-\section{\IfLanguageName{dutch}{Rol van z/OS in mainframes}{Role of z/OS in mainframes}}
-\label{sec:role-van-zos-in-mainframes}
-z/OS vormt het centrale besturingssysteem van IBM Z-mainframes en fungeert als het operationele hart van de mainframeomgeving. Het beheert de hardwarebronnen zoals CPU, geheugen, opslag (DASD) en I/O-apparaten, en coördineert de gelijktijdige uitvoering van duizenden programma’s en gebruikerssessies.
+In omgevingen waar nationale veiligheid en defensie centraal staan, zijn vertrouwelijkheid, integriteit en beschikbaarheid van gegevens van strategisch belang. Overheids- en defensieorganisaties verwerken grote hoeveelheden gevoelige of geclassificeerde informatie, waarbij strikte toegangscontrole en traceerbaarheid essentieel zijn. Mainframes worden in dergelijke contexten ingezet vanwege hun sterke isolatie tussen workloads, gecentraliseerde beveiligingsarchitectuur en ondersteuning voor geavanceerde encryptietechnologieën. \autocite{IBM_zOS_Security}
 
-\subsection{\IfLanguageName{dutch}{Wat is de verschil tussen system administrator en system programmer}{What is the role of a system administrator in a z/OS context}}
-\label{sec:verschil-sysadmin-sysprog}
-Binnen een z/OS-omgeving varieert het onderscheid tussen een system programmer en een system administrator afhankelijk van de grootte en structuur van de organisatie. In kleinere IT-omgevingen kunnen beide rollen door één persoon worden uitgevoerd. In grotere organisaties worden de verantwoordelijkheden doorgaans gescheiden omwille van efficiëntie en auditvereisten. \autocite{IBM_z/OS_SA}
-
-\subsection{\IfLanguageName{dutch}{Wat zijn de taken van een system administrator}{What is the role of a system administrator in a z/OS context}}
-\label{sec:rol-van-een-system-administrator-in-zos-context}
-De system administrator is in hoofdzaak verantwoordelijk voor het dagelijkse operationele beheer van de mainframeomgeving vanuit een bedrijfsgericht perspectief. Waar de system programmer zich richt op het onderhoud van het besturingssysteem en de onderliggende infrastructuur, concentreert de system administrator zich op het beheer van bedrijfskritische data, applicaties en toegangscontrole. \autocite{IBM_z/OS_SA}
-
-Volgens \autocite{IBM_z/OS_SA} typische taken van een system administrator omvatten:
-
-\begin{itemize}
-\item Installeren en configureren van softwarecomponenten
-\item Beheren van gebruikersaccounts en gebruikersprofielen
-\item Onderhouden van beveiligings- en toegangsrechten
-\item Beheren van opslagmiddelen, printers en randapparatuur
-\item Beheren van netwerkconnectiviteit
-\item Monitoren van systeemprestaties en beschikbaarheid
-\end{itemize}
-
-Daarnaast werkt de system administrator nauw samen met applicatieontwikkelaars en eindgebruikers om te verzekeren dat toepassingen correct functioneren binnen de operationele omgeving. In grotere organisaties kunnen gespecialiseerde rollen bestaan, zoals database administrators (DBA’s) of security administrators, die specifieke onderdelen van het beheer uitvoeren. \autocite{IBM_z/OS_SA}
-
-Bij complexe technische problemen of foutanalyse kan de system administrator beroep doen op de ondersteuning van softwareleveranciers, tenzij deze taken expliciet onder de verantwoordelijkheid van de system programmer vallen. Door deze scheiding van verantwoordelijkheden wordt het principe van functiescheiding ondersteund, wat belangrijk is binnen audit- en compliancekaders. \autocite{IBM_z/OS_SA}
-
-\subsection{\IfLanguageName{dutch}{De verschil van Level 1 en Level 2 taken in system administrator context}{The difference between level 1 and level 2 in system administrator context}}
-\label{sec:vershil-level1-level-2-sysadmin}
-De verschillen tussen Level 1 en Level 2 worden geanalyseerd op basis van bestaande competentiekaders, waaronder het Competency Framework for z/OS System Administrators (Level 1 & Level 2) van IBM, input van co-promotor J.E. Kok en H. Hartman, evenals het gebruikte lesmateriaal tijdens de lessen van mijn opleiding.
-
-De verschillen in taken, verantwoordelijkheden en vereiste competenties tussen beide niveaus zullen verder verduidelijkt en overzichtelijk voorgesteld in de Proof-of-Concept (PoC) website.
-
-\section{\IfLanguageName{dutch}{Kenmerken van z/OS architectuur}{Characteristics of z/OS architecture}}
+\section{\IfLanguageName{dutch}{Eigenschappen van z/OS architectuur}{Characteristics of z/OS architecture}}
 \label{sec:kenmerken-van-zos-architectuur}
-In de volgende hoofdstukken wordt er eigenschappen over z/OS architectuur, interactie met z/OS en subsystemen van z/OS besproken. Deze onderwerpen zullen behandeld worden in de proof of concept website met praktische oefeningen.
-
+Deze sectie beschrijft sommige z/OS-concepten die nodig zijn om z/OS omgeving en taken van system administrators te begrijpen.
 \subsection{\IfLanguageName{dutch}{Datasets}{Datasets on z/OS}}
 \label{sec:datasets-op-zos}
-Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe equivalent is van bestanden. Een data set bestaat uit één of meerdere records, waarbij een record de basisinformatie eenheid vormt voor programma’s.
-
+Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe equivalent is van bestanden. Een data set bestaat uit records (vaste of variabele records) die door programma’s worden verwerkt. Datasets worden doorgaans aangesproken via hun datasetnaam (DSN); wanneer ze cataloged zijn, kan het systeem hun fysieke locatie automatisch terugvinden via de catalogus.
+z/OS ondersteunt meerdere datasettypes naargelang de access method en het gebruik:
 \begin{itemize}
-    \item \textbf{Record}: een vaste hoeveelheid bytes die als één geheel wordt verwerkt.
-    \item \textbf{Field}: een specifiek deel van een record dat een bepaalde categorie gegevens bevat.
-    \item \textbf{Cataloged data set}: een data set die via naam kan worden opgeroepen zonder fysieke locatie te vermelden.
+	\item \textbf{Sequential (PS):} records worden sequentieel opgeslagen en gelezen; typisch voor batchverwerking.
+	\item \textbf{Partitioned (PDS/PDSE):} bibliotheekstructuur met members; vaak gebruikt voor programmabibliotheken en procedurelibraries.
+	\item \textbf{VSAM:} geoptimaliseerd voor efficiënte toegang; o.a. KSDS (key-based), ESDS (sequentieel), RRDS (relatief recordnummer) en LDS (byte-stream).
 \end{itemize}
 
-z/OS ondersteunt verschillende types data sets, afhankelijk van de manier waarop gegevens worden opgeslagen en geraadpleegd. 
+Data sets worden doorgaans opgeslagen op DASD-schijven of tape en worden beheerd via specifieke access methods die bepalen hoe data fysiek wordt opgeslagen en opgehaald. \autocite{IBM_zOS_Concepts}
 
-\textbf{Sequential data sets} slaan records opeenvolgend op en zijn geschikt voor seriële verwerking.
-
-\textbf{Partitioned Data Sets (PDS)} bestaan uit een directory met afzonderlijke members en worden vaak gebruikt als programmabibliotheken. 
-
-\textbf{VSAM-datasets} zijn met vier types en altijd met variabele recordlengte (VB);
-\begin{itemize}
-	\item \textbf{KSDS (Key Sequenced Data Set):} De records hebben een sleutel.
-	\item \textbf{ESDS (Entry Sequenced Data Set):} De records worden sequentieel opgeslagen.
-	\item \textbf{RRDS (Relative Record Data Set):} De records worden benaderd via recordnummer (record 1,2,3...).
-	\item \textbf{LDS (Linear Data Set):}De dataset wordt opgeslagen als byte-stream. 
-\end{itemize}
-
-Data sets worden doorgaans opgeslagen op \textbf{DASD-schijven of tape} en worden beheerd via specifieke access methods die bepalen hoe data fysiek wordt opgeslagen en opgehaald. \autocite{IBM_z/OS_datasets}
-
-\subsection{\IfLanguageName{dutch}{EBCDIC op z/OS}{EBCDIC on z/OS}}
+\subsection{\IfLanguageName{dutch}{EBCDIC tekencodering}{EBCDIC on z/OS}}
 \label{sec:ebcdic-op-zos}
-Het Extended Binary Coded Decimal Interchange Code (EBCDIC) is de standaard tekencodering die wordt gebruikt in z/OS-datasets. EBCDIC werd ontwikkeld vóór de brede adoptie van ASCII en vormt nog steeds de basis voor de karakterrepresentatie binnen traditionele mainframeomgevingen. Hoewel de meeste moderne systemen gebruikmaken van ASCII, blijven klassieke z/OS-datasets standaard in EBCDIC gecodeerd. Een uitzondering hierop vormen z/OS UNIX-bestanden, die doorgaans ASCII gebruiken. \autocite{IBM_z/OS_EBCDIC}
 
-Zowel ASCII als EBCDIC zijn 8-bit tekensets, maar ze verschillen in de binaire toewijzing van karakters. Dit heeft gevolgen voor sorteeroperaties en tekstverwerking, aangezien beide tekensets een verschillende collating sequence (sorteervolgorde) hanteren. Zo zijn numerieke tekens in ASCII kleiner dan alfabetische tekens, terwijl dit in EBCDIC omgekeerd is. Daarnaast zijn letters in ASCII aaneengesloten in hun binaire volgorde, terwijl er in EBCDIC hiaten bestaan tussen bepaalde letters. Deze verschillen maken correcte conversie tussen beide systemen essentieel bij gegevensuitwisseling. \autocite{IBM_z/OS_EBCDIC}
+EBCDIC (Extended Binary Coded Decimal Interchange Code) is de traditionele tekencodering binnen z/OS-datasets. In tegenstelling tot de wereldwijd dominante ASCII-standaard gebruiken klassieke mainframeomgevingen EBCDIC voor de representatie van karakters. Beide zijn 8-bit tekensets, maar verschillen in binaire toewijzing en sorteervolgorde, wat impact heeft op tekstverwerking en gegevensuitwisseling. Bij communicatie tussen ASCII- en EBCDIC-gebaseerde systemen is correcte conversie essentieel; bij binaire overdracht moet expliciet een binaire transfer worden gekozen om ongewenste karakterconversie te vermijden. \autocite{IBM_zOS_Concepts}
 
-Bij gegevensoverdracht tussen ASCII-gebaseerde systemen en EBCDIC-gebaseerde systemen wordt conversie meestal automatisch uitgevoerd, bijvoorbeeld bij terminalemulatie. Bij het overbrengen van programma’s of binaire bestanden moet echter expliciet een binaire transfer worden gekozen om ongewenste karakterconversie te vermijden. Sommige speciale tekens, zoals het logische NOT-symbool of bepaalde programmeersymbolen, hebben geen directe equivalent in de andere tekenset, wat extra aandacht vereist bij conversie. Ondanks de dominantie van ASCII in moderne omgevingen blijft EBCDIC relevant vanwege de grote hoeveelheid bestaande data en applicaties die ervan afhankelijk zijn binnen mainframearchitecturen. \autocite{IBM_z/OS_EBCDIC}
-
-\subsection{\IfLanguageName{dutch}{Adress spaces en virtual storage}{Adress spaces}}
+\subsection{\IfLanguageName{dutch}{Address spaces en virtual storage}{Address spaces}}
 \label{sec:adress-spaces}
-Een address space in z/OS is het bereik van virtuele adressen dat het besturingssysteem toewijst aan een gebruiker of een afzonderlijk draaiend programma. Dit bereik start bij adres nul en loopt tot de maximale grens die door de architectuur wordt toegelaten. Elke gebruiker of job krijgt een eigen, unieke address space, waardoor programma’s en data strikt van elkaar gescheiden blijven. Binnen één address space kunnen meerdere taken gelijktijdig uitgevoerd worden via Task Control Blocks (TCB’s), wat multiprogramming mogelijk maakt. Door gebruik te maken van virtuele adressering kan z/OS meer geheugen aanspreken dan fysiek aanwezig is, terwijl fouten doorgaans beperkt blijven tot één address space. Deze isolatie verhoogt zowel de betrouwbaarheid als de beveiliging van het systeem. \autocite{MainframeAdressSpaces}
 
-Hoewel address spaces van elkaar gescheiden zijn, voorziet z/OS mechanismen voor communicatie tussen verschillende address spaces. Dit kan asynchroon via een Service Request Block (SRB), waarmee een proces in een andere address space wordt gestart, of synchroon via cross-memory services, waarmee een programma rechtstreeks toegang krijgt tot een andere address space. Deze laatste methode vereist speciale autorisatie (APF) en biedt een efficiënte en veilige manier om data te delen tussen subsystemen zoals transactiemanagers of databases. Dankzij deze combinatie van isolatie en gecontroleerde communicatie kan z/OS zowel veiligheid als hoge performantie garanderen in een multi-useromgeving.\autocite{MainframeAdressSpaces}
+z/OS maakt gebruik van virtual storage, waarbij enkel actieve delen van een address space in het centrale geheugen worden geladen en inactieve delen tijdelijk op schijf worden geplaatst. Dankzij 64-bit adressering kan het systeem een zeer grote hoeveelheid virtueel geheugen aanspreken, aanzienlijk meer dan fysiek aanwezig is. \autocite{IBM_zOS_Concepts}
 
-\paragraph{Virtual storage}
-In z/OS is virtual storage een manier op meer ruimte aan te bieden ondanks het feit dat de fysieke ruimte niet dat groot is.
-Elke gebruiker in z/OS krijgt zijn eigen address space. Elke address space heeft dezelfde addresrange. Alleen actieve delen worden in centrale geheugen (RAM) geladen en de inactieve delen worden opgeslagen in auxiliary storage (schijf).
+Een address space in z/OS is het bereik van virtuele adressen dat aan een gebruiker, job of subsystem wordt toegewezen. Elke address space is logisch geïsoleerd, waardoor programma’s en data van elkaar gescheiden blijven. Binnen één address space kunnen meerdere taken gelijktijdig worden uitgevoerd, wat multiprogramming mogelijk maakt. Fouten blijven doorgaans beperkt tot de betrokken address space, wat de stabiliteit en beveiliging van het systeem verhoogt. \autocite{IBM_zOS_Concepts}
 
-De grottes bij virtuele storage van 64-bit zijn verdeeld over 4 categorieen:
-\begin{itemize}
-	\item Region Index (RX): 0 tot 32 bits 
-	\item Segment Index (SX): 33 tot 43 bits
-	\item Page Index (PX): 44 tot 51 bits
-	\item Byte Index (BX): 52 tot 63 bits
-\end{itemize}
-De Region Index is gesplitst in 3 delen.
-\begin{itemize}
-	\item Region First Index (RFX), van 0 tot 10 bits (inclusief)
-	\item Region Second Index (RSX), van 11 tot 21 bits
-	\item Region Third Index (RTX), van 22 tot 32
-In RFX, kan er worden 16 exabyte virtuele storage gemaakt, wat maximum is (64-bit). \autocite{IBM_z/OS_VirtuelStorage}
 
 \subsection{\IfLanguageName{dutch}{Parallel Sysplex}{Parallel Sysplex}}
 \label{sec:parallel-sysplex}
-IBM Parallel Sysplex is een geavanceerde clusteringtechnologie voor IBM z/OS mainframes waarmee meerdere z/OS-systemen samenwerken als één enkel, logisch platform. Het kan tot 32 z/OS-systemen koppelen, waardoor ze een uniforme omgeving vormen waarin workloads en resources gedeeld en dynamisch beheerd worden. \autocite{ibm_parallel_sysplex}
 
-Het voornaamste voordeel van een Parallel Sysplex is de extreem hoge beschikbaarheid en betrouwbaarheid van toepassingen tot 99,99999\% uptime door het wegnemen van single points of failure op server-, LPAR- of subsystemniveau. \autocite{ibm_parallel_sysplex}
-
-Een belangrijk onderdeel van Parallel Sysplex is de Coupling Facility (CF), een speciale hardware- of virtuele component die zorgt voor coherente, gedeelde toegang tot data tussen systemen zonder corruptie. Dit maakt gelijktijdig lezen en schrijven door meerdere systemen mogelijk en ondersteunt toepassingen zoals databases, message queues en workload balancing. \autocite{ibm_parallel_sysplex}
-Parallel Sysplex maakt het ook mogelijk om meerdere systemen te beheren als één enkele eenheid (single system image), wat centrale controle, workloadverdeling, schaalvergroting en eenvoudiger beheer van grote mainframe-omgevingen bevordert. \autocite{ibm_parallel_sysplex}
+IBM Parallel Sysplex is een clusteringtechnologie waarmee meerdere z/OS-systemen samenwerken als één logisch platform. Hierdoor kunnen workloads en resources gedeeld en dynamisch verdeeld worden, wat de schaalbaarheid en beschikbaarheid aanzienlijk verhoogt. \autocite{ibm_parallel_sysplex}
 
 \subsection{\IfLanguageName{dutch}{Coupling Facility}{Coupling Facility}}
 \label{sec:coupling-facility}
-Een Coupling Facility (CF) is een gespecialiseerd onderdeel van de IBM-mainframe Parallel Sysplex-architectuur dat gebruikt wordt om gegevens en statusinformatie tussen meerdere z/OS-systemen te delen zonder corruptie of inconsistentie. Het speelt een cruciale rol bij het realiseren van hoge beschikbaarheid, schaalbaarheid en prestaties in een Parallel Sysplex.
 
-De CF kan draaien als een aparte LPAR (Logical Partition) op een mainframe of als een externe hardware-eenheid, en is via speciale hoge-snelheidsverbindingen verbonden met de z/OS-systemen.
+De Coupling Facility (CF) is een kerncomponent binnen Parallel Sysplex die gedeelde data en statusinformatie tussen meerdere z/OS-systemen beheert. Ze maakt coherente en veilige gegevensuitwisseling mogelijk zonder inconsistentie of corruptie, wat essentieel is voor hoge beschikbaarheid en schaalbaarheid. \autocite{ibm_parallel_sysplex}
 
-Binnen de Coupling Facility wordt geheugen ingedeeld in objecten die “structuren” worden genoemd. Deze structuren bieden diensten zoals:
-\begin{itemize}
-    \item \textbf{Locking:} vergrendeling van gedeelde resources
-    \item \textbf{Caching:} snelle toegang tot gedeelde data
-    \item \textbf{List-processing:} bericht of wachtrijinformatie waardoor meerdere systemen tegelijkertijd en efficiënt kunnen samenwerken op gedeelde data.
-\end{itemize}
-De CF maakt het mogelijk dat toepassingen en subsystemen over verschillende z/OS-members heen coherente data delen en bewerken met lage latency. Dit ondersteunt dynamische workloadverdeling, resource-sharing en verbetert de overall prestaties en beschikbaarheid van de mainframe-omgeving. \autocite{ibm_parallel_sysplex}
+De CF kan als aparte LPAR of als externe hardware worden ingezet en biedt diensten zoals locking, caching en list-processing. Hierdoor kunnen subsystemen zoals databases en message queues efficiënt samenwerken over meerdere systemen heen.
 
 \subsection{\IfLanguageName{dutch}{Workload Manager (WLM)}{Workload Manager (WLM)}}
 \label{sec:workload-management}
-De Workload Manager (WLM) is een component van z/OS die meerdere workloads gelijktijdig kan beheren, zowel binnen één z/OS-image als over meerdere images. In goal mode verdeelt WLM automatisch systeemresources op basis van vooraf gedefinieerde doelstellingen, zonder dat handmatige tuning of commando’s nodig zijn. De kernel gebruikt WLM onder andere om nieuwe adresruimtes (address spaces) aan te maken voor child-processen. \autocite{ibm_zos_wlm}
 
-Wanneer een programma een fork() of spawn() uitvoert, wordt via de BPXAS-procedure (in SYS1.PROCLIB) een nieuwe address space gecreëerd. Bij een fork() wordt het bestaande proces (het parent-proces) gekopieerd naar een nieuw proces (het child-proces). Deze nieuwe address space wordt door WLM beheerd. \autocite{ibm_zos_wlm}
+De Workload Manager (WLM) is een kerncomponent van z/OS die systeemresources dynamisch verdeelt over verschillende workloads. In goal mode gebeurt deze verdeling automatisch op basis van vooraf gedefinieerde servicedoelstellingen, zoals responstijd en prioriteit. \autocite{ibm_zos_wlm}
 
-Bestaande MVS-address space types zoals TSO, STC, Batch en APPC kunnen gebruikmaken van z/OS UNIX-services. Wanneer zo’n address space voor het eerst de z/OS-kernel aanspreekt, wordt het proces als een z/OS UNIX-proces geïdentificeerd. Er bestaan twee soorten processen: 
+WLM ondersteunt zowel traditionele MVS-workloads (zoals batch en TSO) als z/OS UNIX-processen en draagt bij aan optimale performantie, resourcebenutting en stabiliteit binnen één systeem of over meerdere systemen in een sysplex. \autocite{ibm_zos_wlm}
+
+\subsection{\IfLanguageName{dutch}{TSO op z/OS}{TSO on z/OS}}
+\label{sec:tso-op-zos}
+
+TSO/E (Time Sharing Option/Extensions) biedt gebruikers een interactieve toegang tot z/OS via een commandogebaseerde sessie, in tegenstelling tot batchverwerking. Authenticatie gebeurt via RACF en elke gebruiker werkt binnen een eigen sessie. \autocite{IBM_zOS_Concepts}
+
+In de praktijk wordt TSO meestal gebruikt in combinatie met ISPF, een menu- en paneelgebaseerde interface die het beheer van datasets en programmabewerking vereenvoudigt. Toegang gebeurt via 3270-terminals of TN3270-emulators. \autocite{IBM_zOS_Concepts}
+
+\subsection{\IfLanguageName{dutch}{ISPF (Interactive System Productivity Facility)}{ISPF (Interactive System Productivity Facility)}}
+\label{sec:ispf}
+
+ISPF (Interactive System Productivity Facility) is een menu- en paneelgebaseerde werkomgeving bovenop TSO/E en vormt voor veel gebruikers de primaire interface binnen z/OS. Het biedt functionaliteiten zoals datasetbeheer, tekstbewerking en toegang tot diverse systeemutilities, waardoor interactief systeembeheer efficiënter verloopt. \autocite{IBM_zOS_Concepts}
+
+ISPF is hiërarchisch opgebouwd via een Primary Option Menu en kan per installatie worden aangepast. Hoewel traditioneel toetsenbordgestuurd via 3270-emulatie, bestaan er ook moderne GUI-clients. \autocite{IBM_zOS_Concepts}
+
+\subsection{\IfLanguageName{dutch}{z/OS UNIX System Services}{z/OS UNIX System Services}}
+\label{sec:z-os-unix-system-services}
+
+z/OS UNIX System Services (USS) biedt een POSIX-conforme UNIX-omgeving binnen z/OS. Het stelt gebruikers in staat om via een shell UNIX-commando’s uit te voeren, scripts te ontwikkelen en applicaties te starten, waardoor integratie met open systemen en moderne ontwikkelomgevingen mogelijk wordt. \autocite{IBM_zOS_Concepts}
+
+USS kan worden benaderd via 3270-emulatie, TCP/IP of vanuit TSO (OMVS) en vormt een brug tussen traditionele mainframeworkloads en UNIX-gebaseerde toepassingen.
+
+\subsection{\IfLanguageName{dutch}{Beveiliging in z/OS (RACF)}{Security in z/OS}}
+\label{sec:network-and-security}
+
+RACF (Resource Access Control Facility) is de centrale beveiligingscomponent van z/OS en beheert authenticatie en autorisatie van gebruikers en systeemresources. Op basis van beveiligingsprofielen bepaalt RACF welke gebruikers toegang krijgen tot datasets, applicaties en systeemfuncties. \autocite{IBM_zOS_Concepts}
+
+Het ondersteunt het principe van least privilege, logging van toegangsacties en beleidsregels rond wachtwoorden en accountbeheer. Subsystemen zoals CICS en Db2 integreren met RACF voor consistente toegangscontrole binnen de mainframeomgeving. \autocite{IBM_zOS_Concepts}
+
+\subsection{\IfLanguageName{dutch}{Job Control Language (JCL)}{Job Control Language (JCL)}}
+\label{sec:jcl}
+
+Job Control Language (JCL) is de taal waarmee gebruikers aan z/OS specificeren hoe een batchjob moet worden uitgevoerd. Via JCL wordt bepaald welk programma moet draaien, welke datasets als input of output worden gebruikt en hoe de uitvoer verwerkt moet worden. \autocite{IBM_zOS_Concepts}
+
+Een JCL-job bestaat hoofdzakelijk uit drie basisstatements: JOB, EXEC en DD. Het JOB-statement definieert de workload, EXEC start een programma of procedure, en DD (Data Definition) koppelt datasets of I/O-resources aan het programma. \autocite{IBM_zOS_Concepts}
+
+JCL wordt voornamelijk gebruikt voor batchverwerking en vormt een essentieel onderdeel van operationeel systeembeheer binnen z/OS-omgevingen.
+
+\subsection{\IfLanguageName{dutch}{REXX}{REXX on z/OS}}
+\label{sec:rexx-op-zos}
+
+REXX (Restructured Extended Executor) is een procedurele programmeertaal die op z/OS voornamelijk wordt gebruikt voor automatisering en scripting. De taal staat bekend om haar leesbaarheid en eenvoudige syntaxis en wordt meestal geïnterpreteerd uitgevoerd, hoewel compilatie mogelijk is om de performantie te verbeteren \autocite{IBM_zOS_Concepts}.
+
+Binnen z/OS wordt REXX vaak ingezet voor het uitvoeren van TSO/E-commando’s, het automatiseren van beheertaken, het aanroepen van andere programma’s en het ontwikkelen van ISPF-applicaties. Hierdoor vormt REXX een belangrijk hulpmiddel voor systeembeheerders bij operationele taken en procesautomatisering.
+
+\subsection{\IfLanguageName{dutch}{SMP/E}{SMP/E on z/OS}}
+\label{sec:smpe-op-zos}
+System Modification Program Extended (SMP/E) is de standaardtool binnen z/OS voor het installeren, onderhouden en beheren van softwareproducten. Daarnaast houdt SMP/E alle wijzigingen en updates aan deze software systematisch bij \autocite{IBM_zOS_Concepts}.
+
+\subsection{\IfLanguageName{dutch}{Subsystemen in z/OS}{Subsystems in z/OS}}
+\label{sec:fsubsystemen-in-zos}
+
+Deze zijn gespecialiseerde subsystemen in z/OS en een system administrator moet deze subsystemen weten en begrijpen. In deze bachelorproef gaat er minder aandacht besteed worden op deze subsystemen.
 \begin{itemize}
-    \item User processen (gekoppeld aan een gebruiker)
-    \item Daemon processen (achtergrondprocessen die systeemdiensten leveren, zoals webservers)
+	\item \textbf{CICS:} Customer Information Control System voor transactionele toepassingen
+	\item \textbf{IMS DB:} Information Management System voor databasebeheer
+	\item \textbf{IMS TM:} Information Management System voor transactiebeheer
+	\item \textbf{DB2:} relationele database
+	\item \textbf{MQ:} message queuing voor communicatie tussen applicaties
+	\item \textbf{IWS}: Integrated Workload Scheduler voor geavanceerde jobplanning en -beheer
 \end{itemize}
-Daemons worden meestal gestart bij het opstarten van het systeem en blijven actief om standaarddiensten te leveren (bijv. cron, inetd, rlogind). Indien een daemon stopt, kan deze opnieuw worden gestart via een operator, een systeemprogrammeur of automatiseringstools zoals Tivoli NetView. \autocite{ibm_zos_wlm}
+Deze subsystemen draaien binnen z/OS maar beheren elk hun eigen type workload (batch, transacties, databasebeheer).
 
-Tot slot kan een proces meerdere threads bevatten. Een thread is een afzonderlijke uitvoeringsstroom binnen een proces. Door meerdere threads te gebruiken kunnen applicaties parallel werken en systeemresources efficiënter benutten. \autocite{ibm_zos_wlm}
+
 
 \section{\IfLanguageName{dutch}{Interactie met z/OS}{Interacting with z/OS}}
 \label{sec:interactie-met-zos}
 z/OS biedt verschillende manieren waarop gebruikers en systeembeheerders met het systeem kunnen interageren.
 
-\paragraph{Traditionele interactiemethoden}
+\paragraph{Traditionele toegang}
 Historisch gezien gebeurde interactie met z/OS via fysieke 3270-terminals 
 die rechtstreeks verbonden waren met het mainframe. Gebruikers bevonden zich 
 in hetzelfde datacenter of maakten gebruik van dedicated netwerkverbindingen 
@@ -317,163 +249,321 @@ verbinding maken met het mainframe. Daarnaast ondersteunt z/OS via UNIX System S
 toegang via SSH. Voor developers wordt vaak gebruikgemaakt van IBM Developer for z/OS (IDz), 
 een Eclipse gebaseerde ontwikkelomgeving die integratie biedt met z/OS. 
 
-\paragraph{Moderne API en cloudintegratie}
+\paragraph{API’s en moderne integratie}
 Moderne z/OS-omgevingen ondersteunen steeds vaker API-gebaseerde interactie. 
 Via z/OS Management Facility (z/OSMF) worden RESTful services aangeboden 
 die programmatische toegang tot datasets, jobs en systeemfuncties mogelijk maken. 
 Dit maakt integratie met automatiseringstools en DevOps-pipelines mogelijk.
 
-\subsection{\IfLanguageName{dutch}{TSO (Time Sharing Option) op z/OS}{TSO on z/OS}}
-\label{sec:tso-op-zos}
-TSO/E (Time Sharing Option/Extensions) is een component van z/OS die gebruikers in staat stelt om een interactieve sessie met het mainframesysteem te starten. In tegenstelling tot batchverwerking biedt TSO een single-user logonomgeving waarbij een gebruiker via een command prompt rechtstreeks commando’s kan uitvoeren op het systeem. Elke gebruiker krijgt een unieke user ID en wachtwoord toegewezen (beheerd via RACF) om toegang te verkrijgen tot TSO. \autocite{IBM_z/OS_TSO}
+\subsection{Modernisering en hybride integratie van z/OS}
+\label{sec:modernisering-integratie-zos}
 
-In de praktijk werken de meeste gebruikers niet rechtstreeks met de TSO commandoregel, maar via ISPF (Interactive System Productivity Facility). ISPF is een menu- en paneelgebaseerde interface bovenop TSO die het beheer van data sets, programmabewerking en systeeminteractie vereenvoudigt. Hierdoor wordt z/OS toegankelijker voor systeemprogrammeurs, applicatieontwikkelaars en beheerders. Toegang gebeurt meestal via een 3270-terminal of een TN3270-emulator op een pc. \autocite{IBM_z/OS_TSO}
-\subsection{\IfLanguageName{dutch}{TSO Native Mode}{TSO Native Mode}}
-\label{sec:tso-native-mode}
-Hoewel TSO meestal automatisch overschakelt naar ISPF na het inloggen, kan het ook in native mode worden gebruikt. In deze modus werkt de gebruiker uitsluitend met de basis TSO-commando’s zonder grafische menu-interface. Dit biedt directe toegang tot systeemfuncties en wordt vaak gebruikt voor scripting of specifieke administratieve taken. \autocite{IBM_z/OS_TSO}
+De modernisering van z/OS-omgevingen richt zich niet op het vervangen van het mainframe, maar op het integreren ervan binnen hybride en cloudgeoriënteerde IT-architecturen. Organisaties streven naar een model waarbij bestaande, bedrijfskritieke toepassingen behouden blijven, terwijl nieuwe functionaliteiten worden ontwikkeld met behulp van moderne tools en standaarden \autocite{ibm2023hybrid}.
 
-\subsection{\IfLanguageName{dutch}{CLIST en REXX binnen TSO}{CLIST and REXX within TSO}}
-\label{sec:tso-clist-rexx}
-Binnen TSO kunnen gebruikers taken automatiseren via CLIST en REXX, twee commandotalen voor scripting. Deze talen maken het mogelijk om herhaalbare beheertaken te automatiseren, parameters te verwerken en interactief met z/OS-componenten te communiceren. Vooral REXX wordt veel gebruikt binnen systeembeheer vanwege de leesbaarheid en flexibiliteit. \autocite{IBM_z/OS_TSO}
+Een belangrijke rol in deze evolutie wordt gespeeld door z/OS Management Facility (z/OSMF), dat een webgebaseerde beheerinterface biedt voor configuratie, monitoring en workflowautomatisering binnen z/OS \autocite{ibm2023zosmf}. z/OSMF ondersteunt self-service en REST-gebaseerde interacties, waardoor traditionele beheertaken beter aansluiten bij hedendaagse IT-praktijken.
 
-\subsection{\IfLanguageName{dutch}{Focus op REXX in deze bachelorproef}{Focus on REXX in this bachelor thesis}}
-\label{sec:focus-op-jcl-en-rexx-in-deze-bachelorproef}
-In deze bachelorproef ligt de focus op REXX als scriptingtaal. Om de scope beheersbaar te houden, zal er geen diepgaande analyse worden gemaakt van CLIST.
-\subsection{\IfLanguageName{dutch}{ISPF (Interactive System Productivity Facility)}{ISPF (Interactive System Productivity Facility)}}
-\label{sec:ispf}
-ISPF (Interactive System Productivity Facility) is een menu- en paneelgebaseerde interface die gebruikers na het inloggen op TSO/E vaak als primaire werkomgeving gebruiken. ISPF wordt volledig via het toetsenbord bediend en biedt kernfunctionaliteit zoals een teksteditor, browser, en utilities voor het opzoeken, weergeven en beheren van data sets en andere systeembronnen. Hierdoor kunnen gebruikers (zoals systeemprogrammeurs, applicatieontwikkelaars en administrators) efficiënt interactief werken op z/OS zonder uitsluitend commandoregelcommando’s te gebruiken. \autocite{IBM_z/OS_ISPF}
+Daarnaast vormt Zowe een open-source initiatief dat z/OS toegankelijk maakt via gestandaardiseerde API’s, command line interfaces en integraties met moderne ontwikkelomgevingen \autocite{zowe2023}. Door deze abstrahering wordt de kloof tussen klassieke mainframe-omgevingen en cloud-native ontwikkelmodellen verkleind.
 
-ISPF bestaat uit een hiërarchische menustructuur (Primary Option Menu) waarmee verschillende functies en subsystemen toegankelijk worden gemaakt, zoals data set-allocatie, sorteerfuncties (DFSORT), SMP/E, RACF en WLM. De interface is aanpasbaar per installatie (bijv. menu-opties en PF-toetsen), waardoor het uiterlijk en de beschikbare opties kunnen verschillen tussen organisaties. Hoewel ISPF traditioneel “panel-driven” is, bestaan er ook GUI-clients die muisgebruik mogelijk maken. \autocite{IBM_z/OS_ISPF}
+De combinatie van dergelijke technologieën maakt het mogelijk om z/OS-systemen op een gecontroleerde en veilige manier te integreren in hybride cloudarchitecturen, waarbij stabiliteit en innovatie hand in hand gaan.
 
-\subsection{\IfLanguageName{dutch}{z/OS UNIX System Services}{z/OS UNIX System Services}}
-\label{sec:z-os-unix-system-services}
-z/OS UNIX System Services (USS) biedt een UNIX-compatibele omgeving binnen het z/OS-besturingssysteem. Het levert een interactieve shell en utilities waarmee gebruikers commando’s kunnen uitvoeren, scripts kunnen schrijven en programma’s (zoals C-programma’s) kunnen starten. Functioneel kan de z/OS UNIX-shell worden vergeleken met TSO, maar dan gebaseerd op UNIX-standaarden (System V met kenmerken van de Korn shell) en conform de POSIX-specificaties. \autocite{IBM_z/OS_UNIX}
 
-De shell kan gebruikt worden om:
+\section{\IfLanguageName{dutch}{Belang van z/OS in mainframes}{Role of z/OS in mainframes}}
+\label{sec:role-van-zos-in-mainframes}
+z/OS vormt het centrale besturingssysteem van IBM Z-mainframes en fungeert als het operationele hart van de mainframeomgeving. Het beheert de hardwarebronnen zoals CPU, geheugen, opslag (DASD) en I/O-apparaten, en coördineert de gelijktijdige uitvoering van duizenden programma’s en gebruikerssessies.\autocite{IBM_zOS_Concepts}
+
+\subsection{Wat is system administration?}
+\label{sec:wat-is-systembeheer}
+
+Systeembeheer (of system administration) verwijst naar het beheren, configureren, monitoren en onderhouden van computersystemen en IT-infrastructuur binnen een organisatie. Het doel van systeembeheer is het waarborgen van beschikbaarheid, veiligheid, prestaties en continuïteit van systemen en diensten. \autocite{TechNeeds2025}
+
+Een systeembeheeromgeving bestaat doorgaans uit drie kernaspecten:
 \begin{itemize}
-    \item UNIX-commando’s en utilities uit te voeren
-    \item Shellscripts te schrijven en uit te voeren
-    \item Programma’s interactief, in TSO-background of in batch te starten
+	\item \textbf{Systeemconfiguratie en onderhoud:} Installeren, updaten en configureren van besturingssystemen, software en hardwarecomponenten.
+	\item \textbf{Monitoring en probleemoplossing:} Toezicht houden op systeemprestaties, detecteren van incidenten en oplossen van technische problemen.
+	\item \textbf{Beveiliging en toegangsbeheer:} Beheren van gebruikersaccounts, toegangsrechten en beveiligingsmaatregelen om systemen te beschermen tegen ongeautoriseerde toegang.
 \end{itemize}
-Gebruikers kunnen de z/OS UNIX-omgeving op verschillende manieren openen:
+
+Zonder effectief systeembeheer lopen organisaties het risico op systeemuitval, beveiligingsincidenten en prestatieproblemen, wat directe impact kan hebben op bedrijfsprocessen en dienstverlening.
+
+\subsection{Waarom is system administration belangrijk?}
+\label{sec:waarom-sysbeheer-belang}
+
+Gezien het z/OS besturingsysteem letterlijk het hart is van de mainframes en bedrijfskritische subsystemen zoals Db2, IMS en CICS draaien op z/OS is de correcte werking van deze subsystemen rechtstreeks afhankelijk van de stabiliteit, configuratie en beveiliging van het onderliggende z/OS-platform.
+
+System Administration speelt hierin een cruciale rol. De system administrator staat in voor het onderhoud van systeemsoftware, het toepassen van updates en patches, het monitoren van prestaties en het bewaken van beschikbaarheid. Indien software-updates niet tijdig worden uitgevoerd of configuraties foutief worden aangepast, kan dit leiden tot beveiligingsrisico’s, prestatieproblemen of zelfs productie-uitval. \autocite{IBM_zOS_Concepts}
+
+Daarnaast is beveiliging een fundamenteel onderdeel van systeembeheer. Via tools zoals RACF, auditing en change management wordt gewaarborgd dat enkel geautoriseerde gebruikers toegang hebben tot gevoelige data en systeemresources. In sectoren zoals financiën, overheid en gezondheidszorg kan falend systeembeheer ernstige operationele en juridische gevolgen hebben. \autocite{IBM_zOS_Concepts}
+
+Effectief systeembeheer is bijgevolg essentieel om continuïteit, betrouwbaarheid en compliance binnen een mainframeomgeving te garanderen.
+
+\subsection{\IfLanguageName{dutch}{Wat is het verschil tussen system administrator en system programmer}{What is the role of a system administrator in a z/OS context}}
+\label{sec:verschil-sysadmin-sysprog}
+De system programmer beheert de installatie, configuratie en technische optimalisatie van z/OS en systeemsoftware, inclusief maintenance, tuning en complexe probleemanalyse. \autocite{IBM_zOS_Concepts}
+De system administrator beheert de dagelijkse werking van de z/OS-omgeving, inclusief toegangsbeheer, monitoring en operationele ondersteuning van applicaties en data.\autocite{IBM_zOS_Concepts}
+Maar het onderscheid varieert tussen een system programmer en een system administrator afhankelijk van de grootte en structuur van de organisatie. In kleinere IT-omgevingen kunnen beide rollen door één persoon worden uitgevoerd. In grotere organisaties worden de verantwoordelijkheden doorgaans gescheiden omwille van efficiëntie en auditvereisten. 
+Hoewel de focus van de system administrator operationeel is, vertoont de rol in de praktijk gedeeltelijke overlap met die van de system programmer. Relevante systeemgerichte taken worden daarom meegenomen in dit competentieframework zoals het werken met SMP/E software beheer tool.
+\subsection{\IfLanguageName{dutch}{Wat zijn de taken van een system administrator volgens IBM}{What is the role of a system administrator in a z/OS context}}
+\label{sec:rol-van-een-system-administrator-in-zos-context}
+De system administrator is in hoofdzaak verantwoordelijk voor het dagelijkse operationele beheer van de mainframeomgeving vanuit een bedrijfsgericht perspectief. Waar de system programmer zich richt op het onderhoud van het besturingssysteem en de onderliggende infrastructuur, concentreert de system administrator zich op het beheer van bedrijfskritische data, applicaties en toegangscontrole. \autocite{IBM_zOS_Concepts}
+
+Volgens \autocite{IBM_zOS_Concepts} typische taken van een system administrator omvatten:
+
 \begin{itemize}
-    \item Via een 3270-terminal of emulator
-    \item Via TCP/IP (bijv. telnet of rlogin)
-    \item Vanuit een TSO-sessie met het OMVS-commando
-    \item Via ISHELL, een ISPF-gebaseerde panelinterface voor UNIX-beheer
+	\item Installeren en configureren van softwarecomponenten
+	\item Beheren van gebruikersaccounts en gebruikersprofielen
+	\item Onderhouden van beveiligings- en toegangsrechten
+	\item Beheren van opslagmiddelen, printers en randapparatuur
+	\item Beheren van netwerkconnectiviteit
+	\item Monitoren van systeemprestaties en beschikbaarheid
 \end{itemize}
-OMVS start een traditionele UNIX-shellsessie, terwijl ISHELL een menu-gestuurde interface biedt die vooral geschikt is voor systeembeheerders die vertrouwd zijn met TSO/ISPF. ISHELL bevat functies voor bestandsbeheer, directorybeheer en het mounten/unmounten van filesystems. \autocite{IBM_z/OS_UNIX}
-\section{\IfLanguageName{dutch}{Subsystemen in z/OS}{Subsystems in z/OS}}
-\label{sec:subsystemen-in-zos}
-z/OS werkt met gespecialiseerde subsystemen zoals:
+
+Daarnaast werkt de system administrator nauw samen met applicatieontwikkelaars en eindgebruikers om te verzekeren dat toepassingen correct functioneren binnen de operationele omgeving. In grotere organisaties kunnen gespecialiseerde rollen bestaan, zoals database administrators (DBA’s) of security administrators, die specifieke onderdelen van het beheer uitvoeren. \autocite{IBM_zOS_Concepts}
+
+\subsection{De evoluerende rol van de System Administrator}
+\label{sec:evolution-sys-admin}
+
+De rol van de System Administrator heeft in de loop der jaren een duidelijke evolutie doorgemaakt. Waar system administrators traditioneel voornamelijk verantwoordelijk waren voor het installeren, configureren en onderhouden van servers en besturingssystemen, omvat hun takenpakket vandaag een bredere set aan verantwoordelijkheden die automatisering, beveiliging en cloudintegratie omvatten \autocite{kim2016devops}.
+
+De opkomst van cloud computing heeft deze verschuiving verder versterkt. Volgens NIST wordt cloud computing gedefinieerd als een model dat on-demand toegang biedt tot gedeelde en configureerbare IT-resources \autocite{mell2011nist}. Deze evolutie heeft geleid tot een overgang van handmatig infrastructuurbeheer naar geautomatiseerde en schaalbare beheermodellen.
+
+Daarnaast tonen recente industriële rapporten aan dat organisaties steeds meer inzetten op containerisatie, hybride cloudarchitecturen en DevOps-praktijken \autocite{redhat2023state}. Hierdoor wordt van System Administrators verwacht dat zij niet enkel technische expertise bezitten, maar ook competenties ontwikkelen in automatisering, samenwerking en continue verbetering.
+
+Binnen mainframe- en z/OS-omgevingen vertaalt deze evolutie zich in een combinatie van traditionele stabiliteit en moderne integratie, waarbij system administrators een sleutelrol spelen in het veilig en efficiënt verbinden van bestaande infrastructuur met hedendaagse IT-architecturen.
+
+\subsection{Focus op z/OS, JCL, REXX en RACF in deze bachelorproef}
+\label{sec:focus-op-jcl-rexx}
+
+Gezien de blijvende relevantie van mainframe-omgevingen binnen kritieke sectoren zoals financiën en overheid, richt deze bachelorproef zich op z/OS en de kerncomponenten JCL, REXX en RACF. De redenen hiervoor zijn:
+
 \begin{itemize}
-    \item \textbf{JES2/JES3:} Job Entry Subsystem voor jobverwerking
-    \item \textbf{CICS:} Customer Information Control System voor transactionele toepassingen
-    \item \textbf{IMS DB:} Information Management System voor databasebeheer
-    \item \textbf{IMS TM:} Information Management System voor transactiebeheer
-    \item \textbf{DB2:} relationele database
-    \item \textbf{MQ:} message queuing voor communicatie tussen applicaties
-    \item \textbf{SMP/E:} System Modification Program/Extended voor software-installatie en -onderhoud
-    \item \textbf{IWS}: Integrated Workload Scheduler voor geavanceerde jobplanning en -beheer
+	\item \textbf{Blijvende relevantie van mainframes:} z/OS blijft een essentieel platform voor mission-critical toepassingen waar stabiliteit, betrouwbaarheid en veiligheid centraal staan.
+	
+	\item \textbf{Operationele basiskennis:} JCL en REXX vormen de fundamenten van dagelijkse beheer- en automatisatietaken binnen z/OS.
+	
+	\item \textbf{Beveiliging en governance:} RACF speelt een cruciale rol in toegangsbeheer, compliance en risicobeperking binnen enterprise-omgevingen.
+	\item \textbf{Ondersteuning van modernisering:} Een solide kennis van deze kerncomponenten is noodzakelijk om mainframe-omgevingen succesvol te integreren in hybride en gemoderniseerde IT-architecturen.
+	\item \textbf{Software onderhoud en installatie:} Aangezien veel bedrijven gebruik maken van verschillende software tools van allerlei vendors is het belangrijk om SMP/E te begrijpen en dit te kunnen gebruiken voor een Level 2 System Administrator.
 \end{itemize}
-Deze subsystemen draaien binnen z/OS maar beheren elk hun eigen type workload (batch, transacties, databasebeheer).
 
-\subsection{\IfLanguageName{dutch}{Verschil van JES2 en JES3}{Difference between JES2 and JES3}}
-\label{sec:verschil-jes2-jes3}
-JES2 en JES3 zijn twee varianten van het Job Entry Subsystem in z/OS en vervullen grotendeels dezelfde basisfuncties: ze lezen jobs in, plaatsen ze in wachtrijen, plannen ze voor uitvoering, verwerken de output en verwijderen (purgen) ze na afloop.  \autocite{IBMRedbook_zOSBasics}
+\section{Uitdagingen in de mainframe-sector: vergrijzing en kennisoverdracht}
+\label{sec:mainframe-uitdagingen-vergrijzing}
 
-Het belangrijkste verschil ligt in de manier waarop jobverwerking wordt beheerd. JES2 werkt gedecentraliseerd: in een multi-processoromgeving beheert elke JES2-instantie zelfstandig haar eigen jobinput, scheduling en output. In een sysplex kan JES2 via Multi-Access Spool (MAS) spool- en checkpointdata delen met andere JES2-systemen.  \autocite{IBMRedbook_zOSBasics}
+Ondanks de blijvende relevantie van mainframes kampen organisaties met een structurele personeelsuitdaging. De instroom van nieuwe profielen blijft beperkt, onder meer omdat mainframes minder zichtbaar is binnen klassieke IT-opleidingen en veel starters eerder richting cloud-native stacks en populaire programmeertalen worden getrokken. Hierdoor ontstaat een krapte op de arbeidsmarkt, zeker voor profielen die zowel de z/OS-basis als enterprise-processen beheersen.
 
-JES3 daarentegen werkt gecentraliseerd: één globale JES3-processor controleert de jobselectie, scheduling en device-allocatie voor alle aangesloten systemen. Hierdoor biedt JES3 meer centrale controle, zoals afhankelijkheidsbeheer tussen jobs en geavanceerde scheduling, maar is het minder flexibel dan JES2.  \autocite{IBMRedbook_zOSBasics}
+Een belangrijke uitdaging is de veroudering van het bestaande personeelsbestand. Volgens \textcite{astadia_retirement} is ongeveer 60\% van de mainframeprofessionals ouder dan 50 jaar, wat impliceert dat een aanzienlijk deel van deze expertise op middellange termijn de arbeidsmarkt zal verlaten.
 
-In de praktijk wordt JES2 het meest gebruikt, vooral vanwege de eenvoud en de gedistribueerde controle. \autocite{IBMRedbook_zOSBasics}
+Deze demografische evolutie leidt tot een groeiend tekort aan gekwalificeerde professionals om openstaande functies in te vullen. Het probleem wordt versterkt door de beperkte instroom van nieuwe talenten. Uit een studie blijkt dat 64\% van de IT-operationsmanagers aangeeft dat het vinden van mainframespecialisten een significante uitdaging vormt. \autocite{astadia_retirement}
 
-\subsection{\IfLanguageName{dutch}{CICS (Customer Information Control System)}{CICS}}
-\label{sec:cics}
-CICS (Customer Information Control System) is een transaction processing subsystem voor het z/OS-besturingssysteem. Het ondersteunt online transactieverwerking waarbij meerdere gebruikers gelijktijdig toegang hebben tot dezelfde applicaties en databestanden. CICS beheert resource-deling, data-integriteit, gebruikersautorisatie en prioriteitsstelling, en zorgt voor snelle responstijden. Daarnaast fungeert het als tussenlaag tussen applicaties en databasesystemen zoals Db2, waardoor het veel beheertaken uitvoert die vergelijkbaar zijn met die van het besturingssysteem zelf. \Autocite{IBM_z/OS_CICS}
+\subsection{Impact op organisaties en mogelijke oplossingen}
+\label{sec:bestaande-ops}
 
-Binnen een z/OS-omgeving draait CICS als een afzonderlijke address space en vormt het een extra functionele laag boven het besturingssysteem. Applicaties communiceren niet rechtstreeks met hardware of terminals, maar via CICS, dat op zijn beurt gebruikmaakt van z/OS-services. In grotere omgevingen kan CICS in meerdere regio’s (address spaces) worden opgesplitst via Multi-Region Operation (MRO), waarbij specifieke regio’s instaan voor terminalbeheer (TOR), applicatieverwerking (AOR) of bestandsbeheer (FOR). Hierdoor biedt CICS een schaalbare en gestructureerde aanpak voor bedrijfskritische online transacties. \autocite{IBM_z/OS_CICS}
+De toenemende vergrijzing en het tekort aan gespecialiseerde mainframeprofessionals hebben geleid tot verschillende initiatieven vanuit de industrie. Organisaties investeren in gerichte opleidingsprogramma’s, reskilling-trajecten en samenwerking met onderwijsinstellingen om nieuwe instroom te stimuleren. Volgens Kyndryl \autocite{kyndrylskillsgap} vereist het dichten van de mainframe skills gap een combinatie van formele training, mentoring en modernisering van het imago van mainframe-technologie binnen bredere IT-contexten. 
 
-\subsection{\IfLanguageName{dutch}{IMS TM(Information Management System Transaction Manager)}{IMS}}
-\label{sec:ims}
-IMS Transaction Manager (IMS TM) is een message-based transaction processing systeem binnen de z/OS-omgeving. Het verwerkt transacties die worden gestart door een inkomend bericht, waarbij een specifieke set invoergegevens de uitvoering van een bijbehorend applicatieprogramma activeert. IMS TM beheert zowel inkomende als uitgaande berichten en gebruikt een geïntegreerd wachtrijmechanisme om hoge transactieniveaus efficiënt te verwerken. \autocite{IBM_z/OS_IMS}
+\subsection{De rol van onderwijs in mainframe opleiding}
+\label{sec:mainframe-opleidingen}
 
-IMS TM ondersteunt gelijktijdige sessies van gebruikers en applicaties, zowel lokaal als via andere systemen of netwerken. In combinatie met databasesystemen zoals IMS DB of Db2 maakt IMS TM realtime, online transactieverwerking mogelijk. Het systeem is ontworpen voor hoge volumes, snelle responstijden en schaalbaarheid, en ondersteunt uiteenlopende toepassingen zoals data-entry, interactieve transacties en vooraf gedefinieerde query’s. Hierdoor is IMS TM bijzonder geschikt voor grootschalige, bedrijfskritische omgevingen met gecentraliseerd databeheer en geografisch verspreide gebruikers. \autocite{IBM_z/OS_IMS}
+Onderwijsinstellingen spelen een cruciale rol in het aanpakken van de instroomproblematiek. Door mainframeconcepten te integreren in bestaande IT-curricula kunnen studenten vroegtijdig kennismaken met mainframes. Industry academia samenwerking, gastcolleges en praktijkgerichte labs worden in dit verband vaak aangehaald als effectieve strategieën \autocite{kyndrylskillsgap}.
 
-\subsection{\IfLanguageName{dutch}{Db2}{Db2}}
-\label{sec:db2}
-DB2 for z/OS is IBM’s relationeel databasebeheersysteem (DBMS) voor het z/OS-besturingssysteem. Het is nauw geïntegreerd met de IBM System Z mainframearchitectuur en maakt gebruik van de sterke punten van het platform, zoals betrouwbaarheid, schaalbaarheid en hoge beschikbaarheid. DB2 gebruikt Structured Query Language (SQL) als standaardtaal voor het definiëren, manipuleren en opvragen van gegevens. De SQL-implementatie is grotendeels compatibel met andere DB2-varianten op verschillende besturingssystemen, wat portabiliteit van applicaties ondersteunt.\autocite{IBM_z/OS_Db2}
+\subsection{HOGENT’s unieke aanbod}
 
-De architectuur van DB2 omvat diverse databankstructuren en processen die zorgen voor efficiënte verwerking van transacties en query’s. Het ondersteunt uiteenlopende applicatieontwerpen, van eenvoudige single-tier toepassingen tot complexe multitier-architecturen. Tijdens de implementatiefase worden databankobjecten gedefinieerd en integriteitsregels vastgelegd om consistente en betrouwbare gegevensopslag te garanderen. Dankzij deze integratie met z/OS vormt DB2 een kerncomponent voor bedrijfskritische data-intensieve toepassingen binnen mainframeomgevingen.\autocite{IBM_z/OS_Db2}
+HOGENT onderscheidt zich door als enige instelling in de Benelux een specifieke opleiding tot mainframe-expert aan te bieden. Deze micro-credential richt zich tot IT-professionals en afgestudeerden met een bachelor- of masterdiploma in een IT-gerelateerde opleiding die hun expertise op korte termijn willen verdiepen en uitbreiden \autocite{hogent2025}.
 
-\subsection{\IfLanguageName{dutch}{IMS DB(Information Management System Database)}{IMS DB}}
-\label{sec:imsdb}
-IMS Database Manager (IMS DB) is een hiërarchisch databasebeheersysteem binnen de z/OS-omgeving dat program- en device-onafhankelijke toegang tot bedrijfsgegevens biedt. De kern van IMS DB wordt gevormd door het hiërarchische datamodel en de bijbehorende Data Language/I (DL/I)-aanroepen. Gegevens worden georganiseerd in een boomstructuur waarbij segmenten op lagere niveaus afhankelijk zijn van segmenten op hogere niveaus. Data wordt slechts één keer opgeslagen, maar kan via meerdere toegangswegen worden geraadpleegd, onder andere via logische relaties en secundaire indexen. \autocite{IMS_BOOk}
+\subsection{De kloof tussen onderwijs en industrie}
 
-IMS DB ondersteunt dataintegriteit, transactieverwerking (inserts, updates en deletes als één atomaire eenheid), gelijktijdige verwerking met isolatie tussen transacties, en uitgebreide onderhoudsfuncties zoals back-up, recovery en reorganisatie. De databases kunnen worden benaderd vanuit verschillende omgevingen, waaronder IMS Transaction Manager (IMS TM), CICS, z/OS-batchjobs, WebSphere Application Server en DB2 stored procedures. Via de IMS Open Database Manager (ODBM) kunnen ook Java-toepassingen binnen het enterprise-netwerk toegang krijgen tot IMS-databases. Hierdoor blijft IMS DB een schaalbare en betrouwbare oplossing voor bedrijfskritische dataverwerking binnen mainframeomgevingen. \Autocite{IMS_BOOk}
-\subsection{\IfLanguageName{dutch}{IBM MQ (Message Queue)}{MQ}}
-\label{sec:mq}
-IBM MQ is een messaging middleware-oplossing die betrouwbare en asynchrone communicatie tussen applicaties mogelijk maakt. Het fungeert als een universele messaging backbone en ondersteunt veilige gegevensuitwisseling binnen en tussen systemen. Berichten worden verzonden via queue managers, die instaan voor het opslaan, routeren en afleveren van berichten zonder dat applicaties rechtstreeks met elkaar hoeven te communiceren. Dankzij transactionele verwerking en persistente messaging garandeert IBM MQ dat berichten correct en precies één keer worden afgeleverd, zelfs bij systeem- of netwerkstoringen. Beveiliging kan worden versterkt via TLS en Advanced Message Security (AMS), waarmee berichten versleuteld en digitaal ondertekend worden. \autocite{IBM_z/OS_MQ}
+Ondanks het bestaan van verschillende competentieraamwerken blijft er een aanzienlijke kloof bestaan tussen wat onderwijsinstellingen aanbieden en wat de industrie nodig heeft, vooral op het gebied van mainframe-technologieën. Deze kloof wordt versterkt door verschillende factoren:
 
-IBM MQ ondersteunt verschillende programmeertalen en platformen, en kan zowel lokaal (server) als op afstand (client) worden gebruikt. In een z/OS-omgeving kunnen meerdere queue managers queues delen via de Coupling Facility, wat hoge beschikbaarheid en schaalbaarheid mogelijk maakt. Beheer en configuratie gebeuren via commandoregeltools (MQSC), programmeerbare interfaces (PCF, REST API) of grafische omgevingen zoals IBM MQ Explorer en de IBM MQ Console. Hierdoor vormt IBM MQ een essentiële component binnen servicegerichte architecturen (SOA) en moderne, gedistribueerde IT-omgevingen.\autocite{IBM_z/OS_MQ}
-\subsection{\IfLanguageName{dutch}{SMP/E (System Modification Program/Extended)}{SMP/E (System Modification Program/Extended)}}
-\label{sec:smp/e}
-System Modification Program Extended (SMP/E) is de standaardtool binnen z/OS voor het beheren van software-installaties en het opvolgen van wijzigingen aan systeemcomponenten. Het selecteert de correcte versies van code, stuurt systeemutilities aan om updates te installeren en houdt alle wijzigingen bij in de Consolidated Software Inventory (CSI), een database opgebouwd uit één of meerdere VSAM-datasets. SMP/E kan zowel via batchjobs als via interactieve ISPF-dialogen worden gebruikt en maakt het mogelijk om de status van software te controleren en wijzigingen indien nodig terug te draaien. \autocite{IBMRedbook_zOSBasics}
+\begin{itemize}
+	\item \textbf{Beperkte toegang tot mainframe-technologie:} Veel onderwijsinstellingen hebben geen directe toegang tot mainframe-systemen voor praktijkonderwijs, waardoor het moeilijk is om hands-on ervaring aan te bieden.
+	
+	\item \textbf{Gebrek aan gespecialiseerde docenten:} Er is een tekort aan docenten met actuele mainframe-expertise, mede door de hoge vraag naar deze professionals in de industrie.
+	
+	\item \textbf{Snelle technologische evolutie:} Mainframe-technologieën blijven evolueren, wat het voor onderwijsprogramma’s uitdagend maakt om curricula voortdurend up-to-date te houden.
+	
+	\item \textbf{Perceptieproblemen:} Er bestaat een hardnekkige perceptie dat mainframes verouderde technologie zijn, wat studenten kan ontmoedigen om zich in deze richting te specialiseren.
+\end{itemize}
 
-Volgens SMP/E bestaat z/OS niet uit één monolithisch geheel, maar uit verschillende afzonderlijke systeemfuncties zoals BCP, CICS, JES, TSO/E en z/OS UNIX. Elke functie is opgebouwd uit één of meerdere load modules, de uitvoerbare eenheden van het systeem. Deze worden samengesteld uit objectmodules en via link-editing omgezet naar uitvoerbare code. SMP/E beheert deze modulaire structuur en zorgt ervoor dat updates en onderhoud gecontroleerd en consistent worden toegepast. \autocite{IBMRedbook_zOSBasics}
+Het overbruggen van deze kloof vereist een gecoördineerde inspanning van zowel onderwijsinstellingen als de industrie. Initiatieven zoals het IBM Z Academic Initiative en het Open Mainframe Project bieden ondersteuning, leermaterialen en toegang tot platformen voor instellingen die mainframe-onderwijs willen integreren in hun curricula.
+\subsection{Competency-Based Education (CBE) als opleidings- en evaluatiekader}
+\label{sec:cbe}
 
-\subsection{\IfLanguageName{dutch}{IWS (IBM Workload Scheduler)}{IWS}}
-\label{sec:iws}
-IBM Workload Scheduler (IWS) is een plannings- en automatiseringsoplossing voor het beheren van batch- en workloadprocessen binnen gedistribueerde IT-omgevingen. Het systeem bestaat uit een Workload Scheduler engine, die op elke computer in het netwerk draait en verantwoordelijk is voor de effectieve planning en uitvoering van taken. Afhankelijk van de configuratie kan een node functioneren als master domain manager, domain manager of agent, waarbij elke rol specifieke verantwoordelijkheden heeft binnen het planningsnetwerk. \autocite{IBM_z/OS_IWS}
+Competency-Based Education (CBE) is een onderwijsbenadering waarbij leerdoelen expliciet worden gedefinieerd als competenties, en waarbij voortgang wordt bepaald door aantoonbare beheersing in plaats van door contacturen of tijdsgebonden curricula. CBE sluit hierdoor nauw aan bij beroepsgerichte IT-profielen, waar competenties best zichtbaar worden via performantie in realistische taken \autocite{mulder2014competence}. 
 
-Daarnaast beschikt IBM Workload Scheduler over de Dynamic Workload Console, een webgebaseerde en gebruiksvriendelijke interface waarmee beheerders planningen kunnen configureren, monitoren en beheren. Deze console fungeert als de strategische grafische gebruikersinterface binnen het bredere IBM Workload Automation-portfolio en maakt centraal beheer van workloads mogelijk via een standaard webbrowser. \autocite{IBM_z/OS_IWS}
+Binnen dit onderzoek fungeert CBE als brug tussen het competentieframework (Level 1 en Level 2) en de opleiding: competenties worden vertaald naar observeerbare leeruitkomsten, oefenactiviteiten en toetscriteria (rubrics). Evaluatie gebeurt bij voorkeur op basis van authentieke bewijsvormen (bijv.\ uitgevoerde JCL-taken, gedocumenteerde RACF-wijzigingen, incidentanalyses), in lijn met de evidence-gerichte opbouw van het IBM apprenticeship model \autocite{ibm_level1_framework,ibm_level2_framework}. 
 
-\section{\IfLanguageName{dutch}{Beveiliging in z/OS (RACF)}{Security in z/OS}}
-\label{sec:network-and-security}
-RACF (Resource Access Control Facility) is een beveiligingscomponent binnen z/OS die organisaties ondersteunt bij het beheren van toegang tot kritieke systeemresources. Het implementeert logische toegangscontrole door gebruikers te identificeren, te authenticeren en te autoriseren op basis van gedefinieerde beveiligingsprofielen. Deze profielen, opgeslagen in de RACF-database, bepalen welke gebruikers toegang krijgen tot specifieke datasets, applicaties of systeemfuncties. \autocite{IBM_z/OS_racf}
+De niveaudifferentiatie binnen CBE wordt ondersteund door internationale raamwerken zoals SFIA en e-CF, waarin autonomie, complexiteit en verantwoordelijkheid expliciet toenemen met het competentieniveau \autocite{sfia_framework,eCF_framework}.
 
-RACF werkt volgens het principe van least privilege, waarbij gebruikers enkel toegang krijgen tot de resources die noodzakelijk zijn voor hun functie. Het systeem registreert en rapporteert pogingen tot ongeautoriseerde toegang en ondersteunt beleidsregels zoals wachtwoordvereisten, accountverval en gebruikersintrekking. Daarnaast laat RACF toe om toegangsrechten gedelegeerd te beheren, waardoor flexibiliteit wordt gecombineerd met scheiding van verantwoordelijkheden. \autocite{IBM_z/OS_racf}
+\subsection{Naar een geïntegreerd competentieraamwerk}
 
-Subsystemen zoals CICS en Db2 maken gebruik van RACF voor de beveiliging van transacties en bestanden. \autocite{IBM_z/OS_racf}
-\subsection{\IfLanguageName{dutch}{RACF profiles, user profiles en group profiles}{Security Measures in z/OS}}
-\label{sec:security-measures-in-zos}
+Een effectief competentieraamwerk voor System Administrators (Level 1 en Level 2) binnen een z/OS-omgeving moet rekening houden met de unieke kenmerken van mainframe-technologie, de specifieke vereisten van de industrie en de pedagogische principes die effectief leren ondersteunen.
 
-\subsection{\IfLanguageName{TODO}{TODO}{TODO}}
-\label{sec:todo}
+Het framework dat in deze bachelorproef wordt ontwikkeld, streeft ernaar deze elementen te integreren in een coherent en praktisch toepasbaar model voor een onderwijscontext. Door gebruik te maken van bestaande raamwerken zoals het IBM Z System Administrator Competency Framework, het e-CF en SFIA, en deze te combineren met inzichten uit literatuur en praktijk, beoogt dit model een brug te slaan tussen theorie en industrie.
 
-\section{\IfLanguageName{dutch}{Competentieprofielen voor system administrators}{Competency framework for system adminstrators}}
-\label{sec:comp-framework-sys-admin}
+Daarnaast besteedt het framework expliciet aandacht aan competentieprogressie: van een beginnend, operationeel profiel (Level 1) naar een meer gevorderd profiel (Level 2). Dit sluit aan bij de niveaustructuren van SFIA en e-CF, waarin autonomie, complexiteit en verantwoordelijkheid gradueel toenemen \autocite{sfia_framework,eCF_framework}.
+
+Door deze geïntegreerde benadering definieert het voorgestelde raamwerk niet alleen de technische competenties die nodig zijn voor effectief systeembeheer in een z/OS-omgeving, maar ook de professionele en gedragscompetenties die essentieel zijn voor duurzaam functioneren binnen moderne enterprise-IT-omgevingen.
+
+\section{System Administrators en competentieontwikkeling}
+\label{sec:sysadmin-comp-ontwkile}
+
+System Administrators spelen een cruciale rol binnen z/OS door het waarborgen van stabiliteit, beveiliging en continuïteit van kritieke systemen. Organisaties zijn sterk afhankelijk van hun expertise voor het dagelijks beheer en de bescherming van deze infrastructuur.
+
+Door de evolutie naar hybride cloudarchitecturen en verdere automatisering neemt de complexiteit van systeembeheer toe. Hierdoor worden hogere eisen gesteld aan zowel technische kennis als het vermogen om zich voortdurend aan te passen aan nieuwe technologieën. In deze sectie wordt onderzocht welke competenties noodzakelijk zijn en hoe gerichte competentieontwikkeling kan bijdragen aan toekomstbestendig systeembeheer.
 
 
-Competentieprofielen voor Sys admins.
+\subsection{Modellen voor competentieontwikkeling: kennis, vaardigheden en professioneel gedrag}
+\label{sec:ksa-modellen}
 
-educatieve theorieen in competentieontwikkeling voor sys admins.
+Competentieontwikkeling binnen ICT-profielen wordt doorgaans gestructureerd rond drie kerncomponenten: kennis (knowledge), vaardigheden (skills) en attitude of professioneel gedrag (attitude/behavior). Deze driedeling vormt een breed erkend model binnen zowel onderwijskundige literatuur als internationale competentieraamwerken \autocite{mulder2014competence}.
 
-modellen voor competentieontwikkeling; kennis, vaardigheden en attitude.
+\paragraph{Kennis (Knowledge)}
 
-Leertheorieën voor volwassenen: ervaring en sociale interactie.
+Kennis verwijst naar het theoretisch en conceptueel begrip van systemen, architecturen en processen. Binnen het z/OS-domein omvat dit onder meer inzicht in mainframe-architectuur, I/O-structuren, adressering, subsystemen zoals CICS, IMS en Db2, en beveiligingsconcepten.
 
-Operating model in productie: change, incident, problem, service management
+Zowel het IBM Level 1- als Level 2-competentieframework structureren expliciet kenniscomponenten als afzonderlijke beoordelingscriteria, bijvoorbeeld “Understanding of structured programming design”, “Understanding of z/OS system components” en “Understanding of security implementation” \autocite{ibm_level1_framework,ibm_level2_framework}.  
 
-Competentieontwikkeling in een onderwijscontext.
+Ook binnen SFIA wordt kennis impliciet geïntegreerd in de beschrijving van vaardigheden per niveau, waarbij hogere niveaus een diepgaander conceptueel begrip vereisen \autocite{sfia_framework}. Het e-CF benoemt kennis expliciet als onderdeel van elke e-competentie, naast vaardigheden en autonomie \autocite{eCF_framework}.
 
-Modernisering & hybride integratie (web tools zoals z/OSMF en mss zowe)
+\paragraph{Vaardigheden (Skills)}
 
-De kloof tussen onderwijs en industrie.
+Vaardigheden verwijzen naar het toepassen van kennis in concrete handelingen binnen een beroepscontext. Voor een z/OS System Administrator betreft dit onder meer:
 
-Vergrijzing van mainframespecialisten.
+\begin{itemize}
+	\item Het coderen van JCL met correcte syntax
+	\item Het ontwikkelen van REXX-scripts
+	\item Het uitvoeren van SMP/E-onderhoud
+	\item Het beheersen van RACF toegangsrechten
+	\item Het begrijpen van z/OS architectuur
+	\item Change management, incident analyse
+\end{itemize}
 
-Impact op organisaties en mogelijke oplossingen.
+De IBM-competentiedocumenten structureren deze vaardigheden expliciet als observeerbare prestaties met meetbare assessment criteria en evidence types (observatie, simulatie, mentorbeoordeling) \autocite{ibm_level1_framework,ibm_level2_framework}.  
 
-Toekomstperspectief en strategische overwegingen.
+Deze operationalisering sluit aan bij competentiegericht opleiden, waarbij aantoonbare taakuitvoering centraal staat \autocite{mulder2014competence}.
 
-Opleiding van mainframe-specialisten: een vergelijking met andere platforms.
+\paragraph{Attitude en professioneel gedrag (Behavior)}
 
-De rol van educatie in mainframe-opleidingen. En HOGENT
+Naast technische expertise benadrukken moderne competentieraamwerken het belang van professioneel gedrag. Dit omvat onder meer:
 
-Vergelijking met andere competentieraamwerken. e-CF, SFIA en IBM System Administrator competency framework level 1 en level 2.
+\begin{itemize}
+	\item Methodisch en risicogestuurd werken
+	\item Nauwkeurige documentatie
+	\item Samenwerking en communicatie
+	\item Feedbackcultuur en mentorschap
+	\item Continue verbetering
+\end{itemize}
 
-Conclusie: waarom framework nodig is
+Binnen het IBM-framework worden deze expliciet benoemd als gedragcompetenties (bijvoorbeeld teamwork, communication skills, feedback behavior en willingness to learn from mentors) \autocite{ibm_level1_framework}.  
+
+\subsection{Integratie van educatieve theorieën in competentieontwikkeling voor z/OS System Administrators}
+\label{sec:integratie-educatieve-theorie}
+
+Het ontwikkelen van een competentieframework vereist niet alleen een beschrijving van vereiste kennis en vaardigheden, maar ook een onderbouwde visie op hoe deze competenties worden verworven en geëvalueerd \autocite{mulder2014competence}. Daarom wordt het framework didactisch verankerd in relevante educatieve theorieën.
+
+\subsubsection{Volwassenenonderwijs en praktijkgericht leren}
+
+Binnen professionele IT-opleidingen gaat het vaak om volwassen lerenden met voorkennis of werkervaring. Volgens principes van volwassenenonderwijs is leren effectiever wanneer het praktijkgericht, onmiddellijk toepasbaar en deels zelfgestuurd is. In de z/OS-context vertaalt dit zich naar realistische opdrachten, zoals het uitvoeren van JCL-jobs, analyseren van output via SDSF of het beheren van basis RACF-profielen met native RACF commando's.
+
+\subsubsection{Ervaringsgericht leren en niveauprogressie}
+
+Ervaringsgericht leren benadrukt het belang van leren via concrete uitvoering, reflectie en her-toepassing \autocite{kolb2015experiential}. Voor z/OS System Administrators impliceert dit een leertraject waarin technische handelingen in een labomgeving worden uitgevoerd, gevolgd door feedback en koppeling aan onderliggende systeemprincipes. 
+
+Daarnaast speelt informele kennisoverdracht via mentorschap een belangrijke rol. In veel mainframe-omgevingen wordt expertise traditioneel doorgegeven via een senior–juniorrelatie, vergelijkbaar met het senpai–kōhai-principe, waarbij impliciete kennis, best practices en risicobeheersing in de praktijk worden overgedragen. Deze vorm van begeleide praktijkervaring ondersteunt de ontwikkeling van professionele oordeelsvorming en versnelt de overgang naar hogere competentieniveaus.
+
+Deze aanpak ondersteunt de overgang van procedurele taakuitvoering (Level 1) naar analytische probleemoplossing en transfer naar nieuwe situaties (Level 2), wat aansluit bij de progressieniveaus zoals beschreven in SFIA \autocite{sfia_framework}.
+
+\subsubsection{Cognitieve belasting en gefaseerde opbouw}
+
+Gezien de complexiteit van z/OS-omgevingen is beheersing van cognitieve belasting essentieel \autocite{sweller2011cognitive}. Een gefaseerde opbouw van basisconcepten (TSO/ISPF, datasets, JCL) naar geïntegreerde scenario’s (subsystemen (CICS,IMS,Db2,MQ...), gevorderd REXX-automatisering, SMP/E-onderhoud) bevordert duurzame kennisverwerving en voorkomt overbelasting.
+
+\subsubsection{Evaluatie en niveaudifferentiatie}
+
+Competentiegericht opleiden vereist evaluatie in realistische beroepscontexten. In plaats van louter theoretische toetsing wordt gewerkt met observeerbare prestaties, zoals een correct uitgevoerde batchjob, een gedocumenteerde RACF-wijziging of een onderbouwde incidentanalyse. \autocite{sfia_framework,eCF_framework}
+
+Het onderscheid tussen Level 1 en Level 2 wordt hierbij bepaald op basis van autonomie, complexiteit, risicobeheersing en kwaliteit van documentatie. Deze criteria sluiten aan bij internationale competentieraamwerken zoals SFIA en ondersteunen een objectieve positionering binnen het voorgestelde model.
+
+\subsubsection{Didactische verankering van het framework}
+
+Door de integratie van deze educatieve inzichten wordt het competentieframework meer dan een beschrijvend overzicht van technische vereisten. Het vormt een didactisch onderbouwd instrument dat inzetbaar is binnen zowel onderwijscontexten als professionele opleidingsprogramma’s.
+
+
+\section{Vergelijking met andere competentieraamwerken}
+\label{sec:vergelijking-andere-compframeworks}
+
+Het opstellen van een competentieraamwerk is essentieel voor het definiëren van de vaardigheden, kennis en gedrag die nodig zijn voor specifieke functies binnen een organisatie. Dit helpt niet alleen bij het identificeren van lacunes in vaardigheden, maar ondersteunt ook bij werving, prestatiebeheer en loopbaanontwikkeling. 
+
+In dit hoofdstuk vergelijken we verschillende bestaande competentieraamwerken die relevant zijn voor IT-professionals.
+\subsection{Het IBM Z System Administrator Competency Framework – Level 1 en Level 2}
+
+Het IBM Z System Administrator Competency Framework is een gestructureerd raamwerk ontwikkeld binnen IBM’s Apprenticeship Program als open standaard ter ondersteuning van opleidings- en werkplekleertrajecten voor mainframebeheerders \autocite{ibm_level1_framework,ibm_level2_framework}. 
+
+Het raamwerk richt zich specifiek op de rol van IBM Z System Administrator en maakt een onderscheid tussen twee progressieniveaus: een operationeel instapniveau (Level 1) en een gevorderd, analytisch niveau (Level 2). Deze niveaus verschillen in mate van autonomie, complexiteit van taken en impact op productieomgevingen.
+
+Het framework bestaat uit drie kerncomponenten:
+
+\begin{itemize}
+	\item \textbf{Werkprocessen:} Een beschrijving van de algemene vereisten die deelnemers moeten doorlopen, waaronder praktijkprojecten, mentoring, coaching, job shadowing en formele training.
+	
+	\item \textbf{Competenties en prestatiecriteria:} Een gedetailleerde opsplitsing van de vereiste technische kennis, vaardigheden en professioneel gedrag. Deze worden gestructureerd volgens kenniscompetenties (K), vaardigheidscompetenties (S) en gedragscompetenties (B).
+	
+	\item \textbf{Gerelateerde instructie:} Een overzicht van formele opleidingsmodules en leeractiviteiten die nodig zijn om de vereiste competenties te ontwikkelen en aan te tonen.
+\end{itemize}
+
+Binnen dit raamwerk worden kerncompetenties gedefinieerd die zowel technische expertise (zoals JCL, REXX, RACF en systeembeheer) als professionele vaardigheden (zoals communicatie, documentatie en risicobeheersing) omvatten. De overgang van Level 1 naar Level 2 wordt gekenmerkt door een verschuiving van begeleide, proceduregerichte uitvoering naar zelfstandige, analytische en risicogestuurde besluitvorming binnen productieomgevingen.
+
+\subsection{Het Skills Framework for the Information Age (SFIA)}
+\label{sec:sfia-framework}
+Het Skills Framework for the Information Age (SFIA) is een wereldwijd erkend competentieraamwerk dat sinds 1999 in gebruik is. Het definieert 86 vaardigheden, elk beschreven over zeven niveaus van bekwaamheid. \autocite{sfia_framework}
+SFIA is ontworpen om organisaties te helpen bij het identificeren van de vaardigheden die ze nodig hebben en bij het beheren van de ontwikkeling van deze vaardigheden binnen hun teams. 
+Het raamwerk is open-source en gratis beschikbaar voor niet commercieel gebruik, wat heeft bijgedragen aan de brede internationale adoptie.
+
+\subsection{Het Europese e-competence framework (e-CF)}
+\label{sec:e-cf-framework-sa}
+Het European e-Competence Framework (e-CF) is een Europees referentiekader dat ICT-competenties structureert in termen van kennis, vaardigheden en autonomie. Het framework werd ontwikkeld onder auspiciën van CEN (European Committee for Standardization) en heeft als doel een gemeenschappelijke taal te bieden voor ICT-rollen binnen Europa. \autocite{eCF_framework}
+
+Het e-CF beschrijft competenties op vijf niveaus (e-1 tot e-5), waarbij het niveau stijgt naarmate autonomie, complexiteit en impact toenemen. Deze structuur maakt het mogelijk om ICT-profielen, waaronder dat van System Administrator, objectief te positioneren. \autocite{eCF_framework}
+
+\begin{itemize}
+	\item \textbf{Plan:} Strategische planning en ontwerp van informatiesystemen.
+	\item \textbf{Build:} Ontwikkeling en implementatie van systemen.
+	\item \textbf{Run:} Operationeel beheer en ondersteuning van systemen.
+	\item \textbf{Enable:} Ondersteuning van het gebruik en de exploitatie van systemen.
+	\item \textbf{Manage:} Beheerenverbetering van IT-processen.
+\end{itemize}
+
+\subsubsection{Relevante e-CF competenties voor System Administrators}
+Binnen het e-CF kunnen volgende competenties rechtstreeks gelinkt worden aan de rol van System Administrator:
+\begin{itemize}
+	\item \textbf{C.1 User Support:} Ondersteuning van gebruikers, incidentopvolging en probleemanalyse.
+	\item \textbf{C.2 Change Support:} Implementeren van wijzigingen volgens vastgelegde procedures en change management.
+	\item \textbf{C.3 Service Delivery:} Zorgen voor continuïteit, beschikbaarheid en performantie van systemen.
+	\item \textbf{C.4 Problem Management:} Analyseren van structurele storingen en identificeren van root causes.
+	\item \textbf{C.5 Systems Management:} Beheer van infrastructuur, configuratie, monitoring en onderhoud. 
+	\item \textbf{D.1 Information Security Strategy Development:} Implementeren en ondersteunen van beveiligingsmaatregelen en toegangscontrole binnen de infrastructuur.
+	\item \textbf{D.9 Personnel Development:} Begeleiden en ondersteunen van collega’s door kennisdeling en mentoring.
+	\item \textbf{E.3 Risk Management:} Identificeren en beheersen van risico’s bij systeemwijzigingen en operationele processen.
+	\item \textbf{E.4 Relationship Management:} Afstemmen met stakeholders en communiceren van technische impact naar andere teams.
+\end{itemize}
+Hoewel het e-CF generiek ICT-gericht is en niet specifiek op mainframes of z/OS focust, biedt het een waardevol kader om mainframecompetenties te positioneren binnen een Europees erkend model.
+
+\subsection{Afbakening en beperkingen van het onderzoek}
+
+Het voorgestelde competentieframework werd ontwikkeld op basis van literatuurstudie en analyse van bestaande industriële raamwerken, waaronder het IBM Apprenticeship Framework voor Level 1 en Level 2, SFIA en het European e-Competence Framework. 
+
+Er werd geen directe toegang verkregen tot een operationele productieomgeving binnen een onderneming. De beschreven Level 2-competenties met betrekking tot productieomgevingen (zoals change management, risicobeheer en software-upgrades) zijn daarom gebaseerd op gedocumenteerde industriële standaarden en best practices, eerder dan op empirische observatie binnen een specifieke organisatiecontext.
+
+Het framework moet bijgevolg worden beschouwd als een normatief en theoretisch onderbouwd model, dat verdere validatie in een reële productieomgeving kan vereisen voor implementatie op organisatieniveau.
+
+\section{Conclusie: de noodzaak van een competentie framework}
+\label{sec:conclusie-literatuur-studie-framework}
+De literatuur toont aan dat mainframes, en in het bijzonder IBM Z met z/OS, nog steeds een centrale rol spelen in bedrijfskritische omgevingen. Tegelijkertijd staan organisaties onder druk door een afnemende instroom van nieuw talent en een vergrijzend personeelsbestand, waardoor kennisverlies en continuïteitsrisico’s toenemen. Deze context maakt duidelijk dat mainframe-expertise niet vanzelfsprekend beschikbaar blijft en dat gerichte competentieontwikkeling noodzakelijk is.
+
+Daarom is er nood aan een competentie framework voor z/OS System Administrators dat 
+\begin{itemize}
+	\item Een gedetailleerde set vaardigheden biedt voor z/OS System Administrators, inclusief JCL, REXX, RACF, subsystemen (basiskennis van CICS,IMS en Db2) en z/OS architectuur met niveauprogressie (Level 1 en Level 2).
+	\item Praktijkgerichte leermodules bevat, zodat studenten en professionals direct toepasbare kennis opdoen.
+	\item Competenties vertaalt naar observeerbare leeruitkomsten en evaluatiecriteria
+\end{itemize}
+Een dergelijk framework ondersteunt zowel onderwijsinstellingen (curriculum, labs, toetsing) als organisaties (onboarding, reskilling, loopbaanpaden) en vormt zo een concrete brug tussen opleiding en industrie.
 
 %\begin{table}
 %  \centering

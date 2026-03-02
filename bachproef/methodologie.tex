@@ -25,67 +25,82 @@
 %%
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
-Deze bachelorproef hanteert meerdere methodes om een omvattend competen
-tie framework te ontwikkelen voor z/OS System Administrators Level 1 en Level 2. In dit hoofdstuk wordt de methodologische aanpak in detail be
-schreven, inclusief de gebruikte onderzoeksmethoden, dataverzamelingstechnie
-ken, ontwikkelingsproces en analyseprocedures
+
+Deze bachelorproef hanteert een ontwerpend onderzoeksopzet (design science research) met als doel het ontwikkelen en valideren van een competentieframework voor z/OS System Administrators Level~1 en Level~2. Het onderzoek combineert literatuuronderzoek, praktijkgericht kwalitatief onderzoek en iteratief ontwerp, en wordt ondersteund door feedback van een vakexpert (co-promotor), praktijkstakeholders (KBC/IBS Markets) en domeinspecifieke documentatie (IBM Redbooks). 
 
 \section{\IfLanguageName{dutch}{Requirement analyse}{Requirement analyse}}%
 \label{sec:requirement-analyse}
-Deeerste fase van het onderzoek bestond uit een grondige analyse van de vereis
-ten voor het te ontwikkelen competentie framework. Deze analyse was essentieel
-omdescopevanhetproject af te bakenen en de belangrijkste componenten van
-hetframeworkteidentificeren. Derequirementanalysewerduitgevoerddoormid
-del van:
+De eerste fase van het onderzoek bestond uit een grondige analyse van de vereisten voor het te ontwikkelen competentie framework. Deze analyse was essentieel om de scope van het project af te bakenen en de belangrijkste componenten van het framework te identificeren. De requirement analyse werd uitgevoerd door middel van:
 \begin{itemize}
-    \item Literatuuronderzoek: Een uitgebreide review van bestaande competentie frameworks, vooral gericht op IT en systeembeheer, werd uitgevoerd. Dit omvatte academische artikelen, industriële rapporten en best practices in de sector.
-    \item Interviews: Gesprekken met ervaren z/OS System Administrators en IT-managers
-    \item Vergelijkende studie: Een analyse van bestaande competentie frameworks in vergelijkbare domeinen, zoals Linux systeembeheer en cloud computing, werd uitgevoerd om relevante competenties te identificeren die ook van toepassing kunnen zijn op z/OS.
+    \item \textbf{Literatuuronderzoek:} Een review van bestaande competentie frameworks, vooral gericht op IT en system administration in z/OS, werd uitgevoerd. Dit omvatte academische artikelen, industriële rapporten en best practices in de sector.
+    \item \textbf{Interviews:} Gesprekken met ervaren mainframe specialisten uit mainframe-industrie om hun specifieke behoeften en verwachtingen in kaart te brengen.
+    \item \textbf{Feedback van mainframe experts:} Er werd mainframe-experten met expertise in z/OS gecontacteerd en zijn input geconsulteerd.
+    \item \textbf{Vergelijkende studie:} Een analyse van bestaande competentie frameworks (SFIA, e-CF en IBM competency frameworks) werd uitgevoerd om relevante competentiemodellen te identificeren voor een system administrator op z/OS.
 \end{itemize}
-Deverzamelde requirements werden vervolgens geprioriteerd met behulp van de
-MoSCoW-methode,zoals hieronder beschreven
+De verzamelde requirements werden vervolgens geprioriteerd met behulp van de MoSCoW-methode,zoals hieronder beschreven
 \section{\IfLanguageName{dutch}{MoSCoW-methode}{MoSCoW method}}%
 \label{sec:moscow-methode}
-\textbf{Must Have}
-Devolgendevereisten zijn essentieel voor het competentieframework en de bijbe
-horende proof-of-concept webapplicatie:
+\subsubsection{Must Have}
+De volgende vereisten zijn essentieel voor het competentieframework en de bijbehorende proof-of-concept webapplicatie:
 \begin{itemize}
-    \item Gedefineerde competentieframework: Het framework moet duidelijke en relevante competentiedomeinen bevatten die specifiek zijn voor z/OS System Administrators, zoals systeembeheer, beveiliging, automatisering, probleemoplossing en communicatie.
-    \item  Praktischeoefeningenenusecases
-    \item Literatuur- en industrieanalyse:
-    \item Feedbackvanprofessionals: 
-    \item  Proof-of-concept webapplicatie:
-    \item  Documentatievanhetframework:
+    \item \textbf{Gedefineerde competentieframework:} Het framework moet duidelijke en relevante competentiedomeinen bevatten die specifiek zijn voor z/OS System Administrators, zoals systeembeheer, beveiliging, automatisering, probleemoplossing en communicatie.
+    \item \textbf{Praktische oefeningen en usecases:} Hands-on taken die studenten in staat
+stellen ervaring op te doen met TSO commando's, ISPF, SDSF, JCL, REXX en native RACF commando's.
+    \item \textbf{Literatuur- en industrieanalyse:} Onderzoek naar bestaande competentiemodellen (zoals SFIA, e-CF en IBM Z System Administrator Competency Framework Level 1 en Level 2) en de aansluiting op de behoeften van de sector.
+    \item \textbf{Feedback van professionals:} Interviews en samenwerking met ervaren mainframe experts om de toepasbaarheid van het framework te waarborgen.
+    \item \textbf{Proof-of-concept webapplicatie:} Een digitale tool die het framework interactief presenteert en toegankelijk maakt voor studenten en opleiders.
+    \item \textbf{Documentatie van het framework:} Een gedetailleerd verslag van de ontwikkelde competenties, methodologie en implementatie.
 \end{itemize}
-\textbf{Should Have}
+\subsubsection{Should Have}
 Deze elementen zijn wenselijk en verhogen de bruikbaarheid van het framework,
 maarzijn niet strikt noodzakelijk voor de minimale oplevering:
 \begin{itemize}
-    \item Dynamische updates binnen de webapplicatie: 
-    \item User systeem in de website met vooruitgangsregistratie:
-    \item Integratie van gamification-elementen:
+    \item \textbf{Dynamische updates binnen de webapplicatie:} Functionaliteit om het frameworkperiodiek aan te passen op basis van nieuwe industriële vereisten.
+    \item \textbf{User systeem in de website met vooruitgangsregistratie:} Een account systeem dat trackt jouw vooruitgang binnen de website.
+    \item \textbf{Integratie van gamification-elementen:} Het toevoegen van prijzen voor de account en/of interactieve quizzen om gebruikers te motiveren.
 \end{itemize}
-\textbf{Could Have}
+\subsubsection{Could Have}
 Deze functies zouden een meerwaarde bieden, maar kunnen worden weggelaten als er tijds- of resourcebeperkingen zijn:
 \begin{itemize}
-    \item Uitgebreide feedbackmechanismen binnen de webapplicatie:
-    \item  Community forum binnen de webapplicatie:
-    \item  Integratie van AI-gestuurde aanbevelingen:
+    \item \textbf{Community forum binnen de webapplicatie:} Een forum of discussieplatform binnen de webapplicatie voor gebruikers om ervaringen en vragen te delen.
+    \item \textbf{Integratie van AI-gestuurde aanbevelingen:} Een AI-assistent die studenten begeleidt bij
+    het oplossen van oefeningen en hen gepersonaliseerde aanbevelingen biedt.
 \end{itemize}
-\textbf{Won't Have}
+\subsubsection{Won't Have}
 Deze functies zijn niet relevant voor dit project en zullen niet worden opgenomen:
 \begin{itemize}
-    \item Ondersteuning voor andere besturingssystemen dan z/OS:
-    \item  Competentie frameworks voor andere IT-rollen:
-    \item  Integratie met externe leerplatforms:
+	 \item \textbf{Ondersteuning voor andere besturingssystemen dan z/OS:} Het framework richt zich specifiek op z/OS en zal geen ondersteuning bieden voor andere besturingssystemen zoals MCP.
+    \item \textbf{Multiplatform-native applicaties:} De focus ligt op een webgebaseerde applicatie en niet op native apps voor mobiele apparaten.
+    \item \textbf{Specifiek orientatie over een bedrijfsinfrastructuur:} Elk bedrijf heeft zijn eigen mainframe infrastructuur. Sommige bedrijven gebruiken vendor tools voor een specifieke taak van een system administrator bijvoorbeeld BMC Db2 manager of Editor vendor tools. Het is natuurlijk onmogelijk om voor elke organisatie hierover informatie weer te geven, ook al omdat deze informatie vaak niet publiek toegangkelijk is.
 \end{itemize}
 \section{\IfLanguageName{dutch}{Kwalitatief onderzoek: interviews met professionals}{Kwalitatief onderzoek: interviews met professionals}}%
 \label{sec:onderzoek-interview-prof}
-Om de praktische relevantie en de afstemming op de industrie van het competentie framework te verzekeren, werd kwalitatieve data verzameld via semigestructureerde interviews.
-\subsection{\IfLanguageName{dutch}{interviews met professionals opvolging}{Kwalitatief onderzoek: interviews met professionals}}%
+Om de praktische relevantie en de afstemming op de industrie van het competentie framework te verzekeren, werd kwalitatieve data verzameld via semigestructureerde interviews. Minstens 2 interviews zijn gepland voor de maand maart.
+\subsection{\IfLanguageName{dutch}{Interviews met professionals opvolging}{Kwalitatief onderzoek: interviews met professionals}}%
 \label{sec:onderzoek-interview-prof-opvolging}
-Opvolging van de interviews, bevindingen, procedure en impact op de onderzoek.
-\section{\IfLanguageName{dutch}{Ontwikkeling van Proof of Concept Website a.h.v onderzoek}{Developing the proof of concept website with the help of research}}%
+Opvolging van de interviews, bevindingen, procedure en impact op het onderzoek zal hier besproken worden.
+
+\section{\IfLanguageName{dutch}{Ontwikkeling van de proof-of-conceptwebsite op basis van het onderzoek}{Developing the proof-of-concept website based on the research}}%
 \label{sec:poc-ontwikkeling}
+
+Parallel aan de afronding van het framework werd een proof-of-concept (PoC) webapplicatie ontwikkeld om de digitale ontsluiting van het framework te demonstreren. Het ontwikkelproces volgde een iteratieve aanpak:
+
+\begin{itemize}
+	\item \textbf{Ontwerp:} Op basis van de requirementsanalyse werd een ontwerp uitgewerkt voor de structuur en lay-out van de website. Er werden knoppen voorzien om de verschillende onderwerpen per niveau te bekijken. 
+	\item \textbf{Implementatie:} De website werd geïmplementeerd met standaard webtechnologieën: HTML voor de structuur, CSS voor de opmaak en JavaScript voor interactieve onderdelen, zoals oefenvragen in de vorm van multiplechoicequizzen (MCQ).
+	\item \textbf{Versiebeheer en deployment:} De website werd publiek beschikbaar gemaakt via een GitHub-repository en statisch gedeployed via GitHub Pages.
+\end{itemize}
+De ontwikkeling van de website zal zich richten op de “must-have”-onderdelen van de requirement analyse. Voor elk onderwerp wordt een theoretisch gedeelte uitgewerkt, aangevuld met een multiplechoicegedeelte en een sectie met praktische oefeningen.
+
 \section{\IfLanguageName{dutch}{Validatie}{Validation}}%
 \label{sec:validatie-poc}
+De validatie van het ontwikkelde framework en de PoC webapplicatie in deze bachelorproef bestond uit verschillende componenten:
+\begin{itemize}
+	\item \textbf{Literatuur validatie:} Het framework is gebaseerd op en vergeleken met bestaande, erkende frameworks; SFIA, e-CF en het IBM Z System Administrator Competency Framework Level 1 en Level 2, wat zorgt voor een theoretische onderbouwing.
+	\item \textbf{Industrie validatie:} Interviews en feedback van mainframe experten zal dienen als een eerste validatie.
+	\item \textbf{Formele validatie:} Het ontwikkelde framework en de PoC zijn gevalideerd door literatuur en de initiële interviews. Een formele validatieronde met een bredere
+	groep van onderwijsexperts en senior industrie-professionals op het finale
+	productontbreekt. Dit beperkt de zekerheid over de volledigheid en optimale
+	toepasbaarheid in diverse contexten.
+\end{itemize}
+De combinatie van literatuuronderzoek en de kwalitatieve interviews biedt echter een solide basis voor de relevantie en bruikbaarheid van het gepresenteerde framework en de PoC.
