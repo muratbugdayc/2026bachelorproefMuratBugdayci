@@ -43,7 +43,7 @@ De verzamelde requirements werden vervolgens geprioriteerd met behulp van de MoS
 \subsubsection{Must Have}
 De volgende vereisten zijn essentieel voor het competentieframework en de bijbehorende proof-of-concept webapplicatie:
 \begin{itemize}
-    \item \textbf{Gedefineerde competentieframework:} Het framework moet duidelijke en relevante competentiedomeinen bevatten die specifiek zijn voor z/OS System Administrators, zoals systeembeheer, beveiliging, automatisering, probleemoplossing en communicatie.
+    \item \textbf{Gedefineerde competentieframework:} Het framework moet duidelijke en relevante competentiedomeinen bevatten die specifiek zijn voor z/OS SysAdmin/SysProg, zoals systeembeheer, beveiliging, automatisering, probleemoplossing en communicatie.
     \item \textbf{Praktische oefeningen en usecases:} Hands-on taken die studenten in staat
 stellen ervaring op te doen met TSO commando's, ISPF, SDSF, JCL, REXX en native RACF commando's.
     \item \textbf{Literatuur- en industrieanalyse:} Onderzoek naar bestaande competentiemodellen (zoals SFIA, e-CF en IBM Z System Administrator Competency Framework Level 1 en Level 2) en de aansluiting op de behoeften van de sector.
@@ -73,12 +73,65 @@ Deze functies zijn niet relevant voor dit project en zullen niet worden opgenome
     \item \textbf{Multiplatform-native applicaties:} De focus ligt op een webgebaseerde applicatie en niet op native apps voor mobiele apparaten.
     \item \textbf{Specifiek orientatie over een bedrijfsinfrastructuur:} Elk bedrijf heeft zijn eigen mainframe infrastructuur. Sommige bedrijven gebruiken vendor tools voor een specifieke taak van een system administrator bijvoorbeeld BMC Db2 manager of Editor vendor tools. Het is natuurlijk onmogelijk om voor elke organisatie hierover informatie weer te geven, ook al omdat deze informatie vaak niet publiek toegangkelijk is.
 \end{itemize}
-\section{\IfLanguageName{dutch}{Kwalitatief onderzoek: interviews met professionals}{Kwalitatief onderzoek: interviews met professionals}}%
+\section{\IfLanguageName{dutch}{Kwalitatief onderzoek: interviews met professionals}{Qualitative research: interviews with professionals}}%
 \label{sec:onderzoek-interview-prof}
-Om de praktische relevantie en de afstemming op de industrie van het competentie framework te verzekeren, werd kwalitatieve data verzameld via semigestructureerde interviews. Minstens 2 interviews zijn gepland voor de maand maart.
-\subsection{\IfLanguageName{dutch}{Interviews met professionals opvolging}{Kwalitatief onderzoek: interviews met professionals}}%
+
+Om de praktische relevantie en de afstemming op de industrie van het competentieframework te verzekeren, werd kwalitatieve data verzameld via semigestructureerde interviews.
+
+Hoewel niet alle geïnterviewde respondenten strikt de rol van z/OS System Administrator of System Programmer vervullen, beschikken zij allen over aantoonbare professionele ervaring binnen z/OS-omgevingen. Verschillende respondenten zijn bijvoorbeeld gespecialiseerd in subsystemen zoals Db2, IMS en software development in mainframe (COBOL, 3GL, PL/I) waarvoor diepgaande kennis van z/OS noodzakelijk is.
+
+Daarnaast hebben de deelnemers een aanzienlijke professionele ervaring binnen mainframe omgevingen. Hierdoor bezitten zij een breed en praktijkgericht inzicht in zowel operationele als systeemgerichte taken.
+
+Op basis van deze expertise wordt hun input beschouwd als representatief voor de competenties en vaardigheden die vereist zijn binnen z/OS-gerelateerde functies, inclusief taken die typisch geassocieerd worden met zowel System Administrators als System Programmers.
+
+\subsection{Deelnemers}
+
+Er werden interviews afgenomen met professionals werkzaam bij Isbank, ABN AMRO, KBC en Broadcom. Deze organisaties vertegenwoordigen zowel de financiële sector als de mainframe software industrie.
+
+De respondenten bekleden diverse functies binnen z/OS-omgevingen, waaronder systeembeheer, databasebeheer, applicatieondersteuning. Hierdoor werd een breed perspectief verkregen op de vereiste competenties binnen het mainframedomein.
+
+Zie hoofdstuk interviews om gedetaillerd te bekijken.
+
+\subsection{Procedure}
+
+De dataverzameling vond plaats in verschillende professionele contexten om een zo breed mogelijk beeld van de praktijk te verkrijgen.
+
+De interviews met ABN AMRO werden fysiek afgenomen op 8 april in het computercentrum in Amsterdam, waar gesprekken plaatsvonden met meerdere leden van het mainframe infrastructuurteam. Deze setting maakte het mogelijk om inzichten te verzamelen vanuit een operationele omgeving waarin z/OS dagelijks wordt beheerd.
+
+Daarnaast werden interviews afgenomen tijdens het internationale Mainframe Technical Exchange (MTE) evenement in Praag (21–23 april), georganiseerd door Broadcom. Tijdens dit evenement werd gesproken met professionals afkomstig uit onder meer Isbank en Broadcom, wat zorgde voor aanvullende perspectieven vanuit zowel de financiële sector als de software industrie.
+
+Aanvullend werd er een interview met een professional van KBC (Markets) in 20 maart online uitgevoerd.
+\section{Uitvoering en resultaten van de interviews}
 \label{sec:onderzoek-interview-prof-opvolging}
-Opvolging van de interviews, bevindingen, procedure en impact op het onderzoek zal hier besproken worden.
+
+De interviews werden uitgevoerd aan de hand van een vooraf opgestelde en gestructureerde vragenlijst, die als leidraad diende tijdens de gesprekken. Afhankelijk van de expertise van de respondent werden bijkomende verdiepende vragen gesteld. 
+
+De focus van de interviews lag op het identificeren van essentiële competenties, moeilijkheden bij de instap in het mainframedomein en verwachtingen vanuit de industrie. De verkregen data werd nadien thematisch geanalyseerd, waarbij terugkerende patronen en inzichten werden geïdentificeerd.
+
+\subsection{Belangrijkste bevindingen}
+\label{sec:aanpassingen-bevindingen}
+Uit de interviews kwamen verschillende consistente bevindingen naar voren.
+
+\begin{itemize}
+	\item Ten eerste werd vastgesteld dat beginnende professionals vooral moeilijkheden ondervinden bij het begrijpen van abstracte z/OS-concepten, zoals Workload Management (WLM), virtual storage en address spaces. Deze concepten vereisen een diepgaand inzicht in de interne werking van het systeem en worden als minder intuïtief ervaren in de beginfase van een carrière.
+	\item Daarnaast benadrukten respondenten het belang van zowel technische als niet-technische competenties. Op technisch vlak werden onder meer kennis van JCL, REXX, SDSF, JES en algemene z/OS-concepten als essentieel beschouwd voor het uitvoeren van operationele en beheertaken.
+	\item Naast technische vaardigheden werd ook het belang van soft skills benadrukt, zoals communicatie, probleemoplossend denken en samenwerking binnen teams. Deze vaardigheden worden als noodzakelijk beschouwd voor het functioneren binnen complexe enterprise-omgevingen.
+	\item Verder werd als advies aan starters aangegeven dat een instap via operationele rollen (operations) waardevol is om een breed inzicht te verwerven in het systeem. Vanuit deze basis kan vervolgens een gerichte keuze worden gemaakt tussen verdere specialisatie of een meer generalistische rol.
+	\item Tot slot werd gewezen op de toenemende rol van modernisering binnen mainframe omgevingen. Technologieën zoals Liberty en WebSphere maken het mogelijk om moderne programmeertalen, zoals Java, te integreren binnen het mainframe. Dit verlaagt de instapdrempel voor nieuwe profielen en ondersteunt de integratie van mainframes binnen hybride IT-architecturen.
+\end{itemize}
+
+\subsection{Impact op onderzoek: Aanpassing van de scope op basis van empirische bevindingen}
+
+Aanvankelijk richtte dit onderzoek zich op het definiëren van een competentieframework voor z/OS System Administrators op Level 1 en Level 2.
+De bevindingen uit de interviews hebben een directe impact gehad op de verdere uitwerking van het competentieframework.
+
+Ten eerste werd duidelijk dat abstracte concepten extra aandacht vereisen binnen het leertraject. Daarom wordt in het voorgestelde framework een gefaseerde opbouw voorzien, waarbij deze concepten expliciet en stapsgewijs worden behandeld.
+
+Daarnaast bevestigen de resultaten het belang van een combinatie van technische en gedragscompetenties, wat aansluit bij de gekozen KSA structuur (Knowledge, Skills, Attitude) binnen dit onderzoek.
+
+Verder hebben de interviews aangetoond dat de strikte scheiding tussen System Administrator en System Programmer in de praktijk niet altijd duidelijk is. In combinatie met de vastgestelde overlap in gebruikte technologieën (zoals JCL, REXX, SDSF en RACF), heeft dit geleid tot een aanpassing van de scope van het onderzoek naar een meer competentiegebaseerde benadering in plaats van een rolgebaseerde afbakening.
+
+Tot slot benadrukken de inzichten rond modernisering het belang van het opnemen van integratie met moderne technologieën binnen het competentieframework.
 
 \section{\IfLanguageName{dutch}{Ontwikkeling van de proof-of-conceptwebsite op basis van het onderzoek}{Developing the proof-of-concept website based on the research}}%
 \label{sec:poc-ontwikkeling}

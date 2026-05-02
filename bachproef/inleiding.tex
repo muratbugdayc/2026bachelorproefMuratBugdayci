@@ -39,22 +39,32 @@
 %\end{figure}
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
+
+Dit hoofdstuk analyseert de huidige stand van zaken binnen het domein van z/OS systeembeheer en competentieontwikkeling.
+Het centrale probleem dat uit de literatuur naar voren komt, is het groeiende tekort aan gekwalificeerde mainframeprofessionals, gecombineerd met een gebrek aan gestructureerde en praktijkgerichte opleidingskaders.
+Dit onderzoek richt zich daarom op het ontwikkelen van een competentieframework voor z/OS System Administrators (SysAdmin) en System Programmers (SysProg), dat zowel aansluit bij industriële noden als inzetbaar is binnen een onderwijscontext.
+Dit hoofdstuk onderbouwt deze probleemstelling door bestaande technologieën, rollen en competentieraamwerken te analyseren.
+
 De mainframe-industrie, en meer specifiek de z/OS-omgeving, vormt nog steeds een fundamentele component van de IT-architectuur binnen grote organisaties zoals banken, verzekeringsmaatschappijen en overheidsinstellingen. Hoewel cloudoplossingen en gedistribueerde systemen sterk in opmars zijn, blijft z/OS verantwoordelijk voor de verwerking van een aanzienlijk volume aan bedrijfskritische transacties. Betrouwbaarheid, beveiliging en hoge beschikbaarheid zijn daarbij kernvereisten, waardoor z/OS een cruciale rol speelt in het waarborgen van de operationele continuïteit van ondernemingen.
 
-Binnen deze context vervullen z/OS System Administrators een essentiële functie in het beheer en de optimalisatie van de omgeving. Hun verantwoordelijkheden omvatten onder meer systeemconfiguratie, onderhoud, performantiebeheer, security-implementatie en lifecycle management. In de praktijk zijn deze taken echter vaak verspreid over meerdere gespecialiseerde teams, waarbij de exacte invulling van de rol varieert afhankelijk van de organisatie en infrastructuur. Deze variabiliteit bemoeilijkt het afbakenen van een uniform en praktijkgericht competentieprofiel dat zowel technische als niet-technische vaardigheden omvat.
+Binnen deze context vervullen z/OS SysAdmin en SysProg een essentiële functie in het beheer,optimalisatie en de onderhoud van de omgeving. Hun verantwoordelijkheden omvatten onder meer systeemconfiguratie, onderhoud, performantiebeheer, security-implementatie en lifecycle management. In de praktijk zijn deze taken echter vaak verspreid over meerdere gespecialiseerde teams, waarbij de exacte invulling van de rol varieert afhankelijk van de organisatie en infrastructuur. Deze variabiliteit bemoeilijkt het afbakenen van een uniform en praktijkgericht competentieprofiel dat zowel technische als niet-technische vaardigheden omvat.
 
 Tegelijkertijd wordt de sector geconfronteerd met een structureel tekort aan gekwalificeerde mainframe-specialisten. Industrieonderzoek wijst op een vergrijzende workforce en een toenemende uitstroom van ervaren medewerkers \autocite{BMC2024}. Volgens het 2025 State of Mainframe Modernization Survey Report \autocite{Kyndryl2025} wordt deze skills gap verder versterkt door de snelle evolutie van technologieën zoals cloud, artificiële intelligentie en geavanceerde security, in combinatie met de pensionering van professionals met diepgaande mainframe-expertise. Organisaties staan hierdoor voor de uitdaging om traditionele z/OS-kennis te combineren met moderne technologiecompetenties.
 
-Daarnaast besteden onderwijsinstellingen doorgaans beperkte aandacht aan mainframe-technologieën binnen hun IT-curricula, waardoor een kloof ontstaat tussen de verworven academische kennis en de verwachtingen vanuit de industrie. Specifiek voor instapfuncties zoals z/OS System Administrator Level 1 en Level 2 rijst de vraag in welke mate bestaande competentiekaders voldoende aansluiten bij de hedendaagse praktijk en de veranderende technologische context. Het ontwikkelen of verfijnen van een praktijkgericht competentieframework kan bijdragen aan een betere afstemming tussen onderwijs, industriële verwachtingen en toekomstige workforcebehoeften, en zo het duurzaam borgen van mainframe-expertise ondersteunen.\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
+Daarnaast besteden onderwijsinstellingen doorgaans beperkte aandacht aan mainframe-technologieën binnen hun IT-curricula, waardoor een kloof ontstaat tussen de verworven academische kennis en de verwachtingen vanuit de industrie. Specifiek voor instapfuncties zoals z/OS SysAdmin en SysProg rijst de vraag in welke mate bestaande competentiekaders voldoende aansluiten bij de hedendaagse praktijk en de veranderende technologische context. Het ontwikkelen of verfijnen van een praktijkgericht competentieframework kan bijdragen aan een betere afstemming tussen onderwijs, industriële verwachtingen en toekomstige workforcebehoeften, en zo het duurzaam borgen van mainframe-expertise ondersteunen.
+
+Tijdens het onderzoek werd de oorspronkelijke focus op System Administrators (Level 1 en Level 2) uitgebreid met elementen uit de System Programmer rol, op basis van inzichten uit interviews met professionals uit de sector.
+
+\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
 De centrale onderzoeksvraag van deze bachelorproef luidt: “Welke competenties
-moet een z/OS System Administrator Level 1 en Level 2 bezitten om effectief te functioneren, en hoe kunnen deze competenties in een
+moet een z/OS System Administrator en/of System Programmer bezitten om effectief te functioneren, en hoe kunnen deze competenties in een
 gestructureerd framework worden georganiseerd dat direct toepasbaar is binnen
 een onderwijscontext?”
 Deze hoofdvraag wordt ondersteund door de volgende deelvragen:
 \begin{itemize}
 \item Welke technische kennis en vaardigheden zijn essentieel voor een beginnende
-z/OS System Administrator?
+z/OS System Administrator/System Programmer?
 \item Welke soft skills worden door de industrie als cruciaal beschouwd voor deze
 rol?
 \item Hoe kan een competentie framework worden vertaald naar praktische, taak
@@ -64,7 +74,7 @@ gerichte oefeningen die aansluiten bij de realiteit van het werkveld?
 \end{itemize}
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
-Het doel van deze bachelorproef is het ontwikkelen van een omvattend en toekomstbestendig competentieframework voor de rol van z/OS System Administrator op instapniveau binnen de mainframe-industrie, specifiek gericht op een onderwijscontext. Dit framework heeft als doel een gestructureerd en praktijkgericht leerpad te bieden dat studenten voorbereidt op de operationele realiteit van een z/OS-omgeving.
+Het doel van deze bachelorproef is het ontwikkelen van een omvattend en toekomstbestendig competentieframework voor de rol van z/OS System Administrator en System Programmers op instapniveau binnen de mainframe-industrie, specifiek gericht op een onderwijscontext. Dit framework heeft als doel een gestructureerd en praktijkgericht leerpad te bieden dat studenten voorbereidt op de operationele realiteit van een z/OS-omgeving.
 
 Het voorgestelde framework zal:
 \begin{itemize}
@@ -76,7 +86,7 @@ Het voorgestelde framework zal:
 
 \item Gepresenteerd worden via een proof-of-concept webapplicatie die het competentieframework op een interactieve en toegankelijke manier visualiseert, waarbij verschillende competentiedomeinen en niveaus (Level 1 en Level 2) duidelijk worden weergegeven voor zowel studenten als opleiders.
 \end{itemize}
-Het uiteindelijke doel is om de kloof tussen onderwijs en industrie te verkleinen door studenten beter voor te bereiden op een carrière als z/OS System Administrator en zo bij te dragen aan het aanpakken van het groeiende tekort aan mainframe-specialisten binnen de sector.
+Het uiteindelijke doel is om de kloof tussen onderwijs en industrie te verkleinen door studenten beter voor te bereiden op een carrière als z/OS SysAdmin/SysProg en zo bij te dragen aan het aanpakken van het groeiende tekort aan mainframe-specialisten binnen de sector.
 %Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
@@ -98,6 +108,8 @@ In Hoofdstuk~\ref{ch:proof-of-concept} wordt de ontwikkeling en implementatie va
 
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven, een antwoord geformuleerd
 op de onderzoeksvragen, en worden aanbevelingen gedaan voor toekomstig onderzoek en implementatie.
+
+In Hoofdstuk~\ref{ch:interviews} wordt de ontwikkeling en implementatie van het competentie frameworkbeschreven, evenals de proof-of-concept webapplicatie.
 
 Het succes van deze bachelorproef zal worden gemeten aan de hand van de volgende criteria:
 \begin{itemize}

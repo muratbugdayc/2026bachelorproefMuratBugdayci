@@ -119,7 +119,7 @@ In omgevingen waar nationale veiligheid en defensie centraal staan, zijn vertrou
 
 \section{\IfLanguageName{dutch}{Eigenschappen van z/OS architectuur}{Characteristics of z/OS architecture}}
 \label{sec:kenmerken-van-zos-architectuur}
-Deze sectie beschrijft sommige z/OS-concepten die nodig zijn om z/OS omgeving en taken van system administrators te begrijpen.
+Deze sectie beschrijft sommige z/OS-concepten die nodig zijn om z/OS omgeving en taken van SysAdmin/SysProg te begrijpen.
 \subsection{\IfLanguageName{dutch}{Datasets}{Datasets on z/OS}}
 \label{sec:datasets-op-zos}
 Binnen z/OS wordt data beheerd via zogenaamde data sets, wat de mainframe equivalent is van bestanden. Een data set bestaat uit records (vaste of variabele records) die door programma’s worden verwerkt. Datasets worden doorgaans aangesproken via hun datasetnaam (DSN); wanneer ze cataloged zijn, kan het systeem hun fysieke locatie automatisch terugvinden via de catalogus.
@@ -215,7 +215,7 @@ System Modification Program Extended (SMP/E) is de standaardtool binnen z/OS voo
 \subsection{\IfLanguageName{dutch}{Subsystemen in z/OS}{Subsystems in z/OS}}
 \label{sec:fsubsystemen-in-zos}
 
-Deze zijn gespecialiseerde subsystemen in z/OS en een system administrator moet deze subsystemen weten en begrijpen. In deze bachelorproef gaat er minder aandacht besteed worden op deze subsystemen.
+Deze zijn gespecialiseerde subsystemen in z/OS en een SysAdmin/SysProg moet deze subsystemen weten en begrijpen. In deze bachelorproef gaat er minder aandacht besteed worden op deze subsystemen.
 \begin{itemize}
 	\item \textbf{CICS:} Customer Information Control System voor transactionele toepassingen
 	\item \textbf{IMS DB:} Information Management System voor databasebeheer
@@ -302,6 +302,7 @@ De system programmer beheert de installatie, configuratie en technische optimali
 De system administrator beheert de dagelijkse werking van de z/OS-omgeving, inclusief toegangsbeheer, monitoring en operationele ondersteuning van applicaties en data.\autocite{IBM_zOS_Concepts}
 Maar het onderscheid varieert tussen een system programmer en een system administrator afhankelijk van de grootte en structuur van de organisatie. In kleinere IT-omgevingen kunnen beide rollen door één persoon worden uitgevoerd. In grotere organisaties worden de verantwoordelijkheden doorgaans gescheiden omwille van efficiëntie en auditvereisten. 
 Hoewel de focus van de system administrator operationeel is, vertoont de rol in de praktijk gedeeltelijke overlap met die van de system programmer. Relevante systeemgerichte taken worden daarom meegenomen in dit competentieframework zoals het werken met SMP/E software beheer tool.
+
 \subsection{\IfLanguageName{dutch}{Wat zijn de taken van een system administrator volgens IBM}{What is the role of a system administrator in a z/OS context}}
 \label{sec:rol-van-een-system-administrator-in-zos-context}
 De system administrator is in hoofdzaak verantwoordelijk voor het dagelijkse operationele beheer van de mainframeomgeving vanuit een bedrijfsgericht perspectief. Waar de system programmer zich richt op het onderhoud van het besturingssysteem en de onderliggende infrastructuur, concentreert de system administrator zich op het beheer van bedrijfskritische data, applicaties en toegangscontrole. \autocite{IBM_zOS_Concepts}
@@ -319,7 +320,7 @@ Volgens \autocite{IBM_zOS_Concepts} typische taken van een system administrator 
 
 Daarnaast werkt de system administrator nauw samen met applicatieontwikkelaars en eindgebruikers om te verzekeren dat toepassingen correct functioneren binnen de operationele omgeving. In grotere organisaties kunnen gespecialiseerde rollen bestaan, zoals database administrators (DBA’s) of security administrators, die specifieke onderdelen van het beheer uitvoeren. \autocite{IBM_zOS_Concepts}
 
-\subsection{De evoluerende rol van de System Administrator}
+\subsection{De evoluerende rol van de SysAdmin/SysProg}
 \label{sec:evolution-sys-admin}
 
 De rol van de System Administrator heeft in de loop der jaren een duidelijke evolutie doorgemaakt. Waar system administrators traditioneel voornamelijk verantwoordelijk waren voor het installeren, configureren en onderhouden van servers en besturingssystemen, omvat hun takenpakket vandaag een bredere set aan verantwoordelijkheden die automatisering, beveiliging en cloudintegratie omvatten \autocite{kim2016devops}.
@@ -350,6 +351,12 @@ Gezien de blijvende relevantie van mainframe-omgevingen binnen kritieke sectoren
 
 Ondanks de blijvende relevantie van mainframes kampen organisaties met een structurele personeelsuitdaging. De instroom van nieuwe profielen blijft beperkt, onder meer omdat mainframes minder zichtbaar is binnen klassieke IT-opleidingen en veel starters eerder richting cloud-native stacks en populaire programmeertalen worden getrokken. Hierdoor ontstaat een krapte op de arbeidsmarkt, zeker voor profielen die zowel de z/OS-basis als enterprise-processen beheersen.
 
+\subsubsection{Conclusie rond de uitdagingen}
+\label{sec:uitdagingen-standvanzaken-conclusie}
+De literatuur toont duidelijk aan dat er een structureel tekort is aan mainframe-expertise en dat bestaande opleidingsinitiatieven onvoldoende schaalbaar zijn.
+Daarom neemt dit onderzoek deze problematiek als uitgangspunt en vertaalt deze naar concrete competentievereisten binnen het voorgestelde framework.
+Daarnaast wordt de focus gelegd op praktijkgerichte en meetbare vaardigheden, om beter aan te sluiten bij de noden van de industrie. Wat na gesprekken en interviews met de professionals meer verfijnd zullen worden.
+
 Een belangrijke uitdaging is de veroudering van het bestaande personeelsbestand. Volgens \textcite{astadia_retirement} is ongeveer 60\% van de mainframeprofessionals ouder dan 50 jaar, wat impliceert dat een aanzienlijk deel van deze expertise op middellange termijn de arbeidsmarkt zal verlaten.
 
 Deze demografische evolutie leidt tot een groeiend tekort aan gekwalificeerde professionals om openstaande functies in te vullen. Het probleem wordt versterkt door de beperkte instroom van nieuwe talenten. Uit een studie blijkt dat 64\% van de IT-operationsmanagers aangeeft dat het vinden van mainframespecialisten een significante uitdaging vormt. \autocite{astadia_retirement}
@@ -367,6 +374,7 @@ Onderwijsinstellingen spelen een cruciale rol in het aanpakken van de instroompr
 \subsection{HOGENT’s unieke aanbod}
 
 HOGENT onderscheidt zich door als enige instelling in de Benelux een specifieke opleiding tot mainframe-expert aan te bieden. Deze micro-credential richt zich tot IT-professionals en afgestudeerden met een bachelor- of masterdiploma in een IT-gerelateerde opleiding die hun expertise op korte termijn willen verdiepen en uitbreiden \autocite{hogent2025}.
+
 
 \subsection{De kloof tussen onderwijs en industrie}
 
@@ -510,6 +518,12 @@ Het framework bestaat uit drie kerncomponenten:
 
 Binnen dit raamwerk worden kerncompetenties gedefinieerd die zowel technische expertise (zoals JCL, REXX, RACF en systeembeheer) als professionele vaardigheden (zoals communicatie, documentatie en risicobeheersing) omvatten. De overgang van Level 1 naar Level 2 wordt gekenmerkt door een verschuiving van begeleide, proceduregerichte uitvoering naar zelfstandige, analytische en risicogestuurde besluitvorming binnen productieomgevingen.
 
+\subsubsection{Conclusie: Structuur van andere raamwerken copieeren}
+De besproken modellen (kennis, vaardigheden en gedrag) tonen aan dat competentieontwikkeling meer omvat dan louter technische kennis.
+Daarom neemt dit onderzoek de KSA-structuur (Knowledge, Skills, Attitude) over als basis voor het competentieframework,
+en wordt deze verder geconcretiseerd naar specifieke z/OS-taken en observeerbare leeruitkomsten.
+
+
 \subsection{Het Skills Framework for the Information Age (SFIA)}
 \label{sec:sfia-framework}
 Het Skills Framework for the Information Age (SFIA) is een wereldwijd erkend competentieraamwerk dat sinds 1999 in gebruik is. Het definieert 86 vaardigheden, elk beschreven over zeven niveaus van bekwaamheid. \autocite{sfia_framework}
@@ -518,9 +532,9 @@ Het raamwerk is open-source en gratis beschikbaar voor niet commercieel gebruik,
 
 \subsection{Het Europese e-competence framework (e-CF)}
 \label{sec:e-cf-framework-sa}
-Het European e-Competence Framework (e-CF) is een Europees referentiekader dat ICT-competenties structureert in termen van kennis, vaardigheden en autonomie. Het framework werd ontwikkeld onder auspiciën van CEN (European Committee for Standardization) en heeft als doel een gemeenschappelijke taal te bieden voor ICT-rollen binnen Europa. \autocite{eCF_framework}
+Het European e-Competence Framework (e-CF) \autocite{eCF_framework} is een Europees referentiekader dat ICT-competenties structureert in termen van kennis, vaardigheden en autonomie. Het framework werd ontwikkeld onder auspiciën van CEN (European Committee for Standardization) en heeft als doel een gemeenschappelijke taal te bieden voor ICT-rollen binnen Europa.
 
-Het e-CF beschrijft competenties op vijf niveaus (e-1 tot e-5), waarbij het niveau stijgt naarmate autonomie, complexiteit en impact toenemen. Deze structuur maakt het mogelijk om ICT-profielen, waaronder dat van System Administrator, objectief te positioneren. \autocite{eCF_framework}
+Het e-CF beschrijft competenties op vijf niveaus (e-1 tot e-5), waarbij het niveau stijgt naarmate autonomie, complexiteit en impact toenemen. Deze structuur maakt het mogelijk om ICT-profielen, waaronder dat van System Administrator, objectief te positioneren \autocite{eCF_framework}.
 
 \begin{itemize}
 	\item \textbf{Plan:} Strategische planning en ontwerp van informatiesystemen.

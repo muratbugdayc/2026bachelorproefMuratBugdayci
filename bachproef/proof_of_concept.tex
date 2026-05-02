@@ -1,4 +1,228 @@
 \chapter{Proof of Concept}
 \label{ch:proof-of-concept}
 
-In dit hoofdstuk wordt het Proof of Concept (PoC) beschreven dat werd ontwikkeld ter validatie van het voorgestelde competentieframework.
+Dit hoofdstuk beschrijft de ontwikkeling en implementatie van het competentieframework voor z/OS System Administrators en System Programmers, evenals de proof-of-concept webapplicatie die werd ontwikkeld om dit framework toegankelijk en visueel interpreteerbaar te maken binnen een onderwijscontext.
+
+\section{Ontwerp van het competentie framework}
+Op basis van de analyse van bestaande competentieframeworks in Hoofdstuk 2, evenals de inzichten verkregen uit de literatuurstudie en de afgenomen interviews met professionals, werd een proof of concept (PoC) ontwikkeld in de vorm van een webapplicatie.
+
+Deze webapplicatie heeft als doel het voorgestelde competentieframework voor z/OS System Administrators en System Programmers op een gestructureerde en toegankelijke manier te visualiseren. In tegenstelling tot bestaande frameworks, die vaak abstract of theoretisch blijven, richt deze PoC zich op het concreet voorstellen van competenties binnen een educatieve context.
+
+De applicatie is ontworpen om zowel technische als niet-technische competenties weer te geven, waarbij aandacht wordt besteed aan kerntechnologieën zoals z/OS, JCL, REXX, SDSF en RACF, evenals aan professionele vaardigheden zoals communicatie en probleemoplossend denken. De inhoud en structuur van het framework zijn gebaseerd op een combinatie van literatuur en praktijkinzichten, waarbij rekening werd gehouden met het feit dat de invulling van rollen zoals System Administrator en System Programmer kan variëren per organisatie.
+
+De PoC werd geïmplementeerd als een statische website en is beschikbaar via:
+https://muratbugdayc.github.io/WebpageSysAdmin/
+
+Hoewel de applicatie niet volledig is uitgewerkt, demonstreert ze de kernfunctionaliteiten en structuur van het voorgestelde competentieframework. Het prototype dient voornamelijk als illustratie van hoe het framework in de praktijk gebruikt kan worden als ondersteunend leermiddel voor studenten en opleiders.
+
+\subsection{Structuur van het framework}
+
+Het competentieframework is opgebouwd uit vier hoofdcomponenten:
+
+• \textbf{Technische competenties:} De specifieke technische kennis en vaardigheden die nodig zijn om effectief te functioneren binnen een z/OS-omgeving als System Administrator of System Programmer. Dit omvat onder meer kennis van kernconcepten en tools zoals z/OS, JCL, REXX, SDSF, JES en RACF.
+
+• \textbf{Professionele competenties:} De soft skills en professionele vaardigheden die noodzakelijk zijn om effectief te functioneren binnen een mainframe-omgeving, zoals communicatie, probleemoplossend denken, samenwerking en analytisch vermogen.
+
+• \textbf{Progressieniveaus:} Een gestructureerde opbouw die de ontwikkeling van competenties beschrijft van beginnend (Level 1) tot meer gevorderde profielen, rekening houdend met toenemende verantwoordelijkheid en complexiteit van taken.
+
+• \textbf{Praktijkgerichte toepassingen:} Concreet uitgewerkte taken, scenario’s en use-cases die de competenties vertalen naar een realistische werkomgeving en de toepasbaarheid binnen een operationele context ondersteunen.
+
+Deze structuur biedt een holistische benadering van competentieontwikkeling, waarbij zowel technische expertise als professionele groei centraal staan en afgestemd worden op de realiteit van z/OS-omgevingen in de industrie.
+
+\subsection{Technische competentiedomeinen}
+
+De technische competenties binnen het framework zijn gestructureerd volgens een hiërarchisch model, zoals geïmplementeerd in de proof-of-concept webapplicatie. Hierbij worden brede competentiedomeinen (categorieën) verder opgesplitst in concrete topics die specifieke kennis en vaardigheden vertegenwoordigen.
+
+\begin{itemize}
+	
+	\item \textbf{Platform Fundamentals:} Basiskennis van de z/OS-omgeving en systeemarchitectuur.
+	\begin{itemize}
+		\item z/OS Overview \& Address Spaces
+		\item IPL \& System Initialization
+		\item JES, Spooling \& Sysplex
+		\item z/OSMF \& Advanced Architecture
+	\end{itemize}
+	
+	\item \textbf{Hardware \& Virtualization:} Inzicht in de fysieke en virtuele infrastructuur van mainframes.
+	\begin{itemize}
+		\item CPC, LPAR \& I/O Basics
+		\item HCD, IODF \& Advanced Connectivity
+	\end{itemize}
+	
+	\item \textbf{Storage \& Data Management:} Beheer van opslag en datasets binnen z/OS.
+	\begin{itemize}
+		\item DASD, Sequential \& Partitioned Datasets
+		\item VSAM, ICF Catalog \& VTOC
+		\item DFSMS Constructs \& ACS Routines
+		\item DFSMSHSM \& DFSMSDSS
+	\end{itemize}
+	
+	\item \textbf{System Operations \& Tools:} Dagelijkse interactie met en beheer van het systeem.
+	\begin{itemize}
+		\item TSO \& ISPF Navigation
+		\item SDSF, SMF, RMF \& USS Basics
+		\item Advanced USS \& ZFS Administration
+		\item WLM \& Automated Operations Monitoring
+	\end{itemize}
+	
+	\item \textbf{Batch Processing \& JCL:} Beheer en uitvoering van batchprocessen.
+	\begin{itemize}
+		\item JCL Core Statements \& Conditional Logic
+		\item JCL Procedures \& Batch Utilities
+		\item Advanced JCL, Restart \& Workload Scheduling
+	\end{itemize}
+	
+	\item \textbf{Automation \& Scripting:} Automatisering van taken binnen z/OS.
+	\begin{itemize}
+		\item REXX Basics \& Scheduling Concepts
+		\item Advanced REXX \& System Integration
+	\end{itemize}
+	
+	\item \textbf{Subsystems \& Middleware:} Werken met belangrijke z/OS-subsystemen.
+	\begin{itemize}
+		\item CICS \& IMS Overview
+		\item Db2 for z/OS Basics
+		\item IBM MQ for z/OS
+		\item SMP/E, Software Lifecycle \& IWS(TWS)
+	\end{itemize}
+	
+	\item \textbf{Networking \& Security:} Netwerk- en beveiligingsaspecten binnen z/OS.
+	\begin{itemize}
+		\item FTP, TCP/IP (SNA) \& RACF Basics
+		\item TCP/IP Stack, FTP Config \& RACF Advanced
+	\end{itemize}
+	
+\end{itemize}
+
+Deze structuur sluit rechtstreeks aan bij de opbouw van de webapplicatie, waarbij elk topic overeenkomt met een afzonderlijke leerkaart (card) met theorie, oefening en evaluatie. Hierdoor wordt een directe koppeling gerealiseerd tussen het competentieframework en de praktische implementatie.
+
+\subsection{Professionele competentiedomeinen}
+
+Naast de technische competenties omvat het framework ook een set van professionele competentiedomeinen die essentieel zijn voor effectief functioneren binnen een z/OS-omgeving. Deze competenties ondersteunen samenwerking, probleemoplossing en continue professionele groei en zijn geïntegreerd met de technische domeinen binnen het competentiemodel.
+
+\begin{itemize}
+	
+	\item \textbf{Communicatie en samenwerking:} Vaardigheden in effectieve communicatie en teamwork binnen technische omgevingen.
+	\begin{itemize}
+		\item Duidelijk communiceren van technische concepten naar niet-technische stakeholders
+		\item Effectief samenwerken in multidisciplinaire teams
+		\item Documenteren van procedures, configuraties en beslissingen
+	\end{itemize}
+	
+	\item \textbf{Probleemoplossing en kritisch denken:} Analytische vaardigheden voor het oplossen van complexe systeemproblemen.
+	\begin{itemize}
+		\item Systematisch analyseren van incidenten en foutmeldingen
+		\item Ontwikkelen en evalueren van oplossingsstrategieën
+		\item Vergelijken van alternatieve technische benaderingen
+	\end{itemize}
+	
+	\item \textbf{Change management en adaptatie:} Het vermogen om om te gaan met veranderingen binnen technologie en organisatie.
+	\begin{itemize}
+		\item Aanpassen aan nieuwe technologieën, tools en processen
+		\item Ondersteunen van implementatie- en migratieprojecten
+		\item Balanceren tussen innovatie en systeemstabiliteit
+	\end{itemize}
+	
+	\item \textbf{Professionele ontwikkeling en kennisdeling:} Continu leren en actief bijdragen aan kennisoverdracht.
+	\begin{itemize}
+		\item Opvolgen van evoluties binnen mainframe- en z/OS-technologie
+		\item Delen van kennis en best practices binnen teams
+		\item Ondersteunen en begeleiden van minder ervaren collega’s
+	\end{itemize}
+	
+\end{itemize}
+
+Deze professionele competenties vormen samen met de technische competenties een geïntegreerd geheel binnen het competentieframework. Hierdoor wordt niet alleen technische expertise, maar ook samenwerking, flexibiliteit en leervermogen meegenomen als kritische succesfactoren voor functies zoals System Administrator en System Programmer.
+
+\subsection{Progressieniveaus}
+
+Het competentieframework maakt gebruik van twee progressieniveaus die rechtstreeks overeenkomen met de structuur van de proof-of-concept webapplicatie. Gebruikers kunnen via een interface schakelen tussen Level 1 en Level 2, waarbij de complexiteit van de content gradueel toeneemt.
+
+\begin{itemize}
+	
+	\item \textbf{Niveau 1 - Basis:} Dit niveau bevat fundamentele concepten van z/OS en is gericht op het opbouwen van basiskennis.
+	\begin{itemize}
+		\item Begrijpen van kernconcepten en terminologie binnen z/OS
+		\item Uitvoeren van gestructureerde taken met ondersteuning
+		\item Herkennen van standaardprocedures en basisproblemen
+	\end{itemize}
+	
+	\item \textbf{Niveau 2 - Gevorderd:} Dit niveau bevat diepgaandere en meer complexe onderwerpen die gericht zijn op zelfstandig werken binnen z/OS-omgevingen.
+	\begin{itemize}
+		\item Zelfstandig uitvoeren van operationele en technische taken
+		\item Analyseren en oplossen van complexere systeemproblemen
+		\item Toepassen van kennis over meerdere subsystemen en tools
+	\end{itemize}
+	
+\end{itemize}
+
+Deze tweedeling weerspiegelt de implementatie in de webapplicatie, waarbij gebruikers via een togglesysteem kunnen schakelen tussen basis- en gevorderde inhoud. Er werd bewust gekozen om geen derde niveau te definiëren, aangezien het framework zich richt op een gestructureerde leerprogressie binnen twee duidelijk afgebakende competentieniveaus.
+
+\section{Praktijkgerichte toepassingen}
+
+Een belangrijk onderdeel van het competentieframework is de integratie van praktijkgerichte toepassingen binnen elke competentiekaart in de webapplicatie. Deze toepassingen vormen de brug tussen theoretische kennis en de operationele realiteit van een z/OS-omgeving.
+
+Elke kaart binnen de webapplicatie bevat naast een theoretisch gedeelte ook twee vaste componenten:
+\begin{itemize}
+	\item \textbf{Meerkeuzevragen (MCQ):} Deze worden gebruikt om de theoretische kennis van een competentie te evalueren. Ze richten zich op conceptbegrip en terminologie binnen de z/OS-omgeving.
+	
+	\item \textbf{Praktijkopdrachten:} Deze opdrachten simuleren realistische taken zoals ze voorkomen in een mainframe-omgeving. Voorbeelden zijn het uitvoeren van ISPF-operaties, het analyseren van JCL-jobs, of het interpreteren van systeemoutput via SDSF.
+\end{itemize}
+
+De inhoud van deze praktijkgerichte toepassingen is afgeleid uit semi-gestructureerde interviews met professionals uit het werkveld. Op basis van deze interviews werden typische taken, veelvoorkomende problemen en relevante werkscenario's geïdentificeerd, die vervolgens vertaald werden naar leeractiviteiten binnen het framework.
+
+De uitvoering van deze praktijkopdrachten gebeurt idealiter binnen een echte of gesimuleerde z/OS-omgeving, zoals IBM Z Xplore, een stageomgeving bij een bedrijf of een geëmuleerde mainframe-setup (Hercules/hyperion met s360 linux debian). Hierdoor worden studenten blootgesteld aan realistische tools en workflows die overeenkomen met industriële praktijken.
+
+De oplossing van de opdrachten wordt nadien vergeleken met een voorgedefinieerde oplossing, zodat directe feedback en zelfevaluatie mogelijk zijn. Dit ondersteunt een iteratief leerproces waarbij kennis onmiddellijk kan worden toegepast en verbeterd.
+
+Op deze manier ondersteunt het framework een praktijkgerichte leerstrategie waarbij studenten niet enkel kennis verwerven, maar deze ook actief toepassen in een realistische context.
+
+\section{Proof-of-concept webapplicatie: implementatie}
+
+Om het competentieframework toegankelijk en praktisch bruikbaar te maken voor studenten en opleiders, werd een proof-of-concept (PoC) webapplicatie ontwikkeld zoals beschreven in Hoofdstuk 3.3. De applicatie fungeert als een interactieve representatie van het competentieframework en demonstreert hoe de inhoud digitaal kan worden aangeboden en toegepast.
+
+\subsection{Technologie en toegankelijkheid}
+
+De PoC werd ontwikkeld als een statische webapplicatie met behulp van standaard webtechnologieën, namelijk HTML voor de structuur en CSS voor de visuele vormgeving. De interface is bewust ontworpen met een eenvoudige en functionele stijl die verwijst naar klassieke mainframe-omgevingen, om de context van z/OS-systemen visueel te versterken.
+
+De applicatie wordt gehost via GitHub Pages, waardoor deze publiek toegankelijk is en eenvoudig gedeployed kan worden zonder bijkomende serverinfrastructuur.
+
+\subsection{Structuur en navigatie}
+
+De structuur van de webapplicatie weerspiegelt rechtstreeks de opbouw van het competentieframework. Er wordt gewerkt met een hiërarchische indeling:
+
+\begin{itemize}
+	\item \textbf{Hoofdpagina:} Geeft een overzicht van de hoofdcompetentiedomeinen, opgesplitst in technische en professionele competenties.
+	
+	\item \textbf{Domeinstructuur:} Elk competentiedomein bevat meerdere subonderwerpen (cards), die elk een specifieke competentie representeren.
+	
+	\item \textbf{Level-indeling:} Binnen de technische competenties wordt een onderscheid gemaakt tussen \textit{Level 1} en \textit{Level 2}. Level 1 bevat basisconcepten en fundamentele vaardigheden, terwijl Level 2 meer geavanceerde en integratieve competenties omvat met een hogere complexiteit.
+	
+	\item \textbf{Competentiekaarten:} Elke kaart bevat drie vaste componenten:
+	\begin{itemize}
+		\item Theoretische uitleg van het onderwerp
+		\item Meerkeuzevragen (MCQ) ter evaluatie van kennis
+		\item Praktijkopdrachten die realistische taken simuleren binnen een z/OS-omgeving
+	\end{itemize}
+\end{itemize}
+
+\subsection{Koppeling met competenties}
+
+De inhoud van de webapplicatie is rechtstreeks gebaseerd op de competentie-indicatoren zoals gedefinieerd in het framework. Level 1 kaarten richten zich op basiskennis en fundamentele operationele taken, terwijl Level 2 kaarten complexere scenario’s en probleemoplossende vaardigheden behandelen.
+
+Deze opbouw zorgt ervoor dat de applicatie niet enkel theoretische kennis aanbiedt, maar ook de geleidelijke opbouw van competenties ondersteunt.
+
+\subsection{Praktijkgerichte uitvoering}
+
+De praktijkopdrachten binnen de applicatie zijn ontworpen om realistische werksituaties binnen een mainframe-omgeving te simuleren. Voor de uitvoering wordt idealiter gebruikgemaakt van een echte of gesimuleerde z/OS-omgeving, zoals IBM Z Xplore, een stageomgeving of een emulatorische setup.
+
+Elke opdracht kan worden uitgevoerd door de student, waarna de oplossing vergeleken kan worden met een modelantwoord, wat directe feedback en zelfevaluatie mogelijk maakt.
+
+\subsection{Scope en beperkingen}
+
+De huidige PoC implementeert enkel de kernfunctionaliteiten van het framework (\"Must Have\"). Dit omvat de presentatie van competentiedomeinen, theoretische inhoud, MCQ-evaluaties en praktijkopdrachten per kaart.
+
+Geavanceerde functionaliteiten zoals gebruikersbeheer, voortgangstracking en gamification vallen buiten de scope van deze proof-of-concept. De focus ligt op het aantonen van de haalbaarheid en bruikbaarheid van het competentieframework in een digitale leeromgeving.
+
+
+\section{Competentie framework technische competenties - Hoofd onderwerpen}
