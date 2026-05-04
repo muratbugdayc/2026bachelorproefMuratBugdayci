@@ -6,26 +6,32 @@ Dit hoofdstuk beschrijft de ontwikkeling en implementatie van het competentiefra
 \section{Ontwerp van het competentie framework}
 Op basis van de analyse van bestaande competentieframeworks in Hoofdstuk 2, evenals de inzichten verkregen uit de literatuurstudie en de afgenomen interviews met professionals, werd een proof of concept (PoC) ontwikkeld in de vorm van een webapplicatie.
 
-Deze webapplicatie heeft als doel het voorgestelde competentieframework voor z/OS System Administrators en System Programmers op een gestructureerde en toegankelijke manier te visualiseren. In tegenstelling tot bestaande frameworks, die vaak abstract of theoretisch blijven, richt deze PoC zich op het concreet voorstellen van competenties binnen een educatieve context.
+Deze webapplicatie heeft als doel het voorgestelde competentieframework voor z/OS System Administrators en System Programmers op een gestructureerde en toegankelijke manier te visualiseren.
 
-De applicatie is ontworpen om zowel technische als niet-technische competenties weer te geven, waarbij aandacht wordt besteed aan kerntechnologieën zoals z/OS, JCL, REXX, SDSF en RACF, evenals aan professionele vaardigheden zoals communicatie en probleemoplossend denken. De inhoud en structuur van het framework zijn gebaseerd op een combinatie van literatuur en praktijkinzichten, waarbij rekening werd gehouden met het feit dat de invulling van rollen zoals System Administrator en System Programmer kan variëren per organisatie.
+De applicatie is ontworpen om zowel technische als niet-technische competenties weer te geven, waarbij aandacht wordt besteed aan kerntechnologieën zoals z/OS, SDSF, JCL, REXX, SDSF en RACF, evenals aan professionele vaardigheden zoals communicatie en probleemoplossend denken. De inhoud en structuur van het framework zijn gebaseerd op een combinatie van literatuur en praktijkinzichten, waarbij rekening werd gehouden met het feit dat de invulling van rollen zoals System Administrator en System Programmer kan variëren per organisatie.
 
-De PoC werd geïmplementeerd als een statische website en is beschikbaar via:
-https://muratbugdayc.github.io/WebpageSysAdmin/
+\subsection{Visueel ontwerp en gebruikservaring}
 
-Hoewel de applicatie niet volledig is uitgewerkt, demonstreert ze de kernfunctionaliteiten en structuur van het voorgestelde competentieframework. Het prototype dient voornamelijk als illustratie van hoe het framework in de praktijk gebruikt kan worden als ondersteunend leermiddel voor studenten en opleiders.
+Bij het ontwikkelen van de proof-of-concept webapplicatie werd bewust aandacht besteed aan het visuele ontwerp en de gebruikservaring. Dit is niet louter een esthetische keuze, maar wordt onderbouwd door onderzoek binnen het domein van Human-Computer Interaction (HCI).
+
+Studies tonen aan dat gebruikers binnen zeer korte tijd (zelfs binnen 50 tot 500 milliseconden) een eerste indruk vormen van een website, die een blijvende invloed heeft op hun perceptie van bruikbaarheid en betrouwbaarheid \autocite{reinecke2013firstimpression}. Deze eerste indruk bepaalt in grote mate of gebruikers de website verder verkennen of vroegtijdig verlaten.
+
+Daarnaast blijkt dat visuele esthetiek een directe impact heeft op de ervaren gebruiksvriendelijkheid, tevredenheid en het vertrouwen van gebruikers \autocite{thielsch2015aesthetics}. Websites die visueel aantrekkelijk en goed gestructureerd zijn, worden vaak als gebruiksvriendelijker en nuttiger ervaren, zelfs wanneer de functionaliteit identiek is.
+
+In een educatieve context speelt dit een nog belangrijkere rol. Onderzoek toont aan dat visueel aantrekkelijke interfaces de motivatie en betrokkenheid van studenten verhogen, wat bijdraagt aan een effectiever leerproces \autocite{mayer2009multimedia}.
+
+Om deze redenen werd gekozen voor een moderne, gestructureerde en visueel consistente webinterface. Dit is met name relevant voor het aantrekken van nieuwe studenten, die gewend zijn aan gebruiksvriendelijke en visueel aantrekkelijke digitale omgevingen. De webapplicatie fungeert hierdoor niet enkel als leerinstrument, maar ook als een toegankelijke en motiverende instap tot mainframe-technologie.
+
 
 \subsection{Structuur van het framework}
 
 Het competentieframework is opgebouwd uit vier hoofdcomponenten:
-
-• \textbf{Technische competenties:} De specifieke technische kennis en vaardigheden die nodig zijn om effectief te functioneren binnen een z/OS-omgeving als System Administrator of System Programmer. Dit omvat onder meer kennis van kernconcepten en tools zoals z/OS, JCL, REXX, SDSF, JES en RACF.
-
-• \textbf{Professionele competenties:} De soft skills en professionele vaardigheden die noodzakelijk zijn om effectief te functioneren binnen een mainframe-omgeving, zoals communicatie, probleemoplossend denken, samenwerking en analytisch vermogen.
-
-• \textbf{Progressieniveaus:} Een gestructureerde opbouw die de ontwikkeling van competenties beschrijft van beginnend (Level 1) tot meer gevorderde profielen, rekening houdend met toenemende verantwoordelijkheid en complexiteit van taken.
-
-• \textbf{Praktijkgerichte toepassingen:} Concreet uitgewerkte taken, scenario’s en use-cases die de competenties vertalen naar een realistische werkomgeving en de toepasbaarheid binnen een operationele context ondersteunen.
+\begin{itemize}
+	\item \textbf{Technische competenties:} De specifieke technische kennis en vaardigheden die nodig zijn om effectief te functioneren binnen een z/OS-omgeving als System Administrator of System Programmer. Dit omvat onder meer kennis van kernconcepten en tools zoals z/OS, JCL, REXX, SDSF, JES en RACF.
+	\item \textbf{Professionele competenties:} De soft skills en professionele vaardigheden die noodzakelijk zijn om effectief te functioneren binnen een mainframe-omgeving, zoals communicatie, probleemoplossend denken, samenwerking en analytisch vermogen.
+	\item \textbf{Progressieniveaus:} Een gestructureerde opbouw die de ontwikkeling van competenties beschrijft van beginnend (Level 1) tot meer gevorderde profielen, rekening houdend met toenemende verantwoordelijkheid en complexiteit van taken.
+	\item \textbf{Praktijkgerichte toepassingen:} Concreet uitgewerkte taken, scenario’s en use-cases die de competenties vertalen naar een realistische werkomgeving en de toepasbaarheid binnen een operationele context ondersteunen.
+\end{itemize}
 
 Deze structuur biedt een holistische benadering van competentieontwikkeling, waarbij zowel technische expertise als professionele groei centraal staan en afgestemd worden op de realiteit van z/OS-omgevingen in de industrie.
 
@@ -65,7 +71,7 @@ De technische competenties binnen het framework zijn gestructureerd volgens een 
 		\item WLM \& Automated Operations Monitoring
 	\end{itemize}
 	
-	\item \textbf{Batch Processing \& JCL:} Beheer en uitvoering van batchprocessen.
+	\item \textbf{Batch Processing \& JCL:} Beheer en uitvoering van batchprocessen en JCL.
 	\begin{itemize}
 		\item JCL Core Statements \& Conditional Logic
 		\item JCL Procedures \& Batch Utilities
@@ -94,7 +100,7 @@ De technische competenties binnen het framework zijn gestructureerd volgens een 
 	
 \end{itemize}
 
-Deze structuur sluit rechtstreeks aan bij de opbouw van de webapplicatie, waarbij elk topic overeenkomt met een afzonderlijke leerkaart (card) met theorie, oefening en evaluatie. Hierdoor wordt een directe koppeling gerealiseerd tussen het competentieframework en de praktische implementatie.
+Voor elk van deze domeinen zijn specifieke competenties gedefinieerd, samen met de bijbehorende kennis, vaardigheden en gedragsindicatoren.
 
 \subsection{Professionele competentiedomeinen}
 
@@ -164,14 +170,19 @@ Een belangrijk onderdeel van het competentieframework is de integratie van prakt
 
 Elke kaart binnen de webapplicatie bevat naast een theoretisch gedeelte ook twee vaste componenten:
 \begin{itemize}
-	\item \textbf{Meerkeuzevragen (MCQ):} Deze worden gebruikt om de theoretische kennis van een competentie te evalueren. Ze richten zich op conceptbegrip en terminologie binnen de z/OS-omgeving.
+	\item \textbf{Meerkeuzevragen (MCQ):} Deze worden gebruikt om de theoretische kennis van een competentie te evalueren. Ze richten zich op conceptbegrip en terminologie binnen de z/OS-omgeving.Deze zijn direct afgeleid uit de competentie zelf en de feedback uit de
+	interviews (bv. gebruik concrete voorbeelden, meerkeuzevragen).
 	
-	\item \textbf{Praktijkopdrachten:} Deze opdrachten simuleren realistische taken zoals ze voorkomen in een mainframe-omgeving. Voorbeelden zijn het uitvoeren van ISPF-operaties, het analyseren van JCL-jobs, of het interpreteren van systeemoutput via SDSF.
+	\item \textbf{Praktijkopdrachten:} Voor een diepere integratie kunnen use cases ontwikkeld worden die meerdere competenties combineren in een realistisch scenario. Voorbeelden van dergelijke scenario’s voor Niveau 1 zouden kunnen zijn:
+		\begin{itemize}
+			\item "Allocate a Sequential Dataset via JCL using IEFBR14"(Combineert T4.1 TSO & ISPF Navigation, T5.1 JCL Core Statements & Conditional Logic en T3.1 DASD, Sequential & Partitioned Datasets)
+			\item "Submit a Job and Trace It Through JES Queues" (Combineert T1.3 JES, Spooling & Sysplex, P2.3 Verzamelen relevante probleem informatie en P1.1)
+		\end{itemize}
 \end{itemize}
 
 De inhoud van deze praktijkgerichte toepassingen is afgeleid uit semi-gestructureerde interviews met professionals uit het werkveld. Op basis van deze interviews werden typische taken, veelvoorkomende problemen en relevante werkscenario's geïdentificeerd, die vervolgens vertaald werden naar leeractiviteiten binnen het framework.
 
-De uitvoering van deze praktijkopdrachten gebeurt idealiter binnen een echte of gesimuleerde z/OS-omgeving, zoals IBM Z Xplore, een stageomgeving bij een bedrijf of een geëmuleerde mainframe-setup (Hercules/hyperion met s360 linux debian). Hierdoor worden studenten blootgesteld aan realistische tools en workflows die overeenkomen met industriële praktijken.
+De uitvoering van deze praktijkopdrachten gebeurt idealiter binnen een echte of gesimuleerde z/OS-omgeving, zoals IBM zXplore, een mainframeomgeving vanuit een stage bij een bedrijf of een geëmuleerde mainframe-setup (Hercules/hyperion met s360 linux debian). Hierdoor worden studenten blootgesteld aan realistische tools en workflows die overeenkomen met industriële praktijken.
 
 De oplossing van de opdrachten wordt nadien vergeleken met een voorgedefinieerde oplossing, zodat directe feedback en zelfevaluatie mogelijk zijn. Dit ondersteunt een iteratief leerproces waarbij kennis onmiddellijk kan worden toegepast en verbeterd.
 
@@ -179,7 +190,7 @@ Op deze manier ondersteunt het framework een praktijkgerichte leerstrategie waar
 
 \section{Proof-of-concept webapplicatie: implementatie}
 
-Om het competentieframework toegankelijk en praktisch bruikbaar te maken voor studenten en opleiders, werd een proof-of-concept (PoC) webapplicatie ontwikkeld zoals beschreven in Hoofdstuk 3.3. De applicatie fungeert als een interactieve representatie van het competentieframework en demonstreert hoe de inhoud digitaal kan worden aangeboden en toegepast.
+Om het competentieframework toegankelijk en praktisch bruikbaar te maken voor studenten en opleiders, werd een proof-of-concept (PoC) webapplicatie ontwikkeld zoals beschreven in Hoofdstuk 3.5. De applicatie fungeert als een interactieve representatie van het competentieframework en demonstreert hoe de inhoud digitaal kan worden aangeboden en toegepast.
 
 \subsection{Technologie en toegankelijkheid}
 
@@ -187,7 +198,7 @@ De PoC werd ontwikkeld als een statische webapplicatie met behulp van standaard 
 
 De applicatie wordt gehost via GitHub Pages, waardoor deze publiek toegankelijk is en eenvoudig gedeployed kan worden zonder bijkomende serverinfrastructuur.
 
-\subsection{Structuur en navigatie}
+\subsection{Structuur en navigatie van de website}
 
 De structuur van de webapplicatie weerspiegelt rechtstreeks de opbouw van het competentieframework. Er wordt gewerkt met een hiërarchische indeling:
 
@@ -206,23 +217,364 @@ De structuur van de webapplicatie weerspiegelt rechtstreeks de opbouw van het co
 	\end{itemize}
 \end{itemize}
 
-\subsection{Koppeling met competenties}
-
-De inhoud van de webapplicatie is rechtstreeks gebaseerd op de competentie-indicatoren zoals gedefinieerd in het framework. Level 1 kaarten richten zich op basiskennis en fundamentele operationele taken, terwijl Level 2 kaarten complexere scenario’s en probleemoplossende vaardigheden behandelen.
-
-Deze opbouw zorgt ervoor dat de applicatie niet enkel theoretische kennis aanbiedt, maar ook de geleidelijke opbouw van competenties ondersteunt.
-
-\subsection{Praktijkgerichte uitvoering}
-
-De praktijkopdrachten binnen de applicatie zijn ontworpen om realistische werksituaties binnen een mainframe-omgeving te simuleren. Voor de uitvoering wordt idealiter gebruikgemaakt van een echte of gesimuleerde z/OS-omgeving, zoals IBM Z Xplore, een stageomgeving of een emulatorische setup.
-
-Elke opdracht kan worden uitgevoerd door de student, waarna de oplossing vergeleken kan worden met een modelantwoord, wat directe feedback en zelfevaluatie mogelijk maakt.
-
-\subsection{Scope en beperkingen}
-
 De huidige PoC implementeert enkel de kernfunctionaliteiten van het framework (\"Must Have\"). Dit omvat de presentatie van competentiedomeinen, theoretische inhoud, MCQ-evaluaties en praktijkopdrachten per kaart.
 
 Geavanceerde functionaliteiten zoals gebruikersbeheer, voortgangstracking en gamification vallen buiten de scope van deze proof-of-concept. De focus ligt op het aantonen van de haalbaarheid en bruikbaarheid van het competentieframework in een digitale leeromgeving.
 
+\section{Competentie framework technische competenties - niveau 1}
 
-\section{Competentie framework technische competenties - Hoofd onderwerpen}
+Op de hoofdpagina van de webapplicatie bevinden zich rechtsboven filteropties waarmee de gebruiker de weergegeven technische competentiekaarten kan aanpassen. 
+De gebruiker kan ervoor kiezen om alle niveaus tegelijk te tonen, of specifiek enkel niveau~1 of niveau~2 te selecteren. 
+Deze functionaliteit maakt het mogelijk om gericht te navigeren binnen het competentieframework en de inhoud af te stemmen op het gewenste kennisniveau.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/bachproef6.png}
+	\caption{Hoofdpagina van de PoC webapplicatie met de technische competentiedomeinen}
+	\label{fig:website1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/bachproef4.png}
+	\caption{MCQ sectie van het onderwerp z/OS Overview \& Adress Spaces (T1.1)}
+	\label{fig:website4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/bachproef5.png}
+	\caption{Een praktijkoefening van het onderwerp JCL Core Statements \& Conditional Logic (T5.1) met hints en oplossing}
+	\label{fig:website5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/bachproefREXX.png}
+	\caption{Uitleg van Variables and Expressions in REXX Basics \& Scheduling Concepts (T6.1)}
+	\label{fig:website7}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/BACHPROEFVSAM.png}
+	\caption{Een KSDS VSAM oefening in VSAM, ICF Catalog \& VTOC (T3.2)}
+	\label{fig:website8}
+\end{figure}
+
+
+\subsection{Technische en Professionele Competenties - Niveau 1}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|>{\bfseries\arraybackslash}p{3.5cm}|X|}
+		\hline
+		\textbf{Domein (Code)} & \textbf{Competenties en Leerdoelen} \\
+		\hline
+		Platform Fundamentals (T1) &
+		\begin{itemize}
+			\item Beschrijven basisarchitectuur van z/OS (Address Spaces, LCSS, Sysplex) (T1.1, Kennis)
+			\item Uitleggen van Initial Program Load (IPL) en systeeminitialisatieproces (T1.2, Kennis)
+			\item Identificeren van JES2/JES3, Spooling en Sysplex-componenten (T1.3, Kennis)
+			\item Navigeren in z/OS Management Facility (z/OSMF) voor systeembeheer (T1.4, Kennis, Vaardigheid)
+		\end{itemize} \\
+		\hline
+		Hardware \& Virtualization (T2) &
+		\begin{itemize}
+			\item Kennis hebben over fysieke componenten (CPC, I/O-kabels, HMC) (T2.1, Kennis)
+			\item Begrijpen van LPAR-configuratie, verdeling van fysieke bronnen (T2.2, Kennis)
+			\item Beschrijven van I/O-configuratieproces (HCD, IODF, Activate) (T2.3, Kennis)
+			\item Bekijken van actieve I/O-configuratie via HCD-panelen (T2.4, Vaardigheid)
+		\end{itemize} \\
+		\hline
+		Storage \& Data Management (T3) &
+		\begin{itemize}
+			\item Onderscheiden van datasettypen (Sequential, PDS, PDSE) (T3.1, Kennis)
+			\item Begrijpen van VSAM-clusters (KSDS, ESDS, RRDS) en ICF Catalog (T3.2, Kennis)
+			\item Beschrijven van VTOC, VTOC IX en DFSMS-constructs (Data Class, Storage Class) (T3.3, Kennis)
+			\item Bekijken van catalogusentries via ISPF 3.4 of IDCAMS (T3.4, Vaardigheid)
+		\end{itemize} \\
+		\hline
+\end{tabularx}
+\caption{Technische Competenties}
+\label{tab:tech-competenties}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|>{\bfseries\arraybackslash}p{3.5cm}|X|}
+		\hline
+		\textbf{Domein (Code)} & \textbf{Competenties en Leerdoelen} \\
+		\hline
+	System Operations \& Tools (T4) &
+	\begin{itemize}
+		\item Navigeren in TSO/ISPF (T4.1, Vaardigheid)
+		\item Gebruiken van SDSF voor jobmonitoring, output bekijken en system log (T4.2, Vaardigheid)
+		\item Uitleggen van SMF-recordtypes en RMF-monitorintervallen (T4.3, Kennis)
+		\item Uitvoeren van basis UNIX System Services-commando's (T4.4, Vaardigheid)
+	\end{itemize} \\
+	\hline
+	Batch Processing \& JCL (T5) &
+	\begin{itemize}
+		\item Lezen en begrijpen van JCL-statements (JOB, EXEC, DD) (T5.1, Kennis)
+		\item Submitten van een JCL-job en controleren van output in SDSF (T5.2, Vaardigheid)
+		\item Gebruiken van voorwaardelijke logica (IF/THEN/ELSE) in JCL (T5.3, Kennis)
+		\item Aanpassen van bestaande JCL-procedures (PROC) met parameters (T5.4, Vaardigheid)
+	\end{itemize} \\
+	\hline
+		Automation \& Scripting (T6) &
+		\begin{itemize}
+			\item Begrijpen van REXX-variabelen, lussen (DO/END) en conditionele statements (IF) (T6.1, Kennis)
+			\item Schrijven van een eenvoudig REXX-script voor datasetmanipulatie (T6.2, Vaardigheid)
+			\item Herkennen van scheduling-concepten (cron, batch window, LBR) (T6.3, Kennis)
+		\end{itemize} \\
+		\hline
+	\end{tabularx}
+	\caption{Vervolg technische competenties}
+	\label{tab:tech-competenties2}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|>{\bfseries\arraybackslash}p{3.5cm}|X|}
+		\hline
+		\textbf{Domein (Code)} & \textbf{Competenties en Leerdoelen} \\
+		\hline
+		Subsystems \& Middleware (T7) &
+		\begin{itemize}
+			\item Basiskennis van CICS en IMS transactiebeheer (T7.1, Kennis)
+			\item Basiskennis van Db2 en IMS databases (T7.2, Kennis)
+			\item Basiskennis van IBM (T7.3, Kennis)
+			\item Herkennen van SMP/E voor software-installatie en -maintenance (T7.4, Kennis)
+		\end{itemize} \\
+		\hline
+		Networking \& Security (T8) &
+		\begin{itemize}
+			\item Gebruiken van FTP vanaf TSO (batch en interactief) voor datasetoverdracht (T8.1, Vaardigheid)
+			\item Uitleggen en uitvoeren van RACF-begrippen (USER, GROUP, DATASET-profile) (T8.2, Kennis, Vaardigheid)
+			\item Bekijken van eigen RACF-profiel (RLIST) en datasetpermissies (T8.3, Vaardigheid)
+			\item Begrijpen van TCP/IP-stackconfiguratie (PROFILES, OMPROUTE) (T8.4, Kennis)
+		\end{itemize} \\
+		\hline
+	\end{tabularx}
+	\caption{Vervolg technische competenties}
+	\label{tab:tech-competenties3}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabularx}{\textwidth}{|>{\bfseries\arraybackslash}p{3.5cm}|X|}
+		\hline
+		\textbf{Domein (Code)} & \textbf{Competenties en Gedrag} \\
+		\hline
+		Communicatie \& Samenwerking (P1) &
+		\begin{itemize}
+			\item Communiceren van technische informatie (mondeling/schriftelijk) (P1.1, Gedrag \& Vaardigheid)
+			\item Actief luisteren en verhelderende vragen stellen (P1.2, Gedrag \& Vaardigheid)
+			\item Samenwerken aan eenvoudige teamtaken (P1.3, Gedrag)
+		\end{itemize} \\
+		\hline
+		Probleemoplossing \& Kritisch Denken (P2) &
+		\begin{itemize}
+			\item Volgen van procedures voor standaard issues (P2.1, Vaardigheid \& Gedrag)
+			\item Herkennen wanneer escalatie nodig is (P2.2, Gedrag \& Kennis)
+			\item Verzamelen van relevante informatie (P2.3, Vaardigheid)
+		\end{itemize} \\
+		\hline
+		Change Management \& Aanpassingsvermogen (P3) &
+		\begin{itemize}
+			\item Volgen van change management procedures (P3.1, Gedrag \& Vaardigheid)
+			\item Bereidheid tonen om nieuwe tools en procedures aan te leren (P3.2, Gedrag)
+		\end{itemize} \\
+		\hline
+		Professionele Ontwikkeling \& Kennisdeling (P4) &
+		\begin{itemize}
+			\item Tonen van leergierigheid (P4.1, Gedrag)
+			\item Documenteren van eenvoudige taken/probleemoplossingen (P4.2, Vaardigheid \& Gedrag)
+		\end{itemize} \\
+		\hline
+	\end{tabularx}
+	\caption{Professionele competenties}
+	\label{tab:prof-competenties}
+\end{table}
+
+\subsection{Praktische toepassingen \& progressie competenties - Niveau 1}
+
+Gebaseerd op de progressieniveaus in Sectie 4.1.4, bieden we hier praktische voorbeelden voor de Basisniveau-competenties. Deze sectie licht de technische competenties van Niveau 1 (zoals gedefinieerd in Tabel 4.1) verder toe met concrete voorbeelden en schetst de verwachte progressie naar Niveau 2. Dit biedt een dieper inzicht in de praktische toepassingen en het groeipad van een beginnende z/OS systeembeheerder/systeemprogrammeur.
+
+\subsection{Platform Fundamentals (T1)}
+
+\subsubsection{T1.1 Beschrijven basisarchitectuur z/OS (Address Spaces, LCSS, Sysplex) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan uitleggen dat een mainframe fysiek opgedeeld wordt in LPARs die elk een eigen z/OS draaien. Hij begrijpt dat meerdere LPARs kunnen samenwerken in een Sysplex voor hoge beschikbaarheid. De beheerder kan het concept van een address space uitleggen en weet dat z/OS natively EBCDIC gebruikt.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder begrijpt Data Sharing in een Sysplex, kan address spaces identificeren via SDSF DA, en kent de functie van storage protection keys en de betekenis van de 16 MB line en 2 GB bar.
+
+\subsubsection{T1.2 Uitleggen van IPL en systeeminitialisatieproces (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan het IPL-proces beschrijven: initiatie via HMC, laden van IEAIPL00 en de nucleus, NIP-verwerking van PARMLIB, en starten van de Master Scheduler die via COMMNDxx subsystems activeert. Hij/zij kent de belangrijkste PARMLIB-leden (IEASYSxx, LOADxx, CONSOLxx, COMMNDxx, BPXPRMxx, PROGxx).
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een IPL zelfstandig monitoren, foutmeldingen diagnosticeren, dynamische PARMLIB-wijzigingen toepassen via SET-commando's, en een aangepaste IEASYSxx member creëren.
+
+\subsubsection{T1.3 Identificeren van JES2/JES3, Spooling en Sysplex-componenten (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder weet dat JES2 de dominante job entry subsystem is, met een spool die tijdelijke jobdata (JCL, SYSOUT, logs) opslaat. Hij/zij begrijpt job classes (bepalen welke initiators een job oppakken) en output classes (routeren van SYSOUT naar printers, hold, of NJE). Een sysplex is voor hem/haar een cluster van z/OS-systemen met een Coupling Facility voor shared memory en lock management.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan SDSF gebruiken om initiators te inspecteren en job classes te wijzigen en een batchjob traceren via INPUT $\rightarrow$ EXEC $\rightarrow$ OUTPUT.
+
+\subsubsection{T1.4 Navigeren in z/OSMF voor systeembeheer (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan inloggen op z/OSMF en de belangrijkste plugins gebruiken: Systems (systeemstatus), Jobs (submitten en monitoren van batchjobs), Data Sets (browser/editor), Console (MVS-commando's), en Workflows (gestandaardiseerde procedures). Hij/zij kan een dataset bekijken, een JCL-job submitten en de output controleren.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan eigen workflows aanmaken (XML met stappen en voorwaarden), z/OSMF REST APIs aanroepen vanuit scripts (curl, Python), en de z/OSMF configuratie beheren (IZUPRMxx, RACF-profiles, server start/stop).
+
+\subsection{Hardware \& Virtualization (T2)}
+
+\subsubsection{T2.1 Herkennen van fysieke componenten (CPC, I/O-kabels, HMC) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan de fysieke componenten van een mainframe benoemen: de CPC (Central Processor Complex) als het volledige waresysteem met processors, geheugen en I/O-subsystemen. Hij/zij herkent de HMC (Hardware Management Console) als de dedicated appliance waarmee LPARs worden beheerd en IPLs worden gestart. 
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan de Support Element (SE) functie uitleggen (embedded controller voor hardware-telemetrie en diagnostics), kent het verschil tussen dedicated en shared processors in een LPAR, en kan de fysieke I/O-paden (CHPID, PCHID) in relatie tot logische devices uitleggen. De beheerder weet dat FICON-kabels de verbinding vormen tussen de CPC en SAN-opslag, en dat OSA-Express adapters netwerkconnectiviteit bieden.
+
+\subsubsection{T2.2 Begrijpen van LPAR-configuratie, verdeling van fysieke bronnen (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder begrijpt dat een LPAR (Logical Partition) een hardwarematige afscherming is: één CPC wordt opgedeeld in meerdere, geïsoleerde LPARs, elk met eigen processors (dedicated of shared), eigen geheugen (disjunct toegewezen), en eigen I/O-apparaten (exclusief toegewezen). Een crash in LPAR-A heeft geen invloed op LPAR-B. Hij/zij kan via de HMC de basisconfiguratie van een LPAR bekijken.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan zelfstandig een nieuwe LPAR aanmaken via de HMC, processors en geheugen toewijzen, I/O-devices koppelen, en de IPL-parameters configureren. Hij/zij begrijpt de impact van processorweging (weight) bij shared cores en kan LPAR-resources dynamisch aanpassen.
+
+\subsubsection{T2.3 Beschrijven van I/O-configuratieproces (HCD, IODF, Activate) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan het I/O-configuratieproces beschrijven: met HCD. De beheerder weet dat CHPIDs (Channel Path Identifiers) fysieke I/O-paden identificeren (bijv. CHPID 00 TYPE FICON), en dat devices (bijv. DASD volume 0100) aan CHPIDs worden gekoppeld voor redundantie.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan zelfstandig een bestaande IODF bekijken via HCD, CHPID-definities interpreteren, device-to-CHPID-toewijzingen analyseren, en een eenvoudige wijziging (bijv. een nieuw device toevoegen) doorvoeren met een dynamic I/O change (zonder IPL).
+
+\subsubsection{T2.4 Bekijken van actieve I/O-configuratie via HCD-panelen (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan inloggen op HCD (via ISPF) en de actieve I/O-configuratie bekijken. Hij/zij kan de CHPID-panelen openen om te zien welke channel types actief zijn (FICON, OSA, Hipersockets), en de device-panelen gebruiken om te zien welke DASD-volumes en tape-devices geconfigureerd zijn en via welke CHPIDs ze benaderbaar zijn.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan via de operator console het commando {D CHNL,PATH} gebruiken om de actuele status van channel paths te controleren (up/down). Hij/zij kan een dynamic I/O change uitvoeren: een CHPID online/offline variën met {VARY PATH(00),ONLINE}, of een device variën met {VARY DEVICE(0100),ONLINE}. Daarnaast kan hij/zij de HMC Performance Dashboard gebruiken om real-time CPU-utilisatie, geheugengebruik en I/O-rate per LPAR te monitoren.
+
+\subsection{Storage \& Data Management (T3)}
+
+\subsubsection{T3.1 Onderscheiden van datasettypen (Sequential, PDS, PDSE) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan de basis datasettypen onderscheiden.(Seq, PDS, PS, VSAM)
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan PDS compressie uitvoeren met IEBCOPY wanneer leden worden verwijderd ({IEBCOPY COMPRESS}). Hij/zij kan PDSE alloceren met {DSNTYPE=LIBRARY} en begrijpt de voordelen: directory groeit dynamisch, freeze/compress niet nodig, ondersteunt grotere leden (tot 4 GB). De beheerder kan een bestaand PDS migreren naar PDSE en weet wanneer een PDS nog noodzakelijk is (legacy load libraries).
+
+\subsubsection{T3.2 Begrijpen van VSAM-clusters (KSDS, ESDS, RRDS) en ICF Catalog (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder begrijpt dat {VSAM} een gestructureerde record-toegangsmethode is. Hij/zij weet de verschillende soort VSAM bestanden (KSDS, ESDS, RRDS).
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een VSAM KSDS definiëren met {DEFINE CLUSTER (INDEXED KEYS...)} via IDCAMS. Hij/zij kan {LISTCAT} gebruiken om catalog entries te inspecteren, {REPRO} om data te laden en {PRINT} om inhoud te dumpen. De beheerder begrijpt het verschil tussen BCS (Basic Catalog Structure) en VVDS (VSAM Volume Data Set) en kan een alias definiëren in de master catalog die verwijst naar een user catalog.
+
+\subsubsection{T3.3 Beschrijven van VTOC, VTOC IX en DFSMS-constructs (Data Class, Storage Class) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder weet dat de {VTOC} (Volume Table of Contents) op elke DASD-volume een inventaris is van alle dataset-extents op die volume, opgeslagen in DSCBs (Format-1 DSCB per dataset). 
+• \textbf{Progressie naar Niveau 2:} De beheerder kan via ISMF (optie 11) de SMS-classes van een dataset inspecteren en via ISMF optie 1-4 de construct-definities bekijken. Hij/zij kan een eenvoudige ACS routine lezen.
+\subsubsection{T3.4 Bekijken van catalogusentries via ISPF 3.4 of IDCAMS (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan via {ISPF 3.4} (Data Set Utility) een datasetlijst opvragen en de catalogusinformatie bekijken.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan IDCAMS LISTCAT gebruiken om de master catalog aliassen te tonen ({LISTCAT ALIAS}) en te achterhalen welke user catalog een bepaalde HLQ bezit. Hij/zij kan {LISTCAT LEVEL(hlq)} gebruiken om alle datasets onder een HLQ te lijsten (zonder de exacte naam te kennen). De beheerder kan een {VTOC dump} maken via IEHLIST ({PGM=IEHLIST, LISTVTOC}) of via ISMF optie 11 met VTOC-view, en kan een uncatalogued dataseT (wel in VTOC, niet in catalog) identificeren en herstellen met {DEFINE NONVSAM}.
+
+\subsection{Batch Processing \& JCL (T5)}
+
+\subsubsection{T5.1 Lezen en begrijpen van JCL-statements (JOB, EXEC, DD) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan de drie basis JCL-statements herkennen en uitleggen (JOB, EXEC, DD) en kan een dataset maken via JCL utility IEFBR14. Hij/zij begrijpt de betekenis van return codes.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan JCL-fouten diagnosticeren via JESMSGLG en JESJCL in SDSF. Hij/zij herkent de systeem abends (S0C7=data exception, S806=module niet gevonden, Sx37=geen schijfruimte).
+
+\subsubsection{T5.2 Submitten van een JCL-job en controleren van output in SDSF (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan een JCL-job submitten vanuit ISPF Edit met het {SUB} commando.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een job cancellen ({C}) of purgen ({P}) uit de spool. Hij/zij kan output extraheren naar een dataset met {XDC} en {/D A,L} commando's uitvoeren vanuit SDSF. De beheerder begrijpt het verschil tussen {ST} (alle jobs), {DA} (actieve address spaces), en {H} (voltooide output). Hij/zij kan de MAX-RC kolom gebruiken voor health check.
+
+\subsubsection{T5.3 Gebruiken van voorwaardelijke logica (IF/THEN/ELSE) in JCL (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan {IF/THEN/ELSE/ENDIF} gebruiken om stappen conditioneel uit te voeren.
+• \textbf{Progressie naar Niveau 2:} De beheerder kan geneste IF-blokken schrijven en compound conditions gebruiken met {AND} / {OR} / {NOT}. Hij/zij kan testen op abends met {STEP1.ABEND} en op het feit of een stap uitgevoerd is met {STEP1.RUN}.
+
+\subsubsection{T5.4 Aanpassen van bestaande JCL-procedures (PROC) met parameters (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan een bestaande catalogued procedure (PROC) gebruiken en symbolische parameters overschrijven. 
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een in-stream PROC schrijven en vervolgens tweemaal aanroepen met verschillende parameters. Hij/zij kan DD-statements binnen een PROC overschrijven met {//STEPNAME.DDNAME DD ...} syntax. De beheerder begrijpt {JCLLIB} voor het zoeken naar PROCs in eigen libraries en kan een eenvoudige PROC schrijven voor IEBGENER kopieerbewerkingen met overschrijfbare DCB-parameters.
+
+\subsection{Automation \& Scripting (T6)}
+
+\subsubsection{T6.1 Begrijpen van REXX-variabelen, lussen (DO/END) en conditionele statements (IF) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kent REXX-basissyntax:parse, pull,  variabelen ({naam = 'waarde'}), IF/THEN/ELSE, DO-lussen ({DO i=1 TO 10}), SAY (output), PULL (input), en EXIT (return code).
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan functies schrijven (PROCEDURE/RETURN), SIGNAL ON ERROR voor foutafhandeling, TRACE voor debugging.
+
+\subsubsection{T6.2 Schrijven van een eenvoudig REXX-script voor datasetmanipulatie (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan een REXX-script schrijven dat TSO-commando's aanroept met ADDRESS TSO (bijv. LISTC om datasets te vinden), output verwerkt met QUEUE/PULL, en een DO-lus gebruikt om door de resultaten te itereren.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan scripts schrijven die datasets alloceren, kopiëren (ADDRESS MVS met IEBGENER), en verwijderen. Hij/zij kan scripts batch-gewijs uitvoeren via IKJEFT01 en return codes controleren voor foutafhandeling.
+
+\subsubsection{T6.3 Herkennen van scheduling-concepten (cron, batch window, LBR) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder begrijpt dat een batchwindow het tijdsvenster is voor batchverwerking.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een batchwindow configureren in JES2PARM en begrijpt IWS-concepten: applicaties, operaties, run cycles, en job-afhankelijkheden.
+
+\subsection{Subsystems \& Middleware (T7)}
+
+\subsubsection{T7.1 Beschrijven basisrollen van CICS, IMS (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder begrijpt wat CICS en IMS doet en dat CICS en IMS draaien op z/OS als started tasks.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een CICS-regio starten/stoppen en kent het verschil tussen IMS DB (database) en IMS TM (transacties).
+
+\subsubsection{T7.2 Starten/stoppen van Db2-subsysteem (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder herkent Db2 als het relationele databasesubsysteem op z/OS. Hij/zij weet dat Db2 uit meerdere address spaces bestaat (MSTR, DBM1, IRLM, DIST) en dat de catalogus (SYSIBM tabellen) de metadata bevat.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan Db2 starten/stoppen, de status controleren met {-DISPLAY DATABASE}, en een SQL-query uitvoeren via SPUFI.
+\subsubsection{T7.3 Uitleggen van rol IBM MQ (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder herkent IBM MQ als een message queuing systeem voor asynchrone communicatie tussen applicaties.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een queue manager starten en een lokale queue aanmaken.
+
+\subsubsection{T7.4 Herkennen van SMP/E (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder herkent SMP/E als het systeem voor software-installatie en maintenance op z/OS.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een PTF ontvangen (RECEIVE) en toepassen (APPLY), en een SMP/E rapport lezen.
+
+\subsection{Networking \& Security (T8)}
+
+\subsubsection{T8.1 Gebruiken van FTP vanaf TSO voor datasetoverdracht (Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder kan vanaf TSO READY {FTP} typen en verbinden met een remote server. Hij/zij kan datasets uploaden met {PUT} en downloaden met {GET}, en weet dat tekstbestanden {ASCII} modus nodig hebben (EBCDIC ↔ ASCII conversie) en binaire bestanden {BINARY}.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan FTP in batch draaien via JCL (ITT FTP of BPXBATCH met sftp) en een scripted overdracht opzetten met {QUOTE SITE} commando's voor mainframe-specifieke parameters (bijv. blokgrootte, recordformaat).
+
+\subsubsection{T8.2 Uitleggen van RACF-begrippen (USER, GROUP, DATASET-profile) (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} RACF (Resource Access Control Facility) is de IBM security manager op z/OS. Een {USER} is een individuele gebruiker met een wachtwoord. Een {GROUP} is een verzameling gebruikers (hiërarchisch). Een {DATASET-profile} is een regel die bepaalt wie een bepaalde dataset mag lezen, schrijven, of wissen. RACF beschermt ook resources zoals CICS-transacties, Db2-tabellen, en started tasks.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan {LISTUSER} en {LISTGRP} gebruiken om profielen te bekijken. Hij/zij begrijpt dat RACF een "DEFAULT DENY" model heeft — alles is verboden tenzij een profiel expliciet toegang geeft.
+
+
+\subsubsection{T8.3 Volgen van procedures voor toegangscontrole (Gedrag \& Vaardigheid)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder volgt de voorgeschreven RACF-procedures: een nieuw dataset-profiel aanvragen via het ticketing systeem in plaats van zelf aanmaken, wekelijkse access reviews bijwonen, en nooit {SPECIAL} of {OPERATIONS} autoriteit gebruiken voor dagelijkse taken. Hij/zij meldt verdachte RACF-meldingen (IRRxxxI) aan de security officer.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan een eenvoudige access request zelf afhandelen volgens de site-policy, weet wanneer uitzonderingen (emergency access) nodig zijn en hoe die gedocumenteerd moeten worden, en kan een access review rapport genereren en analyseren.
+\subsubsection{T8.4 Begrijpen van TCP/IP-stackconfiguratie en SNA (Kennis)}
+
+• \textbf{Voorbeeld (Niveau 1):} De beheerder weet dat TCP/IP op z/OS draait als een started task en geconfigureerd wordt via PROFILES (bijv. {TCPIP.DATA} en {PROFILE.TCPIP}). {SNA} (Systems Network Architecture) is IBMs legacy netwerkprotocol — ooit dominant, nu vervangen door TCP/IP, maar nog wel aanwezig in oudere systemen (APPC, LU6.2). De beheerder weet dat {OMPROUTE} de routing daemon is voor TCP/IP op z/OS.
+
+• \textbf{Progressie naar Niveau 2:} De beheerder kan {NETSTAT} commando's gebruiken om TCP/IP-status te bekijken ({NETSTAT HOME}, {NETSTAT CONN}, {NETSTAT DEV}). Hij/zij begrijpt dat SNA en TCP/IP naast elkaar kunnen bestaan en hoe {ENTERPRISE EXTRANET ID} (EEID) of {IP} over SNA werkt voor migratiesituaties.

@@ -13,6 +13,169 @@
 % niet duidelijk zijn?
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
+Dit hoofdstuk vormt de afronding van de bachelorproef. Eerst wordt een samen
+vatting gegeven van het uitgevoerde onderzoek en de belangrijkste bevindingen.
+Vervolgens worden de resultaten besproken in het licht van de initiële probleem
+stelling en onderzoeksvragen. Daarna worden de beperkingen van het onderzoek
+erkend. Tot slot worden aanbevelingen gedaan voor zowel verder onderzoek als
+voordepraktischeimplementatievanhetontwikkeldecompetentieframeworken
+de proof-of-concept webapplicatie
 
-\lipsum[76-80]
+\section{Samenvatting onderzoek}
 
+De centrale problematiek van deze bachelorproef betrof het tekort aan gekwalificeerde z/OS System Administrators en System Programmers en het gebrek aan een gestandaardiseerd, praktijkgericht competentieframework voor starters (Niveau 1) in dit domein, specifiek binnen een onderwijscontext. De hoofdvraag luidde: “Welke competenties moet een z/OS System Administrator / System Programmer Level 1 binnen een z/OS mainframeomgeving bezitten om effectief te functioneren, en hoe kunnen deze competenties in een gestructureerd framework worden georganiseerd dat direct toepasbaar is binnen een onderwijscontext?”
+
+Om deze vraag te beantwoorden, werd een methodologie gehanteerd die bestond uit:
+
+\begin{itemize}
+	\item \textbf{Literatuurstudie:} Analyse van de mainframe-industrie, de rol van z/OS System Administrators en System Programmers, bestaande competentiemodellen (bv. SFIA, e-CF, IBM Z competency frameworks) en uitdagingen in mainframe-onderwijs.
+	
+	\item \textbf{Requirementanalyse:} Definiëren van de vereisten voor het framework en de proof-of-concept (PoC) webapplicatie via MoSCoW-prioritering.
+	
+	\item \textbf{Kwalitatief onderzoek:} Semigestructureerde interviews met senior z/OS System Administrators / System Programmers bij verschillende bedrijven om de industrienoden en de relevantie van het project te valideren.
+	
+	\item \textbf{Ontwikkeling:} Het ontwerpen en uitwerken van het competentieframework en de realisatie van een proof-of-concept webapplicatie.
+	
+	\item \textbf{Validatie (beperkt):} Toetsing van het framework en/of de PoC aan de praktijk via literatuur en initiële interviews. Een formele validatie met een bredere groep werd niet uitgevoerd.
+\end{itemize}
+
+\section{Belangrijkste bevindingen}
+
+Het onderzoek heeft geleid tot de volgende kernbevindingen, die een direct antwoord bieden op de onderzoeksvragen:
+
+\begin{itemize}
+	
+	\item \textbf{Essentiële competenties (technische \& soft skills):} 
+	Uit de combinatie van literatuurstudie en interviews is een gedetailleerde set van competenties voor een Niveau 1 en Niveau 2 z/OS System Administrator / System Programmer gedestilleerd.\\
+	
+	\textbf{Technisch:} Fundamentele kennis van z/OS (LPARs, TSO/ISPF, SDSF), abstracte z/OS concepten, WLM, Spool, JES2/3 begrijpen, JCL, REXX en concepten zoals backup/recovery en beveiliging, zijn cruciaal. De interviews benadrukten het belang van praktische JCL-vaardigheden en het begrijpen van IBM utilities.\\
+	
+	\textbf{Professioneel:} Naast technische vaardigheden zijn communicatie (helder vragen stellen, rapporteren), probleemoplossing (procedures volgen, escaleren), leergierigheid, aanpassingsvermogen en het vermogen om samen te werken en basisdocumentatie bij te houden essentieel voor een startende system engineer.
+	
+	\item \textbf{Gestructureerd framework:} 
+	De geïdentificeerde competenties zijn georganiseerd in een framework met acht technische en vier professionele domeinen, gebaseerd op bestaande modellen in een z/OS context. Dit framework biedt een concrete structuur die als leidraad kan dienen voor curricula en trainingstrajecten. De interviews bevestigden de relevantie van de gekozen domeinen.
+	
+	\item \textbf{Praktijkgerichte oefeningen:} 
+	Het framework legt de basis voor de ontwikkeling van praktische, taakgerichte oefeningen. De interviews onderstreepten de behoefte aan concrete voorbeelden (bv. SDSF en JCL voor utilities) en de combinatie van theorie met oefeningen (bv. meerkeuzevragen en kleine opdrachten) om het leerproces te ondersteunen. De use cases (Hoofdstuk 4, Sectie 4.2) bieden hiervoor concrete scenario’s.
+	
+	\item \textbf{Rol van de webapplicatie:} 
+	De ontwikkelde proof-of-concept webapplicatie demonstreert hoe het framework interactief ontsloten kan worden. Functionaliteiten zoals een competentiekaart, progressietracking en een resourcebibliotheek (zoals beschreven in Hoofdstuk 4, Sectie 4.3) kunnen de implementatie in een onderwijscontext effectiever en toegankelijker maken. De interviews bevestigden de potentiële meerwaarde van een dergelijke tool, gezien het beperkte beschikbare leermateriaal voor mainframe-specifieke onderwerpen.
+	
+\end{itemize}
+
+Samengevat levert deze bachelorproef een gevalideerd (door literatuur en initiële interviews) en gedetailleerd competentieframework op voor  z/OS System Administrators en System Programmers, direct toepasbaar in een onderwijscontext, evenals een proof-of-concept die de digitale ondersteuning ervan illustreert.
+
+\subsection{Discussie}
+
+De resultaten van dit onderzoek bieden belangrijke implicaties voor zowel het onderwijs als de mainframe-industrie. Het ontwikkelde framework levert een concreet antwoord op de in de probleemstelling gesignaleerde kloof tussen bestaande opleidingsmogelijkheden en de specifieke noden van de industrie voor startende z/OS System Administrators en System Programmers.
+
+De ontwikkeling van het competentieframework en de proof-of-concept webapplicatie was een iteratief proces, sterk beïnvloed door de feedback van senior en junior mainframe professionals. Door middel van de semi gestructrureerde interviews met professionals in mainframe sector bij verschillende bedrijven, werd inzicht verkregen in de specifieke behoeften en uitdagingen waarmee beginnende professionals worden geconfronteerd.
+
+Hun feedback bevestigde de noodzaak van een gestructureerd framework dat de kerncompetenties voor Level 1 duidelijk definieert. Specifiek werd het belang benadrukt van fundamentele kennis van z/OS en RACF, evenals praktische vaardigheden in JCL en REXX. Dit leidde tot een expliciete focus op deze domeinen binnen het framework en de PoC.
+
+Bovendien benadrukten de geïnterviewden het belang van praktische toepassingen en hands-on oefeningen. Als reactie hierop werd de PoC ontworpen met aparte secties voor theorie, oefeningen en oplossingen, waarbij concrete voorbeelden en meerkeuzevragen werden geïntegreerd om de leerervaring te versterken.
+
+Een concreet voorbeeld van de impact van deze feedback is de opname van gevorderd JCL utilities zoals ADRDSSU, TRSMAIN, ICKDSF, IKJEFT01,
+SDSF (in batch), BPXBATCH, ISRSUPC , wat rechtstreeks voortkwam uit de input van Hans Kok.
+
+Deze iteratieve benadering, waarbij feedback van eindgebruikers continu werd geïntegreerd, heeft bijgedragen aan de ontwikkeling van een framework en PoC die nauw aansluiten bij de werkelijke behoeften van beginnende system engineers. Dit kan de leercurve verkorten en de overgang van onderwijs naar industrie vergemakkelijken.
+
+\begin{itemize}
+	\item \textbf{Unieke bijdrage aan het vakgebied:} 
+	In vergelijking met het SFIA-raamwerk, waar Niveau 1 ("Follow") zich richt op basistaken onder supervisie, definieert dit framework Niveau 1 als "Basis", waarbij de system engineer fundamentele concepten begrijpt en basisactiviteiten onder begeleiding kan uitvoeren. Dit sluit aan bij het "Apprentice"-niveau binnen het IBM Z System Mainframe Administrator Competency Framework, maar is specifieker afgestemd op z/OS System Administration en System Programming.
+	
+	Het e-CF-raamwerk (e-1 niveau, EQF niveau 3) biedt een algemene basis voor IT-professionals, maar mist de specifieke focus op z/OS en mainframe-systemen die dit framework wel biedt. Daarnaast sluit dit framework direct aan op de leerhindernissen die door de geïnterviewden werden geïdentificeerd.
+	
+	Door het expliciet definiëren van competentiedomeinen zoals Platform Fundamentals (T1), Hardware \& Virtualization (T2), Storage \& Data Management (T3), JCL en Batch Processing (T5), en Automation \& Scripting (T6), worden fundamentele concepten systematisch opgebouwd. De integratie van praktijkgerichte oefeningen in de PoC webapplicatie biedt de hands-on ervaring die in traditionele opleidingscontexten vaak ontbreekt, zoals het navigeren in SDSF (T4.2), het uitvoeren van JCL-jobs (T5.2) of het gebruik van DFSMShsm voor migratie en recall (T3.4).
+	
+	Daarnaast versterken professionele competenties zoals communicatie en probleemoplossing de ontwikkeling van soft skills, die essentieel zijn voor samenwerking binnen operationele teams.
+	
+	\item \textbf{Verkleinen van de kloof:} 
+	Het framework definieert duidelijk wat een Niveau 1 en Niveau 2 system engineer moet kennen en kunnen, en biedt hiermee een gemeenschappelijke taal voor studenten, onderwijsinstellingen en werkgevers. De nadruk op direct toepasbare vaardigheden zoals ISPF-navigatie, JCL, SDSF, REXX-scripting, z/OSMF, TSO-commando's en IBM storage utilities (IDCAMS, DFSMS), gecombineerd met praktijkgerichte oefeningen en de PoC, faciliteert een betere voorbereiding op de werkvloer en kan de inwerktijd in bedrijven verkorten.
+	
+	\item \textbf{Relevantie in een evoluerende context:} 
+	Hoewel gericht op Niveau 1 en Niveau 2, legt het framework een duurzaam fundament met concepten die relevant blijven in een evoluerend IT-landschap. De focus op basisprincipes van z/OS-systeembeheer, storage management, JCL en automatisering (REXX), aangevuld met professionele competenties zoals communicatie, probleemoplossing en aanpassingsvermogen, sluit aan bij de toenemende hybridisatie en integratie van enterprise IT-omgevingen. Dit omvat ook moderne tools zoals z/OSMF voor systeembeheer, USS voor Unix-integratie, en de groeiende rol van automatisering in mainframe-omgevingen.
+	
+\end{itemize}
+
+\subsection{Beperkingen}
+
+Bij de interpretatie van de resultaten dient rekening gehouden te worden met enkele beperkingen:
+
+\begin{itemize}
+	
+\item \textbf{Scope kwalitatief onderzoek:} 
+Alhoewel er interviews zijn afgenomen bij 11 personen in verschillende bedrijven (zowel junior als senior z/OS System Administrators en System Programmers), blijft de generaliseerbaarheid naar de bredere sector beperkt. Extra interviews met professionals uit nog meer organisaties en met uiteenlopende ervaringsniveaus zouden het beeld verder kunnen verrijken.
+	
+	\item \textbf{Validatie:} 
+	Het ontwikkelde framework en de proof-of-concept (PoC) zijn gevalideerd op basis van literatuur en initiële interviews. Een formele validatieronde met een bredere groep van onderwijsexperts en senior industry professionals op het eindproduct ontbreekt. Dit beperkt de zekerheid over de volledigheid en brede toepasbaarheid van het framework in diverse contexten.
+	
+	\item \textbf{Focus op z/OS sysadmin/sysprog:} 
+	Conform de scope is het framework specifiek gericht op z/OS systeembeheer en systeemprogrammatuur. Competenties met betrekking tot andere mainframe-rollen zoals CICS-specialist, IMS-beheerder, netwerkspecialist of security officer vallen buiten het bestek van dit onderzoek.
+	
+	\item \textbf{Diepgang niveau 1 en 2:} 
+	Het framework definieert de instapniveaus (Level 1 en Level 2). De exacte afbakening tussen niveau 1 en niveau 2, evenals de diepgang per onderwerp (zoals JCL, REXX, z/OSMF, VSAM, DFSMS), blijft contextafhankelijk en kan per organisatie verschillen.
+	
+	\item \textbf{PoC versus productieapplicatie:} 
+	De webapplicatie is een proof-of-concept en geen volledig uitgewerkt learning management system. Functionaliteiten zoals uitgebreide progressietracking, geautomatiseerde feedback op oefeningen of integratie met bestaande leerplatformen zijn niet geïmplementeerd (conform de 'Won’t Haves' uit Hoofdstuk 3, Sectie 3.1.1).
+	
+\end{itemize}
+
+Hoewel de proof-of-concept webapplicatie een effectieve demonstratie biedt van hoe het competentieframework digitaal kan worden ontsloten, is het belangrijk te benadrukken dat het geen volwaardig e-learningplatform is. Functies zoals gepersonaliseerde voortgangsregistratie over meerdere sessies, geautomatiseerde feedback op assessments (naast het tonen van oplossingen), of interactieve mainframesimulaties zijn bewust buiten scope gehouden.
+
+De reden hiervoor is tweeledig. Ten eerste lag de focus van deze bachelorproef op het valideren van de structuur en inhoud van het framework, en op het aantonen van de toepasbaarheid binnen een educatieve context. Ten tweede maakten tijds- en resourcebeperkingen het niet haalbaar om een volledig e-learningplatform te ontwikkelen.
+
+Desondanks biedt de huidige PoC reeds aanzienlijke meerwaarde door het framework toegankelijk en interactief te maken. Het vormt een solide basis voor verdere uitbreiding en kan in de toekomst worden doorontwikkeld tot een volwaardig leerplatform indien voldoende middelen beschikbaar zijn.
+
+\subsection{Aanbevelingen voor verder onderzoek en impactevaluatie}
+
+Voortbouwend op dit werk zijn er verschillende pistes voor verder onderzoek die de waarde en toepasbaarheid van het ontwikkelde competentieframework verder kunnen vergroten. Daarnaast is het essentieel om de daadwerkelijke impact van het framework systematisch te evalueren in zowel onderwijs- als praktijkcontexten.
+
+\subsubsection{Aanbevelingen voor verder onderzoek}
+
+\begin{itemize}
+	\item \textbf{Uitbreiding en verfijning van het framework:}  
+	Uitwerken van gedetailleerde competenties, indicatoren en leeractiviteiten voor Niveau 2 (Gevorderd) en Niveau 3 (Expert) binnen de rol van z/OS System Administrator / System Programmer. Hierbij kan verder worden voortgebouwd op de huidige structuur.
+	
+	\item \textbf{Bredere technologische integratie:}  
+	Onderzoeken hoe bijkomende domeinen zoals IMS, CICS, geavanceerde REXX-scripting, RACF-security en moderne integraties zoals REST API’s en hybride cloudscenario’s binnen z/OS kunnen worden geïntegreerd in het framework om een vollediger competentiebeeld te bekomen.
+	
+	\item \textbf{Vergelijkende rolstudie:}  
+	Uitvoeren van een vergelijking tussen z/OS System Administrators / System Programmers en andere infrastructuurrollen (zoals Linux/Unix system engineers) om overlap, verschillen en mogelijke carrière- of transitiepaden beter in kaart te brengen.
+	
+	\item \textbf{Validatie op grotere schaal:}  
+	Uitvoeren van een grootschalige validatiestudie van het framework en de proof-of-concept webapplicatie bij meerdere onderwijsinstellingen en organisaties binnen de Benelux of Europa om de generaliseerbaarheid en volledigheid te evalueren.
+	
+	\item \textbf{Ontwikkeling van leermateriaal:}  
+	Ontwikkelen van gestructureerd en gevalideerd leermateriaal, inclusief oefeningen, praktijkcases, projectopdrachten en assessments (formatief en summatief), rechtstreeks gekoppeld aan de competenties en niveaus van het framework.
+\end{itemize}
+
+\subsection{Aanbevelingen voor implementatie}
+
+Voor de praktische toepassing van het ontwikkelde competentieframework en de proof-of-concept webapplicatie worden de volgende aanbevelingen geformuleerd.
+
+\subsubsection{Voor onderwijsinstellingen (bv. HOGENT)}
+
+\begin{itemize}
+	\item Gebruik het framework als basis voor het (her)ontwerpen van curricula en opleidingsmodules rond z/OS System Administration en System Programming.
+	
+	\item Integreer de proof-of-concept webapplicatie (of een doorontwikkelde versie ervan) als ondersteunend leermiddel naast theoretische lessen en praktische oefeningen.
+	
+	\item Ontwikkel concrete oefeningen, cases en assessments gebaseerd op de voorgestelde leeractiviteiten en use cases, bij voorkeur ondersteund door een (gesimuleerde) mainframe-omgeving.
+	
+	\item Gebruik het framework om leerdoelen en evaluatiecriteria transparant te maken voor studenten, zodat verwachtingen duidelijk en meetbaar worden.
+\end{itemize}
+
+\subsubsection{Voor bedrijven in de mainframe-sector}
+
+\begin{itemize}
+	\item Gebruik het framework als referentie voor het opstellen en verfijnen van functieprofielen voor junior z/OS System Administrators en System Programmers.
+	
+	\item Integreer het framework in onboarding- en trainingsprogramma’s voor nieuwe medewerkers binnen mainframe-omgevingen.
+	
+	\item Gebruik het als basis voor competentiemanagement en het identificeren van ontwikkelingsnoden bij junior personeel.
+	
+	\item Werk samen met onderwijsinstellingen om de kloof tussen opleiding en praktijk verder te verkleinen, bijvoorbeeld via gastcolleges, stageplaatsen of het delen van geanonimiseerde praktijkcases.
+\end{itemize}
+
+De implementatie van dit framework kan bijdragen aan een efficiëntere en meer gestandaardiseerde opleiding van toekomstige z/OS System Administrators en System Programmers, en zo helpen om het bestaande tekort aan gekwalificeerd mainframepersoneel structureel aan te pakken.
