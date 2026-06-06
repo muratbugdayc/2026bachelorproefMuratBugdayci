@@ -5,82 +5,182 @@
 % Aangepast voor gebruik aan HOGENT door Jens Buysse en Bert Van Vreckem
 
 \documentclass[a0,portrait]{hogent-poster}
+\usetikzlibrary{positioning}
 
 % Info over de opleiding
 \course{Bachelorproef}
 \studyprogramme{toegepaste informatica}
-\academicyear{2022-2023}
+\academicyear{2025-2026}
 \institution{Hogeschool Gent, Valentin Vaerwyckweg 1, 9000 Gent}
 
 % Info over de bachelorproef
-\title{Titel van uw bachelorproef}
-\subtitle{Ondertitel (eventueel)}
-\author{Voornaam Naam}
-\email{voornaam.familienaam@student.hogent.be}
-\supervisor{Voornaam Naam}
-\cosupervisor{Voornaam Naam (Bedrijf)}
+\title{Competentieframework voor z/OS System Administrator en System Programmeurs Level 1 en Level 2}
+\author{Murat Bugdayci}
+\email{murat.bugdayci@student.hogent.be}
+\supervisor{Dhr. L. Blondeel}
+\cosupervisor{Dhr. J. E. Kok (ABN AMRO)}
 
 % Indien ingevuld, wordt deze informatie toegevoegd aan het einde van de
 % abstract. Zet in commentaar als je dit niet wilt.
-\specialisation{Systeem- en Netwerkbeheer}
-\keywords{Lambda-calculus, Scheme}
-\projectrepo{https://github.com/user/repo}
+\specialisation{Mainframe specialist}
+\keywords{z/OS besturingsysteem, JCL, REXX, competentieframework}
+\projectrepo{https://github.com/muratbugdayc/2026bachelorproefMuratBugdayci}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-It's only a model.
-You don't vote for kings. Who's that then? We found them. Ni! Ni! Ni! Ni!
-The nose? On second thoughts, let's not go there. It is a silly place. Bloody Peasant! And the hat. She's a witch! Where'd you get the coconuts?
+De mainframe-sector kampt met een structureel tekort aan gekwalificeerde z/OS-professionals door vergrijzing en een kloof tussen onderwijs en industrie. Deze bachelorproef ontwikkelt een praktijkgericht competentieframework voor z/OS System Administrators en System Programmers (Level 1 \& 2), aangevuld met een proof-of-concept webapplicatie. Via literatuurstudie en semigestructureerde interviews bij o.a.\ ABN AMRO, Euroclear en KBC werden 8 technische en 4 professionele competentiedomeinen geïdentificeerd en gevalideerd.
 \end{abstract}
 
-\begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
+\begin{multicols}{2}
 
-\section{Introductie}
+\section{Probleemstelling}
 
-Be quiet! Found them? In Mercia?! The coconut's tropical! But you are dressed as one… Well, what do you want? Knights of Ni, we are but simple travelers who seek the enchanter who lives beyond these woods.
+IBM z/OS-omgevingen verwerken wereldwijd meer dan 70\% van de bedrijfskritische transacties bij banken, overheidsinstellingen en verzekeraars. Toch kampt de sector met een structureel personeelstekort: de workforce vergrijst snel en ervaren professionals stromen massaal uit. Tegelijkertijd besteden onderwijsinstellingen nauwelijks aandacht aan mainframe-technologie, waardoor een kloof ontstaat tussen wat studenten leren en wat de industrie verwacht.
 
-Well, what do you want? It's only a model. Camelot! We found them. We shall say `Ni' again to you, if you do not appease us.
+Er bestaan weliswaar algemene IT-competentieframeworks (SFIA, e-CF, IBM competentieframeworks), maar geen enkel biedt een concreet, praktijkgericht kader specifiek voor z/OS SysAdmin en SysProg op instapniveau.
 
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
+\textbf{Onderzoeksvraag:} Welke competenties vereist een z/OS SysAdmin/SysProg, en hoe worden deze georganiseerd in een framework toepasbaar binnen een onderwijscontext?
 
-You can't expect to wield supreme power just `cause some watery tart threw a sword at you! Well, we did do the nose. I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-
-\section{Experimenten}
-
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
-
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
-
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
-
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
-
-\section{Sectie met figuur}
-
-De {\LaTeX} figure-omgeving bepaalt zelf waar een afbeelding komt en dat is meestal niet op de plek in de tekst waar de figure-omgeving gedefinieerd wordt. Als je wilt forceren dat afbeeldingen toch in de flow van de tekst blijven, dan kan je dat zoals hieronder:
+\section{Methodologie}
 
 \begin{center}
-  \captionsetup{type=figure}
-  \includegraphics[width=1.0\linewidth]{grail}
-  \captionof{figure}{He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say `Ni' again to you, if you do not appease us}
+\begin{tikzpicture}[
+  node distance=0.5cm and 0.6cm,
+  num/.style={circle, draw, fill=hogent-darkgreen, text=white,
+              font=\bfseries\small, minimum size=0.7cm, inner sep=0pt},
+  card/.style={rectangle, draw=hogent-darkgreen, rounded corners=6pt,
+               fill=white, text width=2.6cm, minimum height=2.2cm,
+               align=flush left, inner sep=5pt, font=\footnotesize}
+]
+
+%% Rij 1: drie stappen
+\node[card] (c1) {
+  \textbf{Literatuur-\\studie}\\[3pt]
+  $\bullet$ SFIA, e-CF\\
+  $\bullet$ IBM Z Framework\\
+  $\bullet$ z/OS stack
+};
+\node[card, right=of c1] (c2) {
+  \textbf{Interviews}\\[3pt]
+  $\bullet$ 7 organisaties\\
+  $\bullet$ Junior \& senior\\
+  $\bullet$ Semigestructureerd
+};
+\node[card, right=of c2] (c3) {
+  \textbf{Ontwikkeling}\\[3pt]
+  $\bullet$ Framework\\
+  $\bullet$ PoC webappl.\\
+  $\bullet$ 25 topics
+};
+
+%% Genummerde cirkels boven elke kaart
+\node[num, above=0.15cm of c1.north] {01};
+\node[num, above=0.15cm of c2.north] {02};
+\node[num, above=0.15cm of c3.north] {03};
+
+%% Pijlen rij 1
+\draw[->, thick, hogent-darkgreen] (c1.east) -- (c2.west);
+\draw[->, thick, hogent-darkgreen] (c2.east) -- (c3.west);
+
+%% Rij 2: twee stappen gecentreerd onder rij 1
+\node[card, below=0.8cm of c1, xshift=1.55cm] (c4) {
+  \textbf{Validatie}\\[3pt]
+  $\bullet$ Via literatuur\\
+  $\bullet$ Via interviews\\
+  $\bullet$ Promotor \& co-prom.
+};
+\node[card, right=of c4] (c5) {
+  \textbf{Framework}\\[3pt]
+  $\bullet$ 8 tech.\ domeinen\\
+  $\bullet$ 4 prof.\ domeinen\\
+  $\bullet$ Level 1 \& 2
+};
+
+\node[num, above=0.15cm of c4.north] {04};
+\node[num, above=0.15cm of c5.north] {05};
+
+%% Pijl rij 2
+\draw[->, thick, hogent-darkgreen] (c4.east) -- (c5.west);
+
+%% Verbinding rij 1 naar rij 2
+\draw[->, thick, hogent-darkgreen] (c2.south) -- ++(0,-0.4) -| (c4.north);
+
+\end{tikzpicture}
 \end{center}
 
-Let er wel op dat dit tot problemen met bladschikking kan leiden.
+\section{Het Competentieframework}
+
+Het framework omvat \textbf{12 domeinen} in twee categorieën, elk uitgewerkt op twee progressieniveaus (Level~1: Basis $\rightarrow$ Level~2: Gevorderd):
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Technische Domeinen (T1--T8)}} \\
+\hline
+T1: Platform Fundamentals & T5: Batch Processing \& JCL \\
+\hline
+T2: Hardware \& Virtualization & T6: Automation \& Scripting \\
+\hline
+T3: Storage \& Data Management & T7: Subsystems \& Middleware \\
+\hline
+T4: System Operations \& Tools & T8: Networking \& Security \\
+\hline
+\multicolumn{2}{|c|}{\textbf{Professionele Domeinen (P1--P4)}} \\
+\hline
+P1: Communicatie \& Samenwerking & P3: Change Management \\
+\hline
+P2: Probleemoplossing \& Kritisch Denken & P4: Professionele Ontwikkeling \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Proof-of-Concept Webapplicatie}
+
+Een statische webapplicatie (GitHub Pages) maakt het framework interactief toegankelijk. Elke competentiekaart bevat theorie, meerkeuzevragen (MCQ) en praktijkopdrachten op basis van realistische z/OS-scenario's. De inhoud van de PoC in cijfers:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{25 topics} & \textbf{232 MCQ-vragen} & \textbf{61 praktijktaken} \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{minipage}[t]{0.47\linewidth}
+  \captionsetup{type=figure}
+  \includegraphics[width=\linewidth]{../bachproef/images/BACHPROEFGENER}
+  \captionof{figure}{IEBGENER utility (T5: Batch \& JCL)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+  \captionsetup{type=figure}
+  \includegraphics[width=\linewidth]{../bachproef/images/BACHPROEFVSAM}
+  \captionof{figure}{VSAM KSDS praktijktaak (T3: Storage \& Data Management)}
+\end{minipage}
+\end{center}
 
 \section{Conclusies}
 
-Don't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
+\begin{itemize}
+  \item \textbf{Rolvervaging:} De grens tussen SysAdmin en SysProg is in de praktijk niet eenduidig en varieert per organisatie; een geïntegreerd framework voor beide rollen is noodzakelijk.
+  \item \textbf{Technische prioriteiten:} Abstracte z/OS concepten zoals WLM, Adress spaces en technologieen/talen zoals JCL, TSO/ISPF, SDSF en REXX worden door alle geïnterviewden als meest kritisch beschouwd voor starters.
+  \item \textbf{Soft skills:} Communicatie, probleemoplossend denken en documentatievaardigheid zijn minstens even belangrijk als technische kennis.
+  \item \textbf{Meerwaarde PoC:} Professionals bevestigden de waarde van een interactief leerplatform; mainframe-specifiek leermateriaal is schaars.
+  \item \textbf{Unieke bijdrage:} Dit framework is specifieker dan SFIA of e-CF doordat het rechtstreeks is afgestemd op z/OS en gebaseerd op industrievalidatie.
+\end{itemize}
 
-\section{Toekomstig onderzoek}
+\section{Toekomstig Onderzoek}
 
-I care. So, what do you think of her, Han? No! Alderaan is peaceful. We have no weapons. You can't possibly… I have traced the Rebel spies to her. Now she is my only link to finding their secret base.
-
-Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful Force controlling everything. There's no mystical energy field that controls my destiny. It's all a lot of simple tricks and nonsense. You are a part of the Rebel Alliance and a traitor! Take her away! 
+\begin{itemize}
+  \item Uitbreiding naar Level 3 (Expert) en bijkomende domeinen: geavanceerde RACF, REST API's, hybride cloud binnen z/OS
+  \item Grootschalige validatie bij meerdere onderwijsinstellingen en bedrijven in de Benelux
+  \item Doorontwikkeling PoC naar volwaardig leerplatform met voortgangsregistratie, geautomatiseerde feedback en gesimuleerde z/OS-omgeving (IBM zXplore / Hercules)
+  \item Samenwerking onderwijs--industrie via gastcolleges, stages en gedeelde praktijkcases
+\end{itemize}
 
 \end{multicols}
 \end{document}

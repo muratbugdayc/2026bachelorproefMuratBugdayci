@@ -425,7 +425,7 @@ Gebaseerd op de progressieniveaus in Sectie 4.1.4, bieden we hier praktische voo
 
 • \textbf{Voorbeeld (Niveau 1):} De beheerder weet dat JES2 de dominante job entry subsystem is, met een spool die tijdelijke jobdata (JCL, SYSOUT, logs) opslaat. Hij/zij begrijpt job classes (bepalen welke initiators een job oppakken) en output classes (routeren van SYSOUT naar printers, hold, of NJE). Een sysplex is voor hem/haar een cluster van z/OS-systemen met een Coupling Facility voor shared memory en lock management.
 
-• \textbf{Progressie naar Niveau 2:} De beheerder kan SDSF gebruiken om initiators te inspecteren en job classes te wijzigen en een batchjob traceren via INPUT $\rightarrow$ EXEC $\rightarrow$ OUTPUT.
+• \textbf{Progressie naar Niveau 2:} De beheerder kan SDSF gebruiken om initiators te inspecteren en job classes te wijzigen en een batchjob traceren via INPUT-EXEC-OUTPUT.
 
 \subsubsection{T1.4 Navigeren in z/OSMF voor systeembeheer (Vaardigheid)}
 
@@ -508,6 +508,7 @@ Gebaseerd op de progressieniveaus in Sectie 4.1.4, bieden we hier praktische voo
 \subsubsection{T5.3 Gebruiken van voorwaardelijke logica (IF/THEN/ELSE) in JCL (Kennis)}
 
 • \textbf{Voorbeeld (Niveau 1):} De beheerder kan {IF/THEN/ELSE/ENDIF} gebruiken om stappen conditioneel uit te voeren.
+
 • \textbf{Progressie naar Niveau 2:} De beheerder kan geneste IF-blokken schrijven en compound conditions gebruiken met {AND} / {OR} / {NOT}. Hij/zij kan testen op abends met {STEP1.ABEND} en op het feit of een stap uitgevoerd is met {STEP1.RUN}.
 
 \subsubsection{T5.4 Aanpassen van bestaande JCL-procedures (PROC) met parameters (Vaardigheid)}
@@ -573,7 +574,7 @@ Gebaseerd op de progressieniveaus in Sectie 4.1.4, bieden we hier praktische voo
 
 • \textbf{Voorbeeld (Niveau 1):} RACF (Resource Access Control Facility) is de IBM security manager op z/OS. Een {USER} is een individuele gebruiker met een wachtwoord. Een {GROUP} is een verzameling gebruikers (hiërarchisch). Een {DATASET-profile} is een regel die bepaalt wie een bepaalde dataset mag lezen, schrijven, of wissen. RACF beschermt ook resources zoals CICS-transacties, Db2-tabellen, en started tasks.
 
-• \textbf{Progressie naar Niveau 2:} De beheerder kan {LISTUSER} en {LISTGRP} gebruiken om profielen te bekijken. Hij/zij begrijpt dat RACF een "DEFAULT DENY" model heeft — alles is verboden tenzij een profiel expliciet toegang geeft.
+• \textbf{Progressie naar Niveau 2:} De beheerder kan {LISTUSER} en {LISTGRP} gebruiken om profielen te bekijken. Hij/zij begrijpt dat RACF een "DEFAULT DENY" model heeft alles is verboden tenzij een profiel expliciet toegang geeft.
 
 
 \subsubsection{T8.3 Volgen van procedures voor toegangscontrole (Gedrag \& Vaardigheid)}
@@ -583,6 +584,6 @@ Gebaseerd op de progressieniveaus in Sectie 4.1.4, bieden we hier praktische voo
 • \textbf{Progressie naar Niveau 2:} De beheerder kan een eenvoudige access request zelf afhandelen volgens de site-policy, weet wanneer uitzonderingen (emergency access) nodig zijn en hoe die gedocumenteerd moeten worden, en kan een access review rapport genereren en analyseren.
 \subsubsection{T8.4 Begrijpen van TCP/IP-stackconfiguratie en SNA (Kennis)}
 
-• \textbf{Voorbeeld (Niveau 1):} De beheerder weet dat TCP/IP op z/OS draait als een started task en geconfigureerd wordt via PROFILES (bijv. {TCPIP.DATA} en {PROFILE.TCPIP}). {SNA} (Systems Network Architecture) is IBMs legacy netwerkprotocol — ooit dominant, nu vervangen door TCP/IP, maar nog wel aanwezig in oudere systemen (APPC, LU6.2). De beheerder weet dat {OMPROUTE} de routing daemon is voor TCP/IP op z/OS.
+• \textbf{Voorbeeld (Niveau 1):} De beheerder weet dat TCP/IP op z/OS draait als een started task en geconfigureerd wordt via PROFILES (bijv. {TCPIP.DATA} en {PROFILE.TCPIP}). {SNA} (Systems Network Architecture) is IBMs legacy netwerkprotocol, nu vervangen door TCP/IP, maar nog wel aanwezig in oudere systemen (APPC, LU6.2). De beheerder weet dat {OMPROUTE} de routing daemon is voor TCP/IP op z/OS.
 
 • \textbf{Progressie naar Niveau 2:} De beheerder kan {NETSTAT} commando's gebruiken om TCP/IP-status te bekijken ({NETSTAT HOME}, {NETSTAT CONN}, {NETSTAT DEV}). Hij/zij begrijpt dat SNA en TCP/IP naast elkaar kunnen bestaan en hoe {ENTERPRISE EXTRANET ID} (EEID) of {IP} over SNA werkt voor migratiesituaties.
