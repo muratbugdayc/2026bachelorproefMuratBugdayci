@@ -6,6 +6,8 @@ Deze repository bevat LaTeX sjablonen voor gebruik bij het opmaken van je bachel
 - [De bachelorproef zelf](./bachproef/)
 - [Een poster](./poster/)
 
+Website repository = https://github.com/muratbugdayc/WebpageSysAdmin
+
 **LET OP.** Voor het academiejaar 2022-2023 zijn er nieuwe sjablonen gepubliceerd die conform zijn met de huidige huisstijl van HOGENT.
 
 ## Aan de slag
